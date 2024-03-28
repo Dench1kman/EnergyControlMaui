@@ -1,0 +1,47 @@
+# Temporary files
+.vs/
+bin/
+obj/
+.optemp/
+*.tmp
+*.temp
+*.bak
+
+# Build artifacts
+*.dll
+*.exe
+*.pdb
+
+# Dependencies and packages
+/node_modules/
+/packages/
+
+# IDE project and solution files
+*.sln
+*.suo
+*.user
+.vscode/
+.idea/
+
+# Local configuration files
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Log files and temporary files
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# IDE settings and cache files
+.vs/
+.idea/
+*.suo
+*.user
+
+# Files and folders containing personal data
+.DS_Store
+Thumbs.db

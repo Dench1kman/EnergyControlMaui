@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:EnergyControlMaui.MarkupExtensions"
+             xmlns:triggers="clr-namespace:EnergyControlMaui.Triggers"
+             x:Class="EnergyControlMaui.LoginPage"
+             Background="#24293E"
+             NavigationPage.HasNavigationBar="False">
+    
+    <ContentPage.Content>
+        <Grid>
+            <Image Source="wavydotsup.png" HorizontalOptions="End" VerticalOptions="Start" Aspect="AspectFit" WidthRequest="320" HeightRequest="320" Margin="0,0,-10,0"/>
+            <Image Source="wavydotsdown.png" HorizontalOptions="Center" VerticalOptions="End" Aspect="AspectFit" WidthRequest="400" HeightRequest="400" Margin="0,0,0,-65"/>
+            <Image Source="sircledots.png" HorizontalOptions="Center" VerticalOptions="Center" Aspect="AspectFit" WidthRequest="600" HeightRequest="600"/>
+
+            <StackLayout Margin="45,0,45,0">
+                <StackLayout Orientation="Horizontal" Spacing="0" Margin="0,45,0,0">
+                    <Label Text="Energy" FontSize="24" FontFamily="Inter" FontAttributes="Bold" TextColor="#F4F4FC"/>
+                    <Label Text="Control" FontSize="24" FontFamily="Inter" FontAttributes="Bold,Italic" TextColor="#8EBBFF"/>
+                </StackLayout>
+
+                <Label Text="Welcome Back!" FontSize="32" FontFamily="interlight" TextColor="#F4F4FC" Margin="0,50,0,0"/>
+                <Label Text="Log in to continue" FontSize="14" FontFamily="interlight" TextColor="#F4F4FC"/>
+
+                <Label Text="Email" FontSize="16" FontFamily="interlight" TextColor="#F4F4FC" Margin="0,50,0,0"/>
+                <StackLayout Margin="-4,0,0,0">
+                    <Entry 
+                        x:Name="EmailEntry"
+                        FontSize="16"
+                        TextColor="White"
+                        Placeholder="Enter your email"
+                        PlaceholderColor="LightGray"
+                        Opacity="0.5"/>
+                    
+                    <Label Text="_______________________________________________________" 
+                           TextColor="White" 
+                           FontSize="12" 
+                           Margin="4,-23,0,0"/>
+                    
+                    <Label x:Name="EmailErrorLabel" 
+                           Text="Invalid email format!" 
+                           FontSize="12" 
+                           TextColor="Red"
+                           FontFamily="interregular"
+                           IsVisible="False"
+                           Margin="5,0,0,-17"/>
+                    
+                    <Label x:Name="EmailEmptyErrorLabel" 
+                           Text="Email cannot be empty!" 
+                           FontSize="12" 
+                           TextColor="Red"
+                           FontFamily="interregular"
+                           IsVisible="False"
+                           Margin="5,0,0,-17"/>
+                    
+                    <Label x:Name="EmailNotRegisteredErrorLabel" 
+                           Text="This email is not registered!" 
+                           FontSize="12" 
+                           TextColor="Red"
+                           FontFamily="interregular"
+                           IsVisible="False"
+                           Margin="5,0,0,-17"/>
+                </StackLayout>
+                <Label Text="Password" FontSize="16" FontFamily="interlight" TextColor="#F4F4FC" Margin="0,18,0,0"/>
+                <StackLayout Margin="-4,0,0,0" Orientation="Horizontal">
+                    <Entry 
+                        x:Name="PasswordEntry"
+                        IsPassword="{Binding Source={x:Reference ShowPasswordActualTrigger}, Path=HidePassword}"
+                        FontSize="16"
+                        TextColor="White"
+                        Placeholder="Enter your password"
+                        PlaceholderColor="LightGray"
+                        HorizontalOptions="StartAndExpand"
+                        WidthRequest="270"
+                        Opacity="0.5"/>
+                    
+                    <ImageButton 
+                        VerticalOptions="Center" 
+                        HorizontalOptions="End"
+                        HeightRequest="28" 
+                        BackgroundColor="Transparent"
+                        Source="ichidepassword"
+                        Margin="0,0,-45,0">
+                        
+                        <ImageButton.Triggers>
+                            <EventTrigger Event="Clicked">
+                                <triggers:ShowPasswordTriggerAction  ShowIcon="icshowpassword"
+                                                                     HideIcon="ichidepassword"
+                                                                     x:Name="ShowPasswordActualTrigger"/>
+                            </EventTrigger>
+                        </ImageButton.Triggers>
+                    </ImageButton>
+                </StackLayout>
+                <Label Text="_______________________________________________________" 
+                       TextColor="White" 
+                       FontSize="12" 
+                       Margin="0,-21,0,0"/>
+                
+                <Label x:Name="PasswordEmptyErrorLabel" 
+                           Text="Password cannot be empty!" 
+                           FontSize="12" 
+                           TextColor="Red"
+                           FontFamily="interregular"
+                           IsVisible="False"
+                           Margin="0,0,0,-17"/>
+                
+                <Label x:Name="InvalidPasswordErrorLabel" 
+                           Text="Incorrect password. Please try again!" 
+                           FontSize="12" 
+                           TextColor="Red"
+                           FontFamily="interregular"
+                           IsVisible="False"
+                           Margin="0,0,0,-17"/>
+
+                <!--Add Remember Me & Forget Password functionalities-->
+                <!--CheckedChanged="CheckBox_CheckedChanged"-->
+                <StackLayout Orientation="Horizontal" Margin="0,20,0,0">
+                    <StackLayout HorizontalOptions="Start">
+                        <CheckBox 
+                            IsChecked="False"
+                            x:Name="CheckBox"
+                            Color="#F4F4FC"/>
+                    </StackLayout>
+                    <Label Text="Remember me" FontFamily="interlight" FontSize="13" TextColor="#F4F4FC" VerticalOptions="Center" Margin="0,0,68,0"/>
+                    <Label Text="Forget password?" FontFamily="interlight" FontSize="13" TextColor="#F4F4FC" VerticalOptions="Center" HorizontalOptions="End" TextDecorations="Underline"/>
+                </StackLayout>
+                
+                <StackLayout Margin="0,50,0,0">
+                    <Button Text="Authorize"
+                        x:Name="AuthorizeButton"
+                        Clicked="AuthorizeButton_Clicked"
+                        TextTransform="None"
+                        TextColor="#2F3855"
+                        FontSize="20"
+                        FontFamily="Inter"
+                        FontAttributes="Bold"
+                        WidthRequest="300"
+                        HeightRequest="50"
+                        Margin="0,0,0,45"
+                        CornerRadius="10"
+                        BorderWidth="2"
+                        BackgroundColor="#F4F4FC"
+                        BorderColor="#8EBBFF"/>
+                </StackLayout>
+                
+                <StackLayout Orientation="Horizontal" VerticalOptions="Center" HorizontalOptions="Center" Margin="0,-35,0,0">
+                    <Label Text="Don't have an account? " 
+                           FontFamily="interlight" 
+                           FontSize="14" 
+                           TextColor="LightGray"/>
+                    
+                    <Label Text="Sign Up" 
+                           FontFamily="Inter" 
+                           FontAttributes="Bold" 
+                           FontSize="14" 
+                           TextColor="#F4F4FC" 
+                           TextDecorations="Underline">
+                        
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="SignUpLabel_Tapped"/>
+                        </Label.GestureRecognizers>
+                    </Label>
+                </StackLayout>
+            </StackLayout>
+        </Grid>
+      </ContentPage.Content>
+</ContentPage>
