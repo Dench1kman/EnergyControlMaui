@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Shell
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="EnergyControlMaui.AppShell"
+    xmlns:local="clr-namespace:EnergyControlMaui.Views"
+    Shell.FlyoutBehavior="Disabled">
+
+    <Shell.Resources>
+        <ResourceDictionary>
+            <Style TargetType="TabBar">
+                <Setter Property="Shell.TabBarBackgroundColor" Value="#2F3855"/>
+                <Setter Property="Shell.TabBarTitleColor" Value="#F4F4FC" />
+                <Setter Property="Shell.TabBarUnselectedColor" Value="#8EBBFF" />
+            </Style>
+        </ResourceDictionary>
+    </Shell.Resources>
+
+    <TabBar>
+        <Tab Title="Home" Icon="home_ic.png">
+            <ShellContent ContentTemplate="{DataTemplate local:HomePage}" Route="HomePage"/>
+        </Tab>
+        <Tab Title="Statistics" Icon="statistics_ic.png">
+            <ShellContent ContentTemplate="{DataTemplate local:StatisticsPage}" Route="StatisticsPage"/>
+        </Tab>
+        <Tab Title="Automation" Icon="automation_ic.png">
+            <ShellContent ContentTemplate="{DataTemplate local:AutomationPage}" Route="AutomationPage"/>
+        </Tab>
+        <Tab Title="Account" Icon="account_ic.png">
+            <ShellContent ContentTemplate="{DataTemplate local:AccountPage}" Route="AccountPage"/>
+        </Tab>
+    </TabBar>
+
+</Shell>

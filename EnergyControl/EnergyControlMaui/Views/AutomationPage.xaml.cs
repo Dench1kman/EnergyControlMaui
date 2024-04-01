@@ -1,17 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Microsoft.Maui.Controls;
-using Microsoft.Maui;
+using System.Threading.Tasks;
 
-namespace EnergyControlMaui
+namespace EnergyControlMaui.Views
 {
-    public partial class MainPage : ContentPage
+    public partial class AutomationPage : ContentPage
     {
-        public MainPage()
+        public AutomationPage()
         {
             InitializeComponent();
         }

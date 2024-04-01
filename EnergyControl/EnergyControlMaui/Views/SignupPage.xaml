@@ -1,17 +1,16 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:local="clr-namespace:EnergyControlMaui.MarkupExtensions"
              xmlns:triggers="clr-namespace:EnergyControlMaui.Triggers"
-             x:Class="EnergyControlMaui.SignupPage"
+             x:Class="EnergyControlMaui.Views.SignupPage"
              NavigationPage.HasNavigationBar="False"
              Background="#24293E">
 
     <ContentPage.Content>
         <Grid>
-            <Image Source="wavydotsup.png" HorizontalOptions="End" VerticalOptions="Start" Aspect="AspectFit" WidthRequest="320" HeightRequest="320" Margin="0,0,-10,0"/>
-            <Image Source="wavydotsdown.png" HorizontalOptions="Center" VerticalOptions="End" Aspect="AspectFit" WidthRequest="400" HeightRequest="400" Margin="0,0,0,-130"/>
-            <Image Source="sircledots.png" HorizontalOptions="Center" VerticalOptions="Center" Aspect="AspectFit" WidthRequest="600" HeightRequest="600"/>
+            <Image Source="wavy_dots_up.png" HorizontalOptions="End" VerticalOptions="Start" Aspect="AspectFit" WidthRequest="320" HeightRequest="320" Margin="0,0,-10,0"/>
+            <Image Source="wavy_dots_down.png" HorizontalOptions="Center" VerticalOptions="End" Aspect="AspectFit" WidthRequest="400" HeightRequest="400" Margin="0,0,0,-130"/>
+            <Image Source="sircle_dots.png" HorizontalOptions="Center" VerticalOptions="Center" Aspect="AspectFit" WidthRequest="600" HeightRequest="600"/>
 
             <StackLayout Margin="45,0,45,0">
                 <StackLayout Orientation="Horizontal" Spacing="0" Margin="0,45,0,0">

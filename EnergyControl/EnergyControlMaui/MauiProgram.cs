@@ -1,5 +1,5 @@
 ﻿using Microsoft.Extensions.Logging;
-using EnergyControlMaui;
+using EnergyControlMaui.Views;
 using EnergyControlMaui.Services;
 using System.Data.Common;
 using Microsoft.Extensions.Configuration;

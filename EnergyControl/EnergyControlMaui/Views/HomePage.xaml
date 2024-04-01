@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="EnergyControlMaui.MainPage"
+             x:Class="EnergyControlMaui.Views.HomePage"
              NavigationPage.HasNavigationBar="False"
-             Background="#24293E">
+             Background="#24293D">
 
-    <Grid>
+    <ContentPage.Content>
         <StackLayout>
-            <Label Text="Main Page" FontSize="32" TextColor="White" VerticalOptions="Center" HorizontalOptions="Center"/>
+            <ImageButton Source="add_device_btn.png" Clicked="AddBtn_Cliked"/>
         </StackLayout>
-    </Grid>
+    </ContentPage.Content>
+
 
 </ContentPage>

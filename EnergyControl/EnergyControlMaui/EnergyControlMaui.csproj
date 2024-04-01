@@ -75,13 +75,23 @@
 	  <None Remove="Resources\Fonts\interlight.otf" />
 	  <None Remove="Resources\Fonts\intermedium.otf" />
 	  <None Remove="Resources\Fonts\interregular.otf" />
+	  <None Remove="Resources\Images\account_ic.png" />
+	  <None Remove="Resources\Images\account_ic_active.png" />
+	  <None Remove="Resources\Images\add_device_btn.png" />
+	  <None Remove="Resources\Images\automation_ic.png" />
+	  <None Remove="Resources\Images\automation_ic_active.png" />
 	  <None Remove="Resources\Images\bubble.png" />
-	  <None Remove="Resources\Images\sircledots.png" />
-	  <None Remove="Resources\Images\wavydotsdown.png" />
-	  <None Remove="Resources\Images\wavydotsleft.png" />
-	  <None Remove="Resources\Images\wavydotsright.png" />
-	  <None Remove="Resources\Images\wavydotsup.png" />
-	  <None Remove="Resources\Images\welcomeman.png" />
+	  <None Remove="Resources\Images\home_ic.png" />
+	  <None Remove="Resources\Images\home_ic_active.png" />
+	  <None Remove="Resources\Images\robot.png" />
+	  <None Remove="Resources\Images\sircle_dots.png" />
+	  <None Remove="Resources\Images\statistics_ic.png" />
+	  <None Remove="Resources\Images\statistic_ic_active.png" />
+	  <None Remove="Resources\Images\wavy_dots_down.png" />
+	  <None Remove="Resources\Images\wavy_dots_left.png" />
+	  <None Remove="Resources\Images\wavy_dots_right.png" />
+	  <None Remove="Resources\Images\wavy_dots_up.png" />
+	  <None Remove="Resources\Images\welcome_man.png" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -102,25 +112,41 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Compile Update="App.xaml.cs">
-	    <DependentUpon>%(Filename)</DependentUpon>
-	  </Compile>
-	  <Compile Update="Pages\LoginPage.xaml.cs">
+		<Compile Update="App.xaml.cs">
+			<DependentUpon>%(Filename)</DependentUpon>
+		</Compile>
+	  <Compile Update="Views\LoginPage.xaml.cs">
 	    <SubType>Code</SubType>
 	    <DependentUpon>%(Filename)</DependentUpon>
 	  </Compile>
-	  <Compile Update="Pages\MainPage.xaml.cs">
+	  <Compile Update="Views\HomePage.xaml.cs">
+	    <SubType>Code</SubType>
+	    <DependentUpon>HomePage.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\SignupPage.xaml.cs">
 	    <SubType>Code</SubType>
 	    <DependentUpon>%(Filename)</DependentUpon>
 	  </Compile>
-	  <Compile Update="Pages\SignupPage.xaml.cs">
+	  <Compile Update="Views\WelcomePage.xaml.cs">
 	    <SubType>Code</SubType>
 	    <DependentUpon>%(Filename)</DependentUpon>
 	  </Compile>
-	  <Compile Update="Pages\WelcomePage.xaml.cs">
-	    <SubType>Code</SubType>
-	    <DependentUpon>%(Filename)</DependentUpon>
-	  </Compile>
+		<Compile Update="Views\AccountPage.xaml.cs">
+			<SubType>Code</SubType>
+			<DependentUpon>%(Filename)</DependentUpon>
+		</Compile>
+		<Compile Update="Views\AutomationPage.xaml.cs">
+			<SubType>Code</SubType>
+			<DependentUpon>%(Filename)</DependentUpon>
+		</Compile>
+		<Compile Update="Views\StatisticsPage.xaml.cs">
+			<SubType>Code</SubType>
+			<DependentUpon>%(Filename)</DependentUpon>
+		</Compile>
+		<Compile Update="AppShell.xaml.cs">
+			<SubType>Code</SubType>
+			<DependentUpon>AppShell.xaml</DependentUpon>
+		</Compile>
 	</ItemGroup>
 
 	<ItemGroup>
@@ -133,18 +159,20 @@
 	  <None Update="App.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </None>
-	  <None Update="Pages\LoginPage.xaml">
+	  <None Update="AppShell.xaml">
+		<Generator>MSBuild:Compile</Generator>
+	  </None>
+	  <None Update="Views\LoginPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </None>
-	  <None Update="Pages\MainPage.xaml">
+	  <None Update="Views\HomePage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </None>
-	  <None Update="Pages\SignupPage.xaml">
+	  <None Update="Views\SignupPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </None>
-	  <None Update="Pages\WelcomePage.xaml">
+	  <None Update="Views\WelcomePage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </None>
 	</ItemGroup>
-
 </Project>

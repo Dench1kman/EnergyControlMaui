@@ -1,8 +1,9 @@
 ﻿using EnergyControlMaui.Validation;
 using EnergyControlMaui.Services;
 
-namespace EnergyControlMaui
+namespace EnergyControlMaui.Views
 {
+    [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class LoginPage : ContentPage
     {
         private readonly UserManager userManager;
@@ -14,6 +15,8 @@ namespace EnergyControlMaui
 
         private async void AuthorizeButton_Clicked(object sender, EventArgs e)
         {
+            await Navigation.PushAsync(new HomePage());
+
             Task<bool> emailValidationTask = EmailValidator.ValidateEmailAsync(EmailEntry.Text, EmailErrorLabel);
             Task<bool> passwordValidationTask = PasswordValidator.ValidatePassword(PasswordEntry.Text, InvalidPasswordErrorLabel);
             await Task.WhenAll(emailValidationTask, passwordValidationTask);
@@ -46,7 +49,7 @@ namespace EnergyControlMaui
             else 
                 return;
 
-            await Navigation.PushAsync(new MainPage());
+            await Navigation.PushAsync(new HomePage());
         }
 
         private async void SignUpLabel_Tapped(object sender, EventArgs e)

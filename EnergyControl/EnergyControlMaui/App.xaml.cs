@@ -1,8 +1,5 @@
-﻿using System;
-using Microsoft.Maui.Controls.Xaml;
-using Microsoft.Maui.Controls;
-using Microsoft.Maui;
-using EnergyControlMaui.Services;
+﻿using EnergyControlMaui.Services;
+using EnergyControlMaui.Views;
 
 namespace EnergyControlMaui
 {
@@ -18,7 +15,15 @@ namespace EnergyControlMaui
 
         protected override void OnStart()
         {
+            MainPage = new AppShell();
         }
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            // Переключиться на AppShell после отображения WelcomePage
+            Application.Current.MainPage = new AppShell();
+        }
+
 
         protected override void OnSleep()
         {

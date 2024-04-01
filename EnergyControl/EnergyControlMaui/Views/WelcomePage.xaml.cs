@@ -1,6 +1,6 @@
 ﻿using EnergyControlMaui.Services;
 
-namespace EnergyControlMaui
+namespace EnergyControlMaui.Views
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class WelcomePage : ContentPage

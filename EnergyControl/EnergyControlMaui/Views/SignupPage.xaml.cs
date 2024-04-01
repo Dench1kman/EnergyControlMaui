@@ -1,11 +1,9 @@
 ﻿using EnergyControlMaui.Validation;
 using EnergyControlMaui.Services;
 using EnergyControlMaui.Models;
-//using Microsoft.UI.Xaml;
 
-namespace EnergyControlMaui
+namespace EnergyControlMaui.Views
 {
-    [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class SignupPage : ContentPage
     {
         private readonly UserManager userManager;
@@ -52,7 +50,7 @@ namespace EnergyControlMaui
                 if (registrationResult)
                 {
                     await DisplayAlert("Success", "Registration successful!", "OK");
-                    await Navigation.PushAsync(new MainPage());
+                    await Navigation.PushAsync(new HomePage());
                 }
                 else
                 {
