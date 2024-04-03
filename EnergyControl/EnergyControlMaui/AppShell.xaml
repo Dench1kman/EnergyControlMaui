@@ -30,5 +30,4 @@
             <ShellContent ContentTemplate="{DataTemplate local:AccountPage}" Route="AccountPage"/>
         </Tab>
     </TabBar>
-
 </Shell>

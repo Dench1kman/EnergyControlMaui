@@ -14,12 +14,26 @@ namespace EnergyControlMaui.Views
 
         private async void SignUpButton_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new SignupPage(userManager));
+            var isConnected = Connectivity.NetworkAccess == NetworkAccess.Internet;
+
+            if (!isConnected)
+            {
+                await DisplayAlert("Error", "No internet connection. Please connect to the internet and try again.", "OK");
+            }
+            else
+                await Navigation.PushAsync(new SignupPage(userManager));
         }
 
         private async void LogInButton_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new LoginPage(userManager));
+            var isConnected = Connectivity.NetworkAccess == NetworkAccess.Internet;
+
+            if (!isConnected)
+            {
+                await DisplayAlert("Error", "No internet connection. Please connect to the internet and try again.", "OK");
+            }
+            else
+                await Navigation.PushAsync(new LoginPage(userManager));
         }
     }
 }

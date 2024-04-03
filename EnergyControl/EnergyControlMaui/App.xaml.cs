@@ -9,21 +9,14 @@ namespace EnergyControlMaui
         public App(UserManager userManager)
         {
             InitializeComponent();
-            MainPage = new NavigationPage(new WelcomePage(userManager));
             this.userManager = userManager;
+            MainPage = new NavigationPage(new WelcomePage(userManager)); 
         }
 
         protected override void OnStart()
         {
-            MainPage = new AppShell();
+            
         }
-        protected override void OnAppearing()
-        {
-            base.OnAppearing();
-            // Переключиться на AppShell после отображения WelcomePage
-            Application.Current.MainPage = new AppShell();
-        }
-
 
         protected override void OnSleep()
         {
@@ -31,6 +24,15 @@ namespace EnergyControlMaui
 
         protected override void OnResume()
         {
+        }
+
+        private async Task HandleLoginSuccess()
+        {
+            // Создайте страницу с тап-баром
+            var appShell = new AppShell();
+
+            // Перейдите на страницу с тап-баром
+            await MainPage.Navigation.PushAsync(appShell);
         }
     }
 }

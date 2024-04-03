@@ -1,10 +1,7 @@
 ﻿using Microsoft.Extensions.Logging;
 using EnergyControlMaui.Views;
 using EnergyControlMaui.Services;
-using System.Data.Common;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.EntityFrameworkCore;
+
 
 namespace EnergyControlMaui
 {
@@ -14,8 +11,6 @@ namespace EnergyControlMaui
         {
             var builder = MauiApp.CreateBuilder();
 
-            string connectionString = "Host=localhost;Port=5432;Database=User;Username=postgres;Password=4321";
-
             builder
                 .UseMauiApp<App>()
                 .ConfigureFonts(fonts =>
@@ -24,10 +19,15 @@ namespace EnergyControlMaui
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
                 });
 
-            builder.Services.AddSingleton(_ => connectionString);
-            builder.Services.AddSingleton<AppDbContext>(_ => new AppDbContext(connectionString));
+            builder.Services.AddDbContext<SqliteDbContext>();
+            builder.Services.AddTransient<SignupPage>();
+            builder.Services.AddTransient<LoginPage>();
             builder.Services.AddSingleton<UserManager>();
             builder.Services.AddSingleton<WelcomePage>();
+
+            var dbContext = new SqliteDbContext();
+            dbContext.Database.EnsureCreated();
+            dbContext.Dispose();
 
 #if DEBUG
             builder.Logging.AddDebug();

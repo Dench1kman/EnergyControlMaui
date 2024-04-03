@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.Maui.Controls;
-using Microsoft.Maui;
+﻿
 
 namespace EnergyControlMaui.Views
 {
@@ -19,6 +12,11 @@ namespace EnergyControlMaui.Views
         private void AddBtn_Cliked(object sender, EventArgs e)
         {
             //Перенаправляет на страницу выбора какое у-во подключить
+        }
+
+        protected override bool OnBackButtonPressed()
+        {
+            return true; 
         }
     }
 }

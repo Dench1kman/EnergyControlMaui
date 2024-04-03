@@ -37,12 +37,14 @@ namespace EnergyControlMaui.Views
                 passwordValidationTask.Result && checkBoxValidationTask.Result &&
                 !emailExistsValidationTask.Result)
             {
+                string hashedPassword = PasswordHasher.HashPassword(PasswordEntry.Text);
+
                 User user = new User
                 {
                     FirstName = FirstNameEntry.Text,
                     LastName = LastNameEntry.Text,
                     Email = EmailEntrySignUp.Text,
-                    Password = PasswordEntry.Text
+                    Password = hashedPassword
                 };
 
                 bool registrationResult = userManager.RegisterUser(user);

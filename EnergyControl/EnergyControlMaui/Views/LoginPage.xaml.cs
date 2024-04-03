@@ -15,8 +15,6 @@ namespace EnergyControlMaui.Views
 
         private async void AuthorizeButton_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new HomePage());
-
             Task<bool> emailValidationTask = EmailValidator.ValidateEmailAsync(EmailEntry.Text, EmailErrorLabel);
             Task<bool> passwordValidationTask = PasswordValidator.ValidatePassword(PasswordEntry.Text, InvalidPasswordErrorLabel);
             await Task.WhenAll(emailValidationTask, passwordValidationTask);
@@ -46,7 +44,7 @@ namespace EnergyControlMaui.Views
 
                 await Task.WhenAll(emailExistsValidationTask, checkPassValidationTask);
             }
-            else 
+            else
                 return;
 
             await Navigation.PushAsync(new HomePage());
