@@ -50,6 +50,10 @@
 	<ItemGroup>
 		<!-- App Icon -->
 		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#512BD4" />
+		<MauiImage Include="Resources\Icons\account_ic.svg" />
+		<MauiImage Include="Resources\Icons\automation_ic.svg" />
+		<MauiImage Include="Resources\Icons\home_ic.svg" />
+		<MauiImage Include="Resources\Icons\statistic_ic.svg" />
 
 		<!-- Splash Screen -->
 		<MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#512BD4" BaseSize="128,128" />
@@ -69,12 +73,17 @@
 	  <AndroidResource Remove="Resources\Images\bubble.png" />
 	</ItemGroup>
 
+
 	<ItemGroup>
 	  <None Remove="Platforms\Android\Resources\drawable\ichidepassword.png" />
 	  <None Remove="Platforms\Android\Resources\drawable\icshowpassword.png" />
 	  <None Remove="Resources\Fonts\interlight.otf" />
 	  <None Remove="Resources\Fonts\intermedium.otf" />
 	  <None Remove="Resources\Fonts\interregular.otf" />
+	  <None Remove="Resources\Icons\account_ic.svg" />
+	  <None Remove="Resources\Icons\automation_ic.svg" />
+	  <None Remove="Resources\Icons\home_ic.svg" />
+	  <None Remove="Resources\Icons\statistic_ic.svg" />
 	  <None Remove="Resources\Images\account_ic.png" />
 	  <None Remove="Resources\Images\account_ic_active.png" />
 	  <None Remove="Resources\Images\add_device_btn.png" />
@@ -83,7 +92,6 @@
 	  <None Remove="Resources\Images\bubble.png" />
 	  <None Remove="Resources\Images\home_ic.png" />
 	  <None Remove="Resources\Images\home_ic_active.png" />
-	  <None Remove="Resources\Images\robot.png" />
 	  <None Remove="Resources\Images\sircle_dots.png" />
 	  <None Remove="Resources\Images\statistics_ic.png" />
 	  <None Remove="Resources\Images\statistic_ic_active.png" />
@@ -93,10 +101,24 @@
 	  <None Remove="Resources\Images\wavy_dots_right.png" />
 	  <None Remove="Resources\Images\wavy_dots_up.png" />
 	  <None Remove="Resources\Images\welcome_man.png" />
+	  <None Remove="Resources\Raw\other_device_btn.svg" />
+	  <None Remove="Resources\Raw\printer_btn.svg" />
+	  <None Remove="Resources\Raw\robot.svg" />
+	  <None Remove="Resources\Raw\thermostat_btn.svg" />
 	</ItemGroup>
+
 
 	<ItemGroup>
 	  <MauiImage Include="Platforms\Android\Resources\drawable\ichidepassword.png" />
+	  <MauiImage Include="Resources\Icons\account_ic_active.png" />
+	  <MauiImage Include="Resources\Icons\automation_ic_active.png" />
+	  <MauiImage Include="Resources\Icons\home_ic_active.png" />
+	  <MauiImage Include="Resources\Icons\statistic_ic_active.png" />
+	  <MauiImage Include="Resources\Images\Buttons\add_device_btn.svg" />
+	  <MauiImage Include="Resources\Images\Buttons\lamp_btn.svg" />
+	  <MauiImage Include="Resources\Images\Buttons\other_device_btn.svg" />
+	  <MauiImage Include="Resources\Images\Buttons\printer_btn.svg" />
+	  <MauiImage Include="Resources\Images\Buttons\thermostat_btn.svg" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -126,6 +148,10 @@
 	    <SubType>Code</SubType>
 	    <DependentUpon>HomePage.xaml</DependentUpon>
 	  </Compile>
+		<Compile Update="Views\HomeConnectionPage.xaml.cs">
+			<SubType>Code</SubType>
+			<DependentUpon>%(Filename)</DependentUpon>
+		</Compile>
 	  <Compile Update="Views\SignupPage.xaml.cs">
 	    <SubType>Code</SubType>
 	    <DependentUpon>%(Filename)</DependentUpon>
@@ -148,15 +174,10 @@
 		</Compile>
 		<Compile Update="AppShell.xaml.cs">
 			<SubType>Code</SubType>
-			<DependentUpon>AppShell.xaml</DependentUpon>
+			<DependentUpon>%(Filename)</DependentUpon>
 		</Compile>
 	</ItemGroup>
-
-	<ItemGroup>
-	  <MauiXaml Update="App.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	</ItemGroup>
+	
 
 	<ItemGroup>
 	  <None Update="App.xaml">
@@ -171,11 +192,27 @@
 	  <None Update="Views\HomePage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </None>
+		<None Update="Views\HomeConnectionPage.xaml">
+			<Generator>MSBuild:Compile</Generator>
+		</None>
 	  <None Update="Views\SignupPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </None>
 	  <None Update="Views\WelcomePage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </None>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="ViewModels\" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiAsset Include="Resources\Images\Buttons\add_device_btn.svg" />
+	  <MauiAsset Include="Resources\Images\Buttons\lamp_btn.svg" />
+	  <MauiAsset Include="Resources\Images\Buttons\other_device_btn.svg" />
+	  <MauiAsset Include="Resources\Images\Buttons\printer_btn.svg" />
+	  <MauiAsset Include="Resources\Images\robot.svg" />
+	  <MauiAsset Include="Resources\Images\Buttons\thermostat_btn.svg" />
 	</ItemGroup>
 </Project>

@@ -47,7 +47,7 @@ namespace EnergyControlMaui.Views
             else
                 return;
 
-            await Navigation.PushAsync(new HomePage());
+            await Navigation.PushAsync(new AppShell());
         }
 
         private async void SignUpLabel_Tapped(object sender, EventArgs e)

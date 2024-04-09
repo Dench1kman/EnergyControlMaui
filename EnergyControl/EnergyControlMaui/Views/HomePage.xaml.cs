@@ -1,6 +1,4 @@
-﻿
-
-namespace EnergyControlMaui.Views
+﻿namespace EnergyControlMaui.Views
 {
     public partial class HomePage : ContentPage
     {
@@ -9,14 +7,9 @@ namespace EnergyControlMaui.Views
             InitializeComponent();
         }
 
-        private void AddBtn_Cliked(object sender, EventArgs e)
+        private async void AddButton_Clicked(object sender, EventArgs e)
         {
-            //Перенаправляет на страницу выбора какое у-во подключить
-        }
-
-        protected override bool OnBackButtonPressed()
-        {
-            return true; 
+            await Navigation.PushModalAsync(new HomeConnectionPage());
         }
     }
 }

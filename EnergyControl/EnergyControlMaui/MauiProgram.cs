@@ -23,7 +23,7 @@ namespace EnergyControlMaui
             builder.Services.AddTransient<SignupPage>();
             builder.Services.AddTransient<LoginPage>();
             builder.Services.AddSingleton<UserManager>();
-            builder.Services.AddSingleton<WelcomePage>();
+            //builder.Services.AddSingleton<WelcomePage>();
 
             var dbContext = new SqliteDbContext();
             dbContext.Database.EnsureCreated();

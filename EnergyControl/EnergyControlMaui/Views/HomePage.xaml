@@ -3,26 +3,27 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="EnergyControlMaui.Views.HomePage"
              NavigationPage.HasNavigationBar="False"
-             Background="#24293D">
+             BackgroundColor="#24293D">
 
     <ContentPage.Content>
         <Grid>
-            <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="Start">
-                <Image Source="top_bar_home.png"/>
-            </StackLayout>
+            <Image Source="top_bar_home.png" 
+                   HorizontalOptions="FillAndExpand" 
+                   VerticalOptions="Start" 
+                   Aspect="AspectFill"/>
 
             <StackLayout Orientation="Horizontal">
                 <StackLayout Orientation="Horizontal" Margin="45,8,0,0" Spacing="0">
                     <Label Text="E" TextColor="#F4F4FC" FontSize="32" FontFamily="Inter" FontAttributes="Bold,Italic"/>
                     <Label Text="C" TextColor="#8EBBFF" FontSize="32" FontFamily="Inter" FontAttributes="Bold,Italic"/>
                 </StackLayout>
-                <StackLayout  Margin="50,15,0,0" HorizontalOptions="Center">
-                    <Label Text="Connection" TextColor="#F4F4FC" FontSize="24" FontFamily="Inter" FontAttributes="Bold"/>
-                </StackLayout>
+            </StackLayout>
+            <StackLayout  Margin="0,15,0,0" HorizontalOptions="Center">
+                <Label Text="Connection" TextColor="#F4F4FC" FontSize="24" FontFamily="Inter" FontAttributes="Bold"/>
             </StackLayout>
 
             <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
-                <ImageButton Source="add_device_btn.png" Clicked="AddBtn_Cliked">
+                <ImageButton Source="add_device_btn.svg" Clicked="AddButton_Clicked">
                     <VisualStateManager.VisualStateGroups>
                         <VisualStateGroup>
                             <VisualState x:Name="Normal">

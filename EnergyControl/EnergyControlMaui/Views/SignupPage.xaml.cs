@@ -52,7 +52,7 @@ namespace EnergyControlMaui.Views
                 if (registrationResult)
                 {
                     await DisplayAlert("Success", "Registration successful!", "OK");
-                    await Navigation.PushAsync(new HomePage());
+                    await Navigation.PushAsync(new AppShell());
                 }
                 else
                 {

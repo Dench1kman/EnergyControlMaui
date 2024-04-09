@@ -1,13 +1,25 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="EnergyControlMaui.Views.StatisticsPage">
+             x:Class="EnergyControlMaui.Views.StatisticsPage"
+             NavigationPage.HasBackButton="False"
+             BackgroundColor="#24293D">
+    
     <ContentPage.Content>
         <Grid>
-            <StackLayout>
-                <Label Text="Statistics Page"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand"/>
+            <Image Source="top_bar_home.png" 
+                HorizontalOptions="FillAndExpand" 
+                VerticalOptions="Start" 
+                Aspect="AspectFill"/>
+
+            <StackLayout Orientation="Horizontal">
+                <StackLayout Orientation="Horizontal" Margin="45,8,0,0" Spacing="0">
+                    <Label Text="E" TextColor="#F4F4FC" FontSize="32" FontFamily="Inter" FontAttributes="Bold,Italic"/>
+                    <Label Text="C" TextColor="#8EBBFF" FontSize="32" FontFamily="Inter" FontAttributes="Bold,Italic"/>
+                </StackLayout>
+            </StackLayout>
+            <StackLayout HorizontalOptions="Center" Margin="0,15,0,0">
+                <Label Text="Statistics" TextColor="#F4F4FC" FontSize="24" FontFamily="Inter" FontAttributes="Bold"/>
             </StackLayout>
         </Grid>
     </ContentPage.Content>

@@ -3,8 +3,9 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     x:Class="EnergyControlMaui.AppShell"
-    xmlns:local="clr-namespace:EnergyControlMaui.Views"
+    xmlns:views="clr-namespace:EnergyControlMaui.Views"
     Shell.FlyoutBehavior="Disabled">
+    
 
     <Shell.Resources>
         <ResourceDictionary>
@@ -17,17 +18,17 @@
     </Shell.Resources>
 
     <TabBar>
-        <Tab Title="Home" Icon="home_ic.png">
-            <ShellContent ContentTemplate="{DataTemplate local:HomePage}" Route="HomePage"/>
+        <Tab Title="Home" Icon="home_ic.svg">
+            <ShellContent ContentTemplate="{DataTemplate views:HomePage}" Route="HomePage"/>
         </Tab>
-        <Tab Title="Statistics" Icon="statistics_ic.png">
-            <ShellContent ContentTemplate="{DataTemplate local:StatisticsPage}" Route="StatisticsPage"/>
+        <Tab Title="Statistics" Icon="statistic_ic.svg">
+            <ShellContent ContentTemplate="{DataTemplate views:StatisticsPage}" Route="StatisticsPage"/>
         </Tab>
-        <Tab Title="Automation" Icon="automation_ic.png">
-            <ShellContent ContentTemplate="{DataTemplate local:AutomationPage}" Route="AutomationPage"/>
+        <Tab Title="Automation" Icon="automation_ic.svg">
+            <ShellContent ContentTemplate="{DataTemplate views:AutomationPage}" Route="AutomationPage"/>
         </Tab>
-        <Tab Title="Account" Icon="account_ic.png">
-            <ShellContent ContentTemplate="{DataTemplate local:AccountPage}" Route="AccountPage"/>
+        <Tab Title="Account" Icon="account_ic.svg">
+            <ShellContent ContentTemplate="{DataTemplate views:AccountPage}" Route="AccountPage"/>
         </Tab>
     </TabBar>
 </Shell>

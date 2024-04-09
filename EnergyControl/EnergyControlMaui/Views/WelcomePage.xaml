@@ -3,7 +3,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="EnergyControlMaui.Views.WelcomePage"
              NavigationPage.HasNavigationBar="False"
-             Background="#24293E">
+             Shell.TabBarIsVisible="False"
+             Background="#24293E"
+             Title="WelcomePage">
 
     <ContentPage.Content>
         <Grid>

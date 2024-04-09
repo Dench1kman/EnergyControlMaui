@@ -1,0 +1,106 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="EnergyControlMaui.Views.HomeConnectionPage"
+             NavigationPage.HasBackButton="False"
+             BackgroundColor="#24293D">
+
+    
+    <ContentPage.Content>
+        <Grid>
+            <Image Source="top_bar_home.png" 
+                   HorizontalOptions="FillAndExpand" 
+                   VerticalOptions="Start" 
+                   Aspect="AspectFill"/>
+
+            <StackLayout Orientation="Horizontal">
+                <StackLayout Orientation="Horizontal" Margin="45,8,0,0" Spacing="0">
+                    <Label Text="E" TextColor="#F4F4FC" FontSize="32" FontFamily="Inter" FontAttributes="Bold,Italic"/>
+                    <Label Text="C" TextColor="#8EBBFF" FontSize="32" FontFamily="Inter" FontAttributes="Bold,Italic"/>
+                </StackLayout>
+            </StackLayout>
+            <StackLayout  Margin="0,15,0,0" HorizontalOptions="Center">
+                <Label Text="Connection" TextColor="#F4F4FC" FontSize="24" FontFamily="Inter" FontAttributes="Bold"/>
+            </StackLayout>
+            
+            <StackLayout Margin="45,90,0,0">
+                <Label Text="What device do you want to connect?"
+                       TextColor="#F4F4FC"
+                       FontSize="16" 
+                       FontFamily="Inter" 
+                       FontAttributes="Bold"
+                       />
+            </StackLayout>
+
+            <StackLayout HorizontalOptions="Center" Margin="0,150,0,0">
+                <ImageButton Source="lamp_btn.svg" Clicked="LampButton_Clicked"  Margin="0,0,0,20">
+                    <VisualStateManager.VisualStateGroups>
+                        <VisualStateGroup>
+                            <VisualState x:Name="Normal">
+                                <VisualState.Setters>
+                                    <Setter Property="Scale" Value="1"/>
+                                </VisualState.Setters>
+                            </VisualState>
+                            <VisualState x:Name="Pressed">
+                                <VisualState.Setters>
+                                    <Setter Property="Scale" Value="0.95"/>
+                                </VisualState.Setters>
+                            </VisualState>
+                        </VisualStateGroup>
+                    </VisualStateManager.VisualStateGroups>
+                </ImageButton>
+
+                <ImageButton Source="thermostat_btn.svg" Clicked="ThermostatButton_Clicked" Margin="0,0,0,20">
+                    <VisualStateManager.VisualStateGroups>
+                        <VisualStateGroup>
+                            <VisualState x:Name="Normal">
+                                <VisualState.Setters>
+                                    <Setter Property="Scale" Value="1"/>
+                                </VisualState.Setters>
+                            </VisualState>
+                            <VisualState x:Name="Pressed">
+                                <VisualState.Setters>
+                                    <Setter Property="Scale" Value="0.95"/>
+                                </VisualState.Setters>
+                            </VisualState>
+                        </VisualStateGroup>
+                    </VisualStateManager.VisualStateGroups>
+                </ImageButton>
+
+                <ImageButton Source="printer_btn.svg" Clicked="PrinterButton_Clicked" Margin="0,0,0,20">
+                    <VisualStateManager.VisualStateGroups>
+                        <VisualStateGroup>
+                            <VisualState x:Name="Normal">
+                                <VisualState.Setters>
+                                    <Setter Property="Scale" Value="1"/>
+                                </VisualState.Setters>
+                            </VisualState>
+                            <VisualState x:Name="Pressed">
+                                <VisualState.Setters>
+                                    <Setter Property="Scale" Value="0.95"/>
+                                </VisualState.Setters>
+                            </VisualState>
+                        </VisualStateGroup>
+                    </VisualStateManager.VisualStateGroups>
+                </ImageButton>
+
+                <ImageButton Source="other_device_btn.svg" Clicked="DeviceButton_Clicked">
+                    <VisualStateManager.VisualStateGroups>
+                        <VisualStateGroup>
+                            <VisualState x:Name="Normal">
+                                <VisualState.Setters>
+                                    <Setter Property="Scale" Value="1"/>
+                                </VisualState.Setters>
+                            </VisualState>
+                            <VisualState x:Name="Pressed">
+                                <VisualState.Setters>
+                                    <Setter Property="Scale" Value="0.95"/>
+                                </VisualState.Setters>
+                            </VisualState>
+                        </VisualStateGroup>
+                    </VisualStateManager.VisualStateGroups>
+                </ImageButton>
+            </StackLayout>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

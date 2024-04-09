@@ -1,14 +1,54 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="EnergyControlMaui.Views.AccountPage">
+             x:Class="EnergyControlMaui.Views.AccountPage"
+             NavigationPage.HasBackButton="False"
+             BackgroundColor="#24293D">
     
     <ContentPage.Content>
         <Grid>
-            <StackLayout>
-                <Label Text="Account Page"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+            <Image Source="top_bar_home.png" 
+                   HorizontalOptions="FillAndExpand" 
+                   VerticalOptions="Start"
+                   Aspect="AspectFill"/>
+
+            <StackLayout Orientation="Horizontal" Margin="45,8,0,0" Spacing="0">
+                <Label Text="E" TextColor="#F4F4FC" FontSize="32" FontFamily="Inter" FontAttributes="Bold,Italic"/>
+                <Label Text="C" TextColor="#8EBBFF" FontSize="32" FontFamily="Inter" FontAttributes="Bold,Italic"/>
+            </StackLayout>
+            <StackLayout Margin="0,15,0,0" HorizontalOptions="Center">
+                <Label Text="Account" TextColor="#F4F4FC" FontSize="24" FontFamily="Inter" FontAttributes="Bold"/>
+            </StackLayout>
+
+            <StackLayout HorizontalOptions="Center" VerticalOptions="End">
+                <Button Text="Log Out" 
+                    x:Name="LogOutButton"
+                    Clicked="LogOutButton_Clicked"
+                    TextTransform="None"  
+                    TextColor="#2F3855"
+                    FontSize="20"
+                    FontFamily="Inter"
+                    FontAttributes="Bold"
+                    WidthRequest="300"
+                    HeightRequest="50"
+                    Margin="0,0,0,20"
+                    CornerRadius="10"
+                    BackgroundColor="#8EBBFF">
+                    <VisualStateManager.VisualStateGroups>
+                        <VisualStateGroup>
+                            <VisualState x:Name="Normal">
+                                <VisualState.Setters>
+                                    <Setter Property="Scale" Value="1"/>
+                                </VisualState.Setters>
+                            </VisualState>
+                            <VisualState x:Name="Pressed">
+                                <VisualState.Setters>
+                                    <Setter Property="Scale" Value="0.95"/>
+                                </VisualState.Setters>
+                            </VisualState>
+                        </VisualStateGroup>
+                    </VisualStateManager.VisualStateGroups>
+                </Button>
             </StackLayout>
         </Grid>
     </ContentPage.Content>
