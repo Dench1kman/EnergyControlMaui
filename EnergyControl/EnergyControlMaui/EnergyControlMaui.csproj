@@ -49,14 +49,17 @@
 
 	<ItemGroup>
 		<!-- App Icon -->
-		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#512BD4" />
+		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" />
+		<MauiIcon Include="Resources\AppIcon\appiconfg.svg" />
+		<MauiIcon Include="Resources\AppIcon\logo_splash.svg" />
 		<MauiImage Include="Resources\Icons\account_ic.svg" />
 		<MauiImage Include="Resources\Icons\automation_ic.svg" />
 		<MauiImage Include="Resources\Icons\home_ic.svg" />
 		<MauiImage Include="Resources\Icons\statistic_ic.svg" />
 
 		<!-- Splash Screen -->
-		<MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#512BD4" BaseSize="128,128" />
+		<!--<MauiSplashScreen Include="Resources\Splash\mysplash.svg" Color="#24293E" BaseSize="128,128" /> -->
+		<MauiSplashScreen Include="Resources\Splash\logo_splash.svg" Color="#24293E" BaseSize="128,128" />
 
 		<!-- Images -->
 		<MauiImage Include="Resources\Images\*" />
@@ -77,6 +80,9 @@
 	<ItemGroup>
 	  <None Remove="Platforms\Android\Resources\drawable\ichidepassword.png" />
 	  <None Remove="Platforms\Android\Resources\drawable\icshowpassword.png" />
+	  <None Remove="Resources\AppIcon\appicon.svg" />
+	  <None Remove="Resources\AppIcon\appiconfg.svg" />
+	  <None Remove="Resources\AppIcon\logo_splash.svg" />
 	  <None Remove="Resources\Fonts\interlight.otf" />
 	  <None Remove="Resources\Fonts\intermedium.otf" />
 	  <None Remove="Resources\Fonts\interregular.otf" />
@@ -105,6 +111,8 @@
 	  <None Remove="Resources\Raw\printer_btn.svg" />
 	  <None Remove="Resources\Raw\robot.svg" />
 	  <None Remove="Resources\Raw\thermostat_btn.svg" />
+	  <None Remove="Resources\Splash\logo_splash.svg" />
+	  <None Remove="Resources\Splash\mysplash.svg" />
 	</ItemGroup>
 
 
@@ -204,10 +212,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Folder Include="ViewModels\" />
-	</ItemGroup>
-
-	<ItemGroup>
 	  <MauiAsset Include="Resources\Images\Buttons\add_device_btn.svg" />
 	  <MauiAsset Include="Resources\Images\Buttons\lamp_btn.svg" />
 	  <MauiAsset Include="Resources\Images\Buttons\other_device_btn.svg" />
@@ -215,4 +219,8 @@
 	  <MauiAsset Include="Resources\Images\robot.svg" />
 	  <MauiAsset Include="Resources\Images\Buttons\thermostat_btn.svg" />
 	</ItemGroup>
+
+	<!--<ItemGroup>
+	  <MauiSplashScreen Include="Resources\Splash\logo_splash.svg" />
+	</ItemGroup>-->
 </Project>

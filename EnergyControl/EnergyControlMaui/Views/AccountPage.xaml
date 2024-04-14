@@ -1,49 +1,103 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="EnergyControlMaui.Views.AccountPage"
-             NavigationPage.HasBackButton="False"
-             BackgroundColor="#24293D">
-    
+<ContentPage
+    x:Class="EnergyControlMaui.Views.AccountPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:views="clr-namespace:EnergyControlMaui.Views"
+    BackgroundColor="#24293D"
+    NavigationPage.HasBackButton="False">
+
+
     <ContentPage.Content>
         <Grid>
-            <Image Source="top_bar_home.png" 
-                   HorizontalOptions="FillAndExpand" 
-                   VerticalOptions="Start"
-                   Aspect="AspectFill"/>
+            <Image
+                Aspect="AspectFill"
+                HorizontalOptions="FillAndExpand"
+                Source="top_bar_home.png"
+                VerticalOptions="Start" />
 
-            <StackLayout Orientation="Horizontal" Margin="45,8,0,0" Spacing="0">
-                <Label Text="E" TextColor="#F4F4FC" FontSize="32" FontFamily="Inter" FontAttributes="Bold,Italic"/>
-                <Label Text="C" TextColor="#8EBBFF" FontSize="32" FontFamily="Inter" FontAttributes="Bold,Italic"/>
+            <StackLayout
+                Margin="45,8,0,0"
+                Orientation="Horizontal"
+                Spacing="0">
+
+                <Label
+                    FontAttributes="Bold,Italic"
+                    FontFamily="Inter"
+                    FontSize="32"
+                    Text="E"
+                    TextColor="#F4F4FC" />
+
+                <Label
+                    FontAttributes="Bold,Italic"
+                    FontFamily="Inter"
+                    FontSize="32"
+                    Text="C"
+                    TextColor="#8EBBFF" />
             </StackLayout>
+
             <StackLayout Margin="0,15,0,0" HorizontalOptions="Center">
-                <Label Text="Account" TextColor="#F4F4FC" FontSize="24" FontFamily="Inter" FontAttributes="Bold"/>
+
+                <Label
+                    FontAttributes="Bold"
+                    FontFamily="Inter"
+                    FontSize="24"
+                    Text="Account"
+                    TextColor="#F4F4FC" />
+            </StackLayout>
+
+            <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
+
+                <StackLayout HorizontalOptions="Start" Orientation="Horizontal">
+
+                    <Label
+                        x:Name="FirstNameLabel"
+                        FontAttributes="Bold"
+                        FontFamily="Inter"
+                        FontSize="24"
+                        TextColor="#F4F4FC" />
+
+                    <Label
+                        x:Name="LastNameLabel"
+                        FontAttributes="Bold"
+                        FontFamily="Inter"
+                        FontSize="24"
+                        TextColor="#F4F4FC" />
+
+                </StackLayout>
+                <Label
+                    x:Name="EmailLabel"
+                    FontFamily="Inter"
+                    FontSize="18"
+                    TextColor="#F4F4FC" />
             </StackLayout>
 
             <StackLayout HorizontalOptions="Center" VerticalOptions="End">
-                <Button Text="Log Out" 
+
+                <Button
                     x:Name="LogOutButton"
-                    Clicked="LogOutButton_Clicked"
-                    TextTransform="None"  
-                    TextColor="#2F3855"
-                    FontSize="20"
-                    FontFamily="Inter"
-                    FontAttributes="Bold"
-                    WidthRequest="300"
-                    HeightRequest="50"
                     Margin="0,0,0,20"
+                    BackgroundColor="#8EBBFF"
+                    Clicked="LogOutButton_Clicked"
                     CornerRadius="10"
-                    BackgroundColor="#8EBBFF">
+                    FontAttributes="Bold"
+                    FontFamily="Inter"
+                    FontSize="20"
+                    HeightRequest="50"
+                    Text="Log Out"
+                    TextColor="#2F3855"
+                    TextTransform="None"
+                    WidthRequest="300">
                     <VisualStateManager.VisualStateGroups>
                         <VisualStateGroup>
                             <VisualState x:Name="Normal">
                                 <VisualState.Setters>
-                                    <Setter Property="Scale" Value="1"/>
+                                    <Setter Property="Scale" Value="1" />
                                 </VisualState.Setters>
                             </VisualState>
                             <VisualState x:Name="Pressed">
                                 <VisualState.Setters>
-                                    <Setter Property="Scale" Value="0.95"/>
+                                    <Setter Property="Scale" Value="0.95" />
                                 </VisualState.Setters>
                             </VisualState>
                         </VisualStateGroup>

@@ -3,15 +3,16 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.Maui.Controls;
 using Microsoft.Maui;
+using EnergyControlMaui.Services;
 
 namespace EnergyControlMaui.Validation
 {
     public class PasswordValidator
     {
-        public static async Task<bool> ValidatePasswordAsync(string password, string confirmPassword, Label errorLabel, Label errorLabelMatch)
+        public static async Task<bool> ValidatePasswordsAsync(string password, string confirmPassword, Label errorLabel, Label errorLabelMatch)
         {
-            Task<bool> validatePasswordTask = ValidatePassword(password, errorLabel);
-            Task<bool> validateConfirmPasswordTask = ValidatePassword(confirmPassword, errorLabelMatch);
+            Task<bool> validatePasswordTask = ValidatePasswordFormat(password, errorLabel);
+            Task<bool> validateConfirmPasswordTask = ValidatePasswordFormat(confirmPassword, errorLabelMatch);
 
             await Task.WhenAll(validatePasswordTask, validateConfirmPasswordTask);
 
@@ -29,8 +30,25 @@ namespace EnergyControlMaui.Validation
             }
             return false;
         }
+        public static async Task<bool> VerifyPasswordAsync(string email, string password, Label errorLabel, UserManager userManager)
+        {
+            Task<bool> validatePasswordTask = ValidatePasswordFormat(password, errorLabel);
+            await validatePasswordTask;
 
-        public static async Task<bool> ValidatePassword(string password, Label errorLabel)
+            string hashedPassword = PasswordHasher.HashPassword(password);
+
+            Task<bool> checkPassValidationTask = userManager.CheckPasswordAsync(email, hashedPassword);
+            await checkPassValidationTask;
+
+            if (!checkPassValidationTask.Result)
+            {
+                await ErrorMessage.ShowErrorMessage(errorLabel, "Incorrect password. Please try again!");
+                return false;
+            }
+            return true;
+        }
+
+        public static async Task<bool> ValidatePasswordFormat(string password, Label errorLabel)
         {
             if (string.IsNullOrWhiteSpace(password))
             {

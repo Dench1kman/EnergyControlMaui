@@ -1,6 +1,7 @@
 ﻿using EnergyControlMaui.Validation;
 using EnergyControlMaui.Services;
 
+
 namespace EnergyControlMaui.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
@@ -15,39 +16,21 @@ namespace EnergyControlMaui.Views
 
         private async void AuthorizeButton_Clicked(object sender, EventArgs e)
         {
-            Task<bool> emailValidationTask = EmailValidator.ValidateEmailAsync(EmailEntry.Text, EmailErrorLabel);
-            Task<bool> passwordValidationTask = PasswordValidator.ValidatePassword(PasswordEntry.Text, InvalidPasswordErrorLabel);
+            if (!ConnectivityService.IsConnected())
+            {
+                await ConnectivityService.ShowNoInternetConnectionError();
+                return;
+            }
+
+            Task<bool> emailValidationTask = EmailValidator.ValidateLogInEmailAsync(EmailEntry.Text, EmailErrorLabel);
+            Task<bool> passwordValidationTask = PasswordValidator.VerifyPasswordAsync(EmailEntry.Text, PasswordEntry.Text, InvalidPasswordErrorLabel, userManager);
+
             await Task.WhenAll(emailValidationTask, passwordValidationTask);
 
             if (emailValidationTask.Result && passwordValidationTask.Result)
             {
-                Task<bool> emailExistsValidationTask = userManager.UserExistsAsync(EmailEntry.Text);
-                await emailExistsValidationTask;
-
-                if (!emailExistsValidationTask.Result)
-                {
-                    await ErrorMessage.ShowErrorMessage(EmailNotRegisteredErrorLabel, "This email is not registered!");
-                    return;
-                }
-
-                string hashedPassword = PasswordHasher.HashPassword(PasswordEntry.Text);
-
-                Task<bool> checkPassValidationTask = userManager.CheckPasswordAsync(EmailEntry.Text, hashedPassword);
-                await checkPassValidationTask;
-
-
-                if (!checkPassValidationTask.Result)
-                {
-                    await ErrorMessage.ShowErrorMessage(InvalidPasswordErrorLabel, "Incorrect password. Please try again!");
-                    return;
-                }
-
-                await Task.WhenAll(emailExistsValidationTask, checkPassValidationTask);
+                await Navigation.PushAsync(new AppShell());
             }
-            else
-                return;
-
-            await Navigation.PushAsync(new AppShell());
         }
 
         private async void SignUpLabel_Tapped(object sender, EventArgs e)

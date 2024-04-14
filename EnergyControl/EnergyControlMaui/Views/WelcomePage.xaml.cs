@@ -1,4 +1,6 @@
 ﻿using EnergyControlMaui.Services;
+using EnergyControlMaui.Validation;
+using Microsoft.Maui.Networking;
 
 namespace EnergyControlMaui.Views
 {
@@ -14,26 +16,22 @@ namespace EnergyControlMaui.Views
 
         private async void SignUpButton_Clicked(object sender, EventArgs e)
         {
-            var isConnected = Connectivity.NetworkAccess == NetworkAccess.Internet;
-
-            if (!isConnected)
+            if (ConnectivityService.IsConnected())
             {
-                await DisplayAlert("Error", "No internet connection. Please connect to the internet and try again.", "OK");
+                await Navigation.PushAsync(new SignupPage(userManager));
             }
             else
-                await Navigation.PushAsync(new SignupPage(userManager));
+                await ConnectivityService.ShowNoInternetConnectionError();
         }
 
         private async void LogInButton_Clicked(object sender, EventArgs e)
         {
-            var isConnected = Connectivity.NetworkAccess == NetworkAccess.Internet;
-
-            if (!isConnected)
+            if (ConnectivityService.IsConnected())
             {
-                await DisplayAlert("Error", "No internet connection. Please connect to the internet and try again.", "OK");
+                await Navigation.PushAsync(new LoginPage(userManager));
             }
             else
-                await Navigation.PushAsync(new LoginPage(userManager));
+                await ConnectivityService.ShowNoInternetConnectionError();
         }
     }
 }

@@ -15,27 +15,22 @@ namespace EnergyControlMaui.Views
 
         private async void CreateAccountButton_Clicked(object sender, EventArgs e)
         {
-            Task<bool> nameValidationTask = NameValidator.ValidateNameAsync(FirstNameEntry.Text, LastNameEntry.Text, FirstNameErrorLabel, LastNameErrorLabel);
-            Task<bool> emailValidationTask = EmailValidator.ValidateEmailAsync(EmailEntrySignUp.Text, EmailEntryErrorLabelSignUp);
-            Task<bool> passwordValidationTask = PasswordValidator.ValidatePasswordAsync(PasswordEntry.Text, ConfirmPasswordEntry.Text, PasswordEntryErrorLabelSignUp, ConfirmPasswordEntryErrorLabelSignUp);
-            Task<bool> checkBoxValidationTask = CheckBoxValidator.ValidateCheckBoxAsync(CheckBox, CheckBoxErrorLabel);
-            Task<bool> emailExistsValidationTask = Task.FromResult(false);
-            if (emailValidationTask.Result)
+            if (!ConnectivityService.IsConnected())
             {
-                emailExistsValidationTask = userManager.UserExistsAsync(EmailEntrySignUp.Text);
-                if (emailExistsValidationTask.Result)
-                {
-                    await ErrorMessage.ShowErrorMessage(EmailExistsEntryErrorLabelSignUp, "This email already exists!");
-                    return;
-                }
+                await ConnectivityService.ShowNoInternetConnectionError();
+                return;
             }
 
-            await Task.WhenAll(nameValidationTask, emailValidationTask, passwordValidationTask, 
-                checkBoxValidationTask, emailExistsValidationTask);
+            Task<bool> nameValidationTask = NameValidator.ValidateNameAsync(FirstNameEntry.Text, LastNameEntry.Text, FirstNameErrorLabel, LastNameErrorLabel);
+            Task<bool> emailValidationTask = EmailValidator.ValidateSignUpEmailAsync(EmailEntrySignUp.Text, EmailEntryErrorLabelSignUp);
+            Task<bool> passwordValidationTask = PasswordValidator.ValidatePasswordsAsync(PasswordEntry.Text, ConfirmPasswordEntry.Text, PasswordEntryErrorLabelSignUp, ConfirmPasswordEntryErrorLabelSignUp);
+            Task<bool> checkBoxValidationTask = CheckBoxValidator.ValidateCheckBoxAsync(CheckBox, CheckBoxErrorLabel);
 
-            if (nameValidationTask.Result && emailValidationTask.Result && 
-                passwordValidationTask.Result && checkBoxValidationTask.Result &&
-                !emailExistsValidationTask.Result)
+            await Task.WhenAll(nameValidationTask, emailValidationTask, passwordValidationTask,
+                checkBoxValidationTask);
+
+            if (nameValidationTask.Result && emailValidationTask.Result &&
+                passwordValidationTask.Result && checkBoxValidationTask.Result )
             {
                 string hashedPassword = PasswordHasher.HashPassword(PasswordEntry.Text);
 

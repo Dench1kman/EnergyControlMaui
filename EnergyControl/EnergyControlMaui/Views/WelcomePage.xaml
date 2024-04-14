@@ -1,68 +1,166 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="EnergyControlMaui.Views.WelcomePage"
-             NavigationPage.HasNavigationBar="False"
-             Shell.TabBarIsVisible="False"
-             Background="#24293E"
-             Title="WelcomePage">
+<ContentPage
+    x:Class="EnergyControlMaui.Views.WelcomePage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="WelcomePage"
+    Background="#24293E"
+    NavigationPage.HasNavigationBar="False"
+    Shell.TabBarIsVisible="False">
 
     <ContentPage.Content>
         <Grid>
-            <Image Source="bubble.png" HorizontalOptions="Start" Aspect="AspectFit" WidthRequest="300" Margin="0,0,0,100"/>
-            <Image Source="wavy_dots_right.png" HorizontalOptions="End" VerticalOptions="Start" Aspect="AspectFit" WidthRequest="350" HeightRequest="350" Margin="0,-5,0,0"/>
-            <Image Source="wavy_dots_left.png" HorizontalOptions="Start" VerticalOptions="End" Aspect="AspectFit" WidthRequest="350" HeightRequest="350" Margin="-10,0,0,0"/>
-            <Image Source="welcome_man.png" HorizontalOptions="Start" Aspect="AspectFit" WidthRequest="280"/>
+            <Image
+                Margin="0,0,0,100"
+                Aspect="AspectFit"
+                HorizontalOptions="Start"
+                Source="bubble.png"
+                WidthRequest="300" />
+            <Image
+                Margin="0,-5,0,0"
+                Aspect="AspectFit"
+                HeightRequest="350"
+                HorizontalOptions="End"
+                Source="wavy_dots_right.png"
+                VerticalOptions="Start"
+                WidthRequest="350" />
+            <Image
+                Margin="-10,0,0,0"
+                Aspect="AspectFit"
+                HeightRequest="350"
+                HorizontalOptions="Start"
+                Source="wavy_dots_left.png"
+                VerticalOptions="End"
+                WidthRequest="350" />
+            <Image
+                Aspect="AspectFit"
+                HorizontalOptions="Start"
+                Source="welcome_man.png"
+                WidthRequest="280" />
 
             <StackLayout Margin="45">
-                <StackLayout Orientation="Horizontal" Spacing="0" VerticalOptions="Start" HorizontalOptions="Start">
-                    <Label Text="Energy" FontSize="24" FontFamily="Inter" FontAttributes="Bold" TextColor="#F4F4FC"/>
-                    <Label Text="Control" FontSize="24" FontFamily="Inter" FontAttributes="Bold,Italic" TextColor="#8EBBFF"/>
+                <StackLayout
+                    HorizontalOptions="Start"
+                    Orientation="Horizontal"
+                    Spacing="0"
+                    VerticalOptions="Start">
+                    <Label
+                        FontAttributes="Bold"
+                        FontFamily="Inter"
+                        FontSize="24"
+                        Text="Energy"
+                        TextColor="#F4F4FC" />
+                    <Label
+                        FontAttributes="Bold,Italic"
+                        FontFamily="Inter"
+                        FontSize="24"
+                        Text="Control"
+                        TextColor="#8EBBFF" />
                 </StackLayout>
 
-                <StackLayout HorizontalOptions="Center" VerticalOptions="Center" Margin="0,185,0,0">
-                    <Label Text="Hello!" FontSize="32" FontFamily="Inter" TextColor="#F4F4FC"/>
+                <StackLayout
+                    Margin="0,185,0,0"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center">
+                    <Label
+                        FontFamily="Inter"
+                        FontSize="32"
+                        Text="Hello!"
+                        TextColor="#F4F4FC" />
                 </StackLayout>
-                <StackLayout Orientation="Vertical" HorizontalOptions="End" Margin="0,135,0,0">
-                    <StackLayout Orientation="Horizontal" HorizontalOptions="End">
-                        <Label Text="Welcome to " FontSize="18" FontFamily="interlight" TextColor="#F4F4FC"/>
+                <StackLayout
+                    Margin="0,135,0,0"
+                    HorizontalOptions="End"
+                    Orientation="Vertical">
+                    <StackLayout HorizontalOptions="End" Orientation="Horizontal">
+                        <Label
+                            FontFamily="interlight"
+                            FontSize="18"
+                            Text="Welcome to "
+                            TextColor="#F4F4FC" />
                         <StackLayout Orientation="Horizontal" Spacing="0">
-                            <Label Text="Energy" FontSize="18" FontFamily="Inter" FontAttributes="Bold" TextColor="#F4F4FC"/>
-                            <Label Text="Control" FontSize="18" FontFamily="Inter" FontAttributes="Bold,Italic" TextColor="#8EBBFF"/>
+                            <Label
+                                FontAttributes="Bold"
+                                FontFamily="Inter"
+                                FontSize="18"
+                                Text="Energy"
+                                TextColor="#F4F4FC" />
+                            <Label
+                                FontAttributes="Bold,Italic"
+                                FontFamily="Inter"
+                                FontSize="18"
+                                Text="Control"
+                                TextColor="#8EBBFF" />
                         </StackLayout>
                     </StackLayout>
-                    <Label Text="Where energy efficiency begins!" FontSize="18" FontFamily="interlight" TextColor="#F4F4FC"/>
+                    <Label
+                        FontFamily="interlight"
+                        FontSize="18"
+                        Text="Where energy efficiency begins!"
+                        TextColor="#F4F4FC" />
                 </StackLayout>
 
                 <StackLayout HorizontalOptions="Center" VerticalOptions="EndAndExpand">
-                    <Button Text="Sign Up" 
-                        Clicked="SignUpButton_Clicked"
+                    <Button
                         x:Name="SignUpButton"
-                        TextTransform="None"  
-                        TextColor="#2F3855"
-                        FontSize="20"
-                        FontFamily="Inter"
-                        FontAttributes="Bold"
-                        WidthRequest="300"
-                        HeightRequest="50"
                         Margin="0,0,0,20"
+                        BackgroundColor="#8EBBFF"
+                        Clicked="SignUpButton_Clicked"
                         CornerRadius="10"
-                        BackgroundColor="#8EBBFF"/>
-
-                    <Button Text="Log In"
-                        Clicked="LogInButton_Clicked"
-                        x:Name="LogInButton"
-                        TextTransform="None"
-                        TextColor="#2F3855"
-                        FontSize="20"
-                        FontFamily="Inter"
                         FontAttributes="Bold"
-                        WidthRequest="300"
+                        FontFamily="Inter"
+                        FontSize="20"
                         HeightRequest="50"
-                        CornerRadius="10"
-                        BorderWidth="2"
+                        Text="Sign Up"
+                        TextColor="#2F3855"
+                        TextTransform="None"
+                        WidthRequest="300">
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup>
+                                <VisualState x:Name="Normal">
+                                    <VisualState.Setters>
+                                        <Setter Property="Scale" Value="1" />
+                                    </VisualState.Setters>
+                                </VisualState>
+                                <VisualState x:Name="Pressed">
+                                    <VisualState.Setters>
+                                        <Setter Property="Scale" Value="0.95" />
+                                    </VisualState.Setters>
+                                </VisualState>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                    </Button>
+
+                    <Button
+                        x:Name="LogInButton"
                         BackgroundColor="#F4F4FC"
-                        BorderColor="#8EBBFF"/>
+                        BorderColor="#8EBBFF"
+                        BorderWidth="2"
+                        Clicked="LogInButton_Clicked"
+                        CornerRadius="10"
+                        FontAttributes="Bold"
+                        FontFamily="Inter"
+                        FontSize="20"
+                        HeightRequest="50"
+                        Text="Log In"
+                        TextColor="#2F3855"
+                        TextTransform="None"
+                        WidthRequest="300">
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup>
+                                <VisualState x:Name="Normal">
+                                    <VisualState.Setters>
+                                        <Setter Property="Scale" Value="1" />
+                                    </VisualState.Setters>
+                                </VisualState>
+                                <VisualState x:Name="Pressed">
+                                    <VisualState.Setters>
+                                        <Setter Property="Scale" Value="0.95" />
+                                    </VisualState.Setters>
+                                </VisualState>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                    </Button>
                 </StackLayout>
             </StackLayout>
         </Grid>

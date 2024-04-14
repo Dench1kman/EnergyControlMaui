@@ -18,11 +18,6 @@ namespace EnergyControlMaui.Services
             _db.Users.Add(user);
             _db.SaveChanges();
             Console.WriteLine("\nUser successfully added!\n");
-
-            var users = _db.Users.ToList();
-            Console.WriteLine("User List:");
-            foreach (User _user in users)
-                Console.WriteLine($"{_user.UserId}. {_user.FirstName}, {_user.LastName}, {_user.Email}, {_user.Password},");
             return true;
         }
 

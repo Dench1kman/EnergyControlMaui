@@ -1,21 +1,29 @@
-﻿
+﻿using EnergyControlMaui.Models;
 using EnergyControlMaui.Services;
+
 
 namespace EnergyControlMaui.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class AccountPage : ContentPage
     {
-        private readonly UserManager userManager;
-        public AccountPage(UserManager userManager)
+        public AccountPage(User user)
         {
             InitializeComponent();
-            this.userManager = userManager;
+
+            SetUserData(user);
+        }
+
+        private void SetUserData(User user) 
+        {
+            FirstNameLabel.Text = user.FirstName; 
+            LastNameLabel.Text = user.LastName;  
+            EmailLabel.Text = user.Email;         
         }
 
         private async void LogOutButton_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new LoginPage(userManager));
+            await Shell.Current.GoToAsync("//LoginPage");
         }
     }
 }
