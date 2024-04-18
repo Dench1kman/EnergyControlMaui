@@ -26,6 +26,11 @@ namespace EnergyControlMaui.Validation
                 await ErrorMessage.ShowErrorMessage(firstNameErrorLabel, "First name cannot be empty!");
                 return false;
             }
+            else if (firstName.Length > 30)
+            {
+                await ErrorMessage.ShowErrorMessage(firstNameErrorLabel, "First name cannot be longer than 30 characters!");
+                return false;
+            }
             return true;
         }
 
@@ -36,8 +41,12 @@ namespace EnergyControlMaui.Validation
                 await ErrorMessage.ShowErrorMessage(lastNameErrorLabel, "Last name cannot be empty!");
                 return false;
             }
+            else if (lastName.Length > 30)
+            {
+                await ErrorMessage.ShowErrorMessage(lastNameErrorLabel, "Last name cannot be longer than 30 characters!");
+                return false;
+            }
             return true;
         }
     }
-
 }

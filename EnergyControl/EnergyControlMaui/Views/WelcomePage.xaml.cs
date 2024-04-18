@@ -18,7 +18,7 @@ namespace EnergyControlMaui.Views
         {
             if (ConnectivityService.IsConnected())
             {
-                await Navigation.PushAsync(new SignupPage(userManager));
+                await Navigation.PushAsync(new SignupPage());
             }
             else
                 await ConnectivityService.ShowNoInternetConnectionError();
@@ -28,7 +28,7 @@ namespace EnergyControlMaui.Views
         {
             if (ConnectivityService.IsConnected())
             {
-                await Navigation.PushAsync(new LoginPage(userManager));
+                await Navigation.PushAsync(new LoginPage());
             }
             else
                 await ConnectivityService.ShowNoInternetConnectionError();

@@ -1,25 +1,46 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="EnergyControlMaui.Views.AutomationPage"
-             NavigationPage.HasBackButton="False"
-             BackgroundColor="#24293D">
-    
+<ContentPage
+    x:Class="EnergyControlMaui.Views.AutomationPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    BackgroundColor="#24293D"
+    NavigationPage.HasBackButton="False"
+    NavigationPage.HasNavigationBar="False">
+
     <ContentPage.Content>
         <Grid>
-            <Image Source="top_bar_home.png" 
-                HorizontalOptions="FillAndExpand" 
-                VerticalOptions="Start" 
-                Aspect="AspectFill"/>
+            <Image
+                Aspect="AspectFill"
+                HorizontalOptions="FillAndExpand"
+                Source="top_bar_home.png"
+                VerticalOptions="Start" />
 
             <StackLayout Orientation="Horizontal">
-                <StackLayout Orientation="Horizontal" Margin="45,8,0,0" Spacing="0">
-                    <Label Text="E" TextColor="#F4F4FC" FontSize="32" FontFamily="Inter" FontAttributes="Bold,Italic"/>
-                    <Label Text="C" TextColor="#8EBBFF" FontSize="32" FontFamily="Inter" FontAttributes="Bold,Italic"/>
+                <StackLayout
+                    Margin="45,8,0,0"
+                    Orientation="Horizontal"
+                    Spacing="0">
+                    <Label
+                        FontAttributes="Bold,Italic"
+                        FontFamily="Inter"
+                        FontSize="32"
+                        Text="E"
+                        TextColor="#F4F4FC" />
+                    <Label
+                        FontAttributes="Bold,Italic"
+                        FontFamily="Inter"
+                        FontSize="32"
+                        Text="C"
+                        TextColor="#8EBBFF" />
                 </StackLayout>
             </StackLayout>
-            <StackLayout HorizontalOptions="Center" Margin="0,15,0,0">
-                <Label Text="Automation" TextColor="#F4F4FC" FontSize="24" FontFamily="Inter" FontAttributes="Bold"/>
+            <StackLayout Margin="0,15,0,0" HorizontalOptions="Center">
+                <Label
+                    FontAttributes="Bold"
+                    FontFamily="Inter"
+                    FontSize="24"
+                    Text="Automation"
+                    TextColor="#F4F4FC" />
             </StackLayout>
         </Grid>
     </ContentPage.Content>

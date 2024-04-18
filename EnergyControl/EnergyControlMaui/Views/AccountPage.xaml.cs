@@ -1,29 +1,57 @@
 ﻿using EnergyControlMaui.Models;
 using EnergyControlMaui.Services;
-
+using EnergyControlMaui.Utilities;
+using EnergyControlMaui.Views;
 
 namespace EnergyControlMaui.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class AccountPage : ContentPage
     {
-        public AccountPage(User user)
+        private UserManager _userManager;
+        public AccountPage()
         {
             InitializeComponent();
 
-            SetUserData(user);
+            _userManager = UserManager.GetInstance();
+        }
+        protected override async void OnAppearing()
+        {
+            base.OnAppearing();
+
+            User _user = await _userManager.GetUserDataAsync(AppConstants.Email);
+
+            if (_user != null)
+            {
+                SetUserData(_user);
+            }
+            else
+            {
+                await DisplayAlert("Error", "User data not found", "OK");
+
+                await Navigation.PushAsync(new LoginPage());
+            }
         }
 
-        private void SetUserData(User user) 
+        private void SetUserData(User _user)
         {
-            FirstNameLabel.Text = user.FirstName; 
-            LastNameLabel.Text = user.LastName;  
-            EmailLabel.Text = user.Email;         
+            FirstNameLabel.Text = _user.FirstName;
+            LastNameLabel.Text = _user.LastName;
+            EmailLabel.Text = _user.Email;
+        }
+
+        private async void SecurityButton_Clicked(object sender, EventArgs e)
+        {
+        }
+
+        private async void AboutButton_Clicked(object sender, EventArgs e)
+        {
         }
 
         private async void LogOutButton_Clicked(object sender, EventArgs e)
         {
-            await Shell.Current.GoToAsync("//LoginPage");
+            await Navigation.PopAsync();
+            await Navigation.PushAsync(new LoginPage());
         }
     }
 }

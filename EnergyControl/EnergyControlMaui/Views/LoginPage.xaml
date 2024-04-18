@@ -5,7 +5,11 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:triggers="clr-namespace:EnergyControlMaui.Triggers"
     Background="#24293E"
-    NavigationPage.HasNavigationBar="False">
+    NavigationPage.BackButtonTitle="False"
+    NavigationPage.HasBackButton="False"
+    NavigationPage.HasNavigationBar="False"
+    Shell.NavBarIsVisible="False"
+    Shell.TabBarIsVisible="False">
 
     <ContentPage.Content>
         <Grid>

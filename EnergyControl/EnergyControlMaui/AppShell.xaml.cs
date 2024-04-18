@@ -1,4 +1,6 @@
 ﻿
+using EnergyControlMaui.Models;
+using EnergyControlMaui.Services;
 using EnergyControlMaui.Views;
 
 namespace EnergyControlMaui

@@ -1,34 +1,36 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Shell
+    x:Class="EnergyControlMaui.AppShell"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    x:Class="EnergyControlMaui.AppShell"
+    xmlns:models="clr-namespace:EnergyControlMaui.Models"
     xmlns:views="clr-namespace:EnergyControlMaui.Views"
     Shell.FlyoutBehavior="Disabled">
-    
+
 
     <Shell.Resources>
         <ResourceDictionary>
             <Style TargetType="TabBar">
-                <Setter Property="Shell.TabBarBackgroundColor" Value="#2F3855"/>
+                <Setter Property="Shell.TabBarBackgroundColor" Value="#2F3855" />
                 <Setter Property="Shell.TabBarTitleColor" Value="#F4F4FC" />
                 <Setter Property="Shell.TabBarUnselectedColor" Value="#8EBBFF" />
             </Style>
+            <models:User x:Key="UserInstance" />
         </ResourceDictionary>
     </Shell.Resources>
 
     <TabBar>
         <Tab Title="Home" Icon="home_ic.svg">
-            <ShellContent ContentTemplate="{DataTemplate views:HomePage}" Route="HomePage"/>
+            <ShellContent ContentTemplate="{DataTemplate views:HomePage}" Route="HomePage" />
         </Tab>
         <Tab Title="Statistics" Icon="statistic_ic.svg">
-            <ShellContent ContentTemplate="{DataTemplate views:StatisticsPage}" Route="StatisticsPage"/>
+            <ShellContent ContentTemplate="{DataTemplate views:StatisticsPage}" Route="StatisticsPage" />
         </Tab>
         <Tab Title="Automation" Icon="automation_ic.svg">
-            <ShellContent ContentTemplate="{DataTemplate views:AutomationPage}" Route="AutomationPage"/>
+            <ShellContent ContentTemplate="{DataTemplate views:AutomationPage}" Route="AutomationPage" />
         </Tab>
         <Tab Title="Account" Icon="account_ic.svg">
-            <ShellContent ContentTemplate="{DataTemplate views:AccountPage}" Route="AccountPage"/>
+            <ShellContent ContentTemplate="{DataTemplate views:AccountPage}" Route="AccountPage" />
         </Tab>
     </TabBar>
 </Shell>

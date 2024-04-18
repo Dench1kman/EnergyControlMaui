@@ -35,16 +35,22 @@ namespace EnergyControlMaui.Validation
             Task<bool> validatePasswordTask = ValidatePasswordFormat(password, errorLabel);
             await validatePasswordTask;
 
+            if (!await validatePasswordTask)
+            {
+                return false;
+            }
+
             string hashedPassword = PasswordHasher.HashPassword(password);
 
             Task<bool> checkPassValidationTask = userManager.CheckPasswordAsync(email, hashedPassword);
             await checkPassValidationTask;
 
-            if (!checkPassValidationTask.Result)
+            if (!await checkPassValidationTask)
             {
                 await ErrorMessage.ShowErrorMessage(errorLabel, "Incorrect password. Please try again!");
                 return false;
             }
+
             return true;
         }
 

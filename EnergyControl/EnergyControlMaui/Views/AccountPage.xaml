@@ -3,18 +3,46 @@
     x:Class="EnergyControlMaui.Views.AccountPage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:models="clr-namespace:EnergyControlMaui.Models"
     xmlns:views="clr-namespace:EnergyControlMaui.Views"
     BackgroundColor="#24293D"
-    NavigationPage.HasBackButton="False">
+    NavigationPage.HasBackButton="False"
+    NavigationPage.HasNavigationBar="False">
 
 
     <ContentPage.Content>
         <Grid>
-            <Image
+            <!--<Image
                 Aspect="AspectFill"
                 HorizontalOptions="FillAndExpand"
                 Source="top_bar_home.png"
+                VerticalOptions="Start" />-->
+
+            <Image
+                Aspect="AspectFill"
+                HorizontalOptions="FillAndExpand"
+                Source="account_dots.svg"
                 VerticalOptions="Start" />
+
+            <Image
+                Scale="1.01"
+                Source="account_rectangle.svg"
+                VerticalOptions="EndAndExpand" />
+
+            <Image
+                Aspect="AspectFill"
+                HorizontalOptions="FillAndExpand"
+                Scale="0.8"
+                Source="account_image.svg"
+                VerticalOptions="StartAndExpand" />
+
+
+            <!--
+                ImageButton
+                Margin="0,0,0,20"
+                Clicked="SecurityButton_Clicked"
+                Source="security_btn.svg" />
+            -->
 
             <StackLayout
                 Margin="45,8,0,0"
@@ -36,7 +64,7 @@
                     TextColor="#8EBBFF" />
             </StackLayout>
 
-            <StackLayout Margin="0,15,0,0" HorizontalOptions="Center">
+            <!--<StackLayout Margin="0,15,0,0" HorizontalOptions="Center">
 
                 <Label
                     FontAttributes="Bold"
@@ -44,32 +72,87 @@
                     FontSize="24"
                     Text="Account"
                     TextColor="#F4F4FC" />
+            </StackLayout>-->
+
+            <!--<StackLayout HorizontalOptions="Center" VerticalOptions="Center">-->
+
+            <StackLayout Orientation="Horizontal">
+
+                <Image Margin="0,-75,0,0" Source="user_image.svg" />
+
+                <StackLayout
+                    Margin="-25,-75,0,0"
+                    Orientation="Vertical"
+                    VerticalOptions="Center">
+                    <StackLayout
+                        Grid.Column="1"
+                        HorizontalOptions="Start"
+                        Orientation="Horizontal"
+                        Spacing="15">
+
+                        <Label
+                            x:Name="FirstNameLabel"
+                            FontAttributes="Bold"
+                            FontFamily="Inter"
+                            FontSize="20"
+                            TextColor="#F4F4FC" />
+
+                        <Label
+                            x:Name="LastNameLabel"
+                            FontAttributes="Bold"
+                            FontFamily="Inter"
+                            FontSize="20"
+                            TextColor="#F4F4FC" />
+
+                    </StackLayout>
+                    <Label
+                        x:Name="EmailLabel"
+                        FontFamily="interlight"
+                        FontSize="15"
+                        TextColor="#F4F4FC" />
+                </StackLayout>
             </StackLayout>
 
-            <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
+            <StackLayout
+                Margin="0,0,0,150"
+                HorizontalOptions="Center"
+                VerticalOptions="End">
+                <ImageButton
+                    Margin="0,0,0,20"
+                    Clicked="SecurityButton_Clicked"
+                    Source="security_btn.svg">
+                    <VisualStateManager.VisualStateGroups>
+                        <VisualStateGroup>
+                            <VisualState x:Name="Normal">
+                                <VisualState.Setters>
+                                    <Setter Property="Scale" Value="1" />
+                                </VisualState.Setters>
+                            </VisualState>
+                            <VisualState x:Name="Pressed">
+                                <VisualState.Setters>
+                                    <Setter Property="Scale" Value="0.95" />
+                                </VisualState.Setters>
+                            </VisualState>
+                        </VisualStateGroup>
+                    </VisualStateManager.VisualStateGroups>
+                </ImageButton>
 
-                <StackLayout HorizontalOptions="Start" Orientation="Horizontal">
-
-                    <Label
-                        x:Name="FirstNameLabel"
-                        FontAttributes="Bold"
-                        FontFamily="Inter"
-                        FontSize="24"
-                        TextColor="#F4F4FC" />
-
-                    <Label
-                        x:Name="LastNameLabel"
-                        FontAttributes="Bold"
-                        FontFamily="Inter"
-                        FontSize="24"
-                        TextColor="#F4F4FC" />
-
-                </StackLayout>
-                <Label
-                    x:Name="EmailLabel"
-                    FontFamily="Inter"
-                    FontSize="18"
-                    TextColor="#F4F4FC" />
+                <ImageButton Clicked="AboutButton_Clicked" Source="about_btn.svg">
+                    <VisualStateManager.VisualStateGroups>
+                        <VisualStateGroup>
+                            <VisualState x:Name="Normal">
+                                <VisualState.Setters>
+                                    <Setter Property="Scale" Value="1" />
+                                </VisualState.Setters>
+                            </VisualState>
+                            <VisualState x:Name="Pressed">
+                                <VisualState.Setters>
+                                    <Setter Property="Scale" Value="0.95" />
+                                </VisualState.Setters>
+                            </VisualState>
+                        </VisualStateGroup>
+                    </VisualStateManager.VisualStateGroups>
+                </ImageButton>
             </StackLayout>
 
             <StackLayout HorizontalOptions="Center" VerticalOptions="End">

@@ -6,11 +6,9 @@ namespace EnergyControlMaui.Views
 {
     public partial class SignupPage : ContentPage
     {
-        private readonly UserManager userManager;
-        public SignupPage(UserManager userManager)
+        public SignupPage()
         {
             InitializeComponent();
-            this.userManager = userManager;
         }
 
         private async void CreateAccountButton_Clicked(object sender, EventArgs e)
@@ -42,7 +40,7 @@ namespace EnergyControlMaui.Views
                     Password = hashedPassword
                 };
 
-                bool registrationResult = userManager.RegisterUser(user);
+                bool registrationResult = UserManager.GetInstance().RegisterUser(user);
 
                 if (registrationResult)
                 {
@@ -58,7 +56,7 @@ namespace EnergyControlMaui.Views
 
         private async void LogInLabel_Tapped(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new LoginPage(userManager));
+            await Navigation.PushAsync(new LoginPage());
         }
     }
 }

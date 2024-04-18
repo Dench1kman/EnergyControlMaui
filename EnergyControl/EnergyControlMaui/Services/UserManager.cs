@@ -6,11 +6,21 @@ namespace EnergyControlMaui.Services
 {
     public class UserManager
     {
+        private static UserManager _instance;
         private readonly SqliteDbContext _db;
 
-        public UserManager(SqliteDbContext db)
+        private UserManager()
         {
-            _db = db;
+            _db = new SqliteDbContext();
+        }
+
+        public static UserManager GetInstance()
+        {
+            if (_instance == null)
+            {
+                _instance = new UserManager();
+            }
+            return _instance;
         }
 
         public bool RegisterUser(User user)
@@ -34,6 +44,11 @@ namespace EnergyControlMaui.Services
                 return user.Password == hashedPassword;
             }
             return false;
+        }
+
+        public async Task<User> GetUserDataAsync(string email)
+        {
+            return await _db.Users.FirstOrDefaultAsync(u => u.Email == email);
         }
     }
 }

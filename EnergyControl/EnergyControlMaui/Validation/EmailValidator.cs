@@ -15,8 +15,7 @@ namespace EnergyControlMaui.Validation
 
             if (IsValid)
             {
-                var userManager = new UserManager(new SqliteDbContext());   
-                bool emailExists = await userManager.UserExistsAsync(email); 
+                bool emailExists = await UserManager.GetInstance().UserExistsAsync(email); 
 
                 if (!emailExists)
                 {
@@ -37,8 +36,7 @@ namespace EnergyControlMaui.Validation
 
             if (IsValid) 
             {
-                var userManager = new UserManager(new SqliteDbContext());   
-                bool emailExists = await userManager.UserExistsAsync(email); 
+                bool emailExists = await UserManager.GetInstance().UserExistsAsync(email); 
 
                 if (emailExists)
                 {

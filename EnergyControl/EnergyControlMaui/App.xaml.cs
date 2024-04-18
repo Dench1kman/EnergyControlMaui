@@ -6,14 +6,11 @@ namespace EnergyControlMaui
 {
     public partial class App : Application
     {
-        private readonly UserManager userManager;
-
-        public App(UserManager userManager)  
+        public App()  
         {
-            this.userManager = userManager;
             InitializeComponent();
 
-            MainPage = new NavigationPage(new WelcomePage(userManager));
+            MainPage = new NavigationPage(new WelcomePage(UserManager.GetInstance()));
         }
 
         protected override void OnStart()

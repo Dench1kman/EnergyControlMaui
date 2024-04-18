@@ -56,6 +56,7 @@
 		<MauiImage Include="Resources\Icons\automation_ic.svg" />
 		<MauiImage Include="Resources\Icons\home_ic.svg" />
 		<MauiImage Include="Resources\Icons\statistic_ic.svg" />
+		<MauiImage Include="Resources\Images\Buttons\about_btn.svg" />
 
 		<!-- Splash Screen -->
 		<!--<MauiSplashScreen Include="Resources\Splash\mysplash.svg" Color="#24293E" BaseSize="128,128" /> -->
@@ -76,6 +77,10 @@
 	  <AndroidResource Remove="Resources\Images\bubble.png" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <MauiImage Remove="Resources\Images\security_btn.svg" />
+	</ItemGroup>
+
 
 	<ItemGroup>
 	  <None Remove="Platforms\Android\Resources\drawable\ichidepassword.png" />
@@ -90,18 +95,23 @@
 	  <None Remove="Resources\Icons\automation_ic.svg" />
 	  <None Remove="Resources\Icons\home_ic.svg" />
 	  <None Remove="Resources\Icons\statistic_ic.svg" />
+	  <None Remove="Resources\Images\account_dots.svg" />
 	  <None Remove="Resources\Images\account_ic.png" />
 	  <None Remove="Resources\Images\account_ic_active.png" />
+	  <None Remove="Resources\Images\account_image.svg" />
+	  <None Remove="Resources\Images\account_rectangle.svg" />
 	  <None Remove="Resources\Images\add_device_btn.png" />
 	  <None Remove="Resources\Images\automation_ic.png" />
 	  <None Remove="Resources\Images\automation_ic_active.png" />
 	  <None Remove="Resources\Images\bubble.png" />
 	  <None Remove="Resources\Images\home_ic.png" />
 	  <None Remove="Resources\Images\home_ic_active.png" />
+	  <None Remove="Resources\Images\rectangle.png" />
 	  <None Remove="Resources\Images\sircle_dots.png" />
 	  <None Remove="Resources\Images\statistics_ic.png" />
 	  <None Remove="Resources\Images\statistic_ic_active.png" />
 	  <None Remove="Resources\Images\top_bar_home.png" />
+	  <None Remove="Resources\Images\user_image.svg" />
 	  <None Remove="Resources\Images\wavy_dots_down.png" />
 	  <None Remove="Resources\Images\wavy_dots_left.png" />
 	  <None Remove="Resources\Images\wavy_dots_right.png" />
@@ -212,12 +222,18 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <MauiAsset Include="Resources\Images\Buttons\about_btn.svg" />
 	  <MauiAsset Include="Resources\Images\Buttons\add_device_btn.svg" />
 	  <MauiAsset Include="Resources\Images\Buttons\lamp_btn.svg" />
 	  <MauiAsset Include="Resources\Images\Buttons\other_device_btn.svg" />
 	  <MauiAsset Include="Resources\Images\Buttons\printer_btn.svg" />
 	  <MauiAsset Include="Resources\Images\robot.svg" />
 	  <MauiAsset Include="Resources\Images\Buttons\thermostat_btn.svg" />
+	  <MauiImage Include="Resources\Images\Buttons\security_btn.svg" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="ViewModels\" />
 	</ItemGroup>
 
 	<!--<ItemGroup>
