@@ -50,6 +50,11 @@ namespace EnergyControlMaui.Services
         {
             return await _db.Users.FirstOrDefaultAsync(u => u.Email == email);
         }
+
+        public async Task<List<User>> GetAllUsersAsync()
+        {
+            return await _db.Users.ToListAsync();
+        }
     }
 }
 

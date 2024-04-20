@@ -74,6 +74,7 @@
                     FontSize="16"
                     Text="Email"
                     TextColor="#F4F4FC" />
+
                 <StackLayout Margin="-4,0,0,0">
                     <Entry
                         x:Name="EmailEntry"

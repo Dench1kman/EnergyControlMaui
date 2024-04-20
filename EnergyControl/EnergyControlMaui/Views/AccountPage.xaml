@@ -12,11 +12,6 @@
 
     <ContentPage.Content>
         <Grid>
-            <!--<Image
-                Aspect="AspectFill"
-                HorizontalOptions="FillAndExpand"
-                Source="top_bar_home.png"
-                VerticalOptions="Start" />-->
 
             <Image
                 Aspect="AspectFill"

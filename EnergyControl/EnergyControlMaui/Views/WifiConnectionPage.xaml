@@ -1,0 +1,182 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="EnergyControlMaui.Views.WifiConnectionPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:triggers="clr-namespace:EnergyControlMaui.Triggers"
+    Background="#24293E">
+
+
+    <ContentPage.Content>
+        <Grid>
+
+            <Image
+                Aspect="AspectFill"
+                HorizontalOptions="FillAndExpand"
+                Source="top_bar_home.png"
+                VerticalOptions="Start" />
+
+
+            <StackLayout Orientation="Horizontal">
+                <StackLayout
+                    Margin="45,8,0,0"
+                    Orientation="Horizontal"
+                    Spacing="0">
+                    <Label
+                        FontAttributes="Bold,Italic"
+                        FontFamily="Inter"
+                        FontSize="32"
+                        Text="E"
+                        TextColor="#F4F4FC" />
+                    <Label
+                        FontAttributes="Bold,Italic"
+                        FontFamily="Inter"
+                        FontSize="32"
+                        Text="C"
+                        TextColor="#8EBBFF" />
+                </StackLayout>
+            </StackLayout>
+            <StackLayout Margin="0,15,0,0" HorizontalOptions="Center">
+                <Label
+                    FontAttributes="Bold"
+                    FontFamily="Inter"
+                    FontSize="24"
+                    Text="Connection"
+                    TextColor="#F4F4FC" />
+            </StackLayout>
+            <StackLayout>
+                <StackLayout Margin="45,90,0,0">
+                    <Label
+                        FontAttributes="Bold"
+                        FontFamily="Inter"
+                        FontSize="18"
+                        Text="Connect to your Wi-Fi"
+                        TextColor="#F4F4FC" />
+
+                    <Label
+                        Margin="0,45,0,35"
+                        FontFamily="interregular"
+                        FontSize="16"
+                        Text="Wi-Fi settings:"
+                        TextColor="#F4F4FC" />
+
+                    <Label
+                        FontFamily="interlight"
+                        FontSize="16"
+                        Text="Network Name"
+                        TextColor="#F4F4FC" />
+
+                    <StackLayout Margin="-4,0,45,0">
+                        <Entry
+                            x:Name="WifiNameEntry"
+                            FontSize="16"
+                            Opacity="0.5"
+                            Placeholder="Enter your wifi name"
+                            PlaceholderColor="LightGray"
+                            TextColor="White" />
+
+                        <Label
+                            Margin="4,-23,0,0"
+                            FontSize="12"
+                            Text="_______________________________________________________"
+                            TextColor="White" />
+
+                        <Label
+                            x:Name="WifiNameErrorLabel"
+                            Margin="0,0,0,-17"
+                            FontFamily="interregular"
+                            FontSize="12"
+                            IsVisible="False"
+                            TextColor="Red" />
+
+                    </StackLayout>
+                    <Label
+                        Margin="0,18,0,0"
+                        FontFamily="interlight"
+                        FontSize="16"
+                        Text="Wi-Fi Password"
+                        TextColor="#F4F4FC" />
+
+                    <Label
+                        x:Name="WifiPasswordErrorLabel"
+                        Margin="0,0,0,-17"
+                        FontFamily="interregular"
+                        FontSize="12"
+                        IsVisible="False"
+                        TextColor="Red" />
+
+                    <StackLayout Margin="-4,0,45,0" Orientation="Horizontal">
+                        <Entry
+                            x:Name="WifiPasswordEntry"
+                            FontSize="16"
+                            HorizontalOptions="StartAndExpand"
+                            IsPassword="{Binding Source={x:Reference ShowPasswordActualTrigger}, Path=HidePassword}"
+                            Opacity="0.5"
+                            Placeholder="Enter your wifi password"
+                            PlaceholderColor="LightGray"
+                            TextColor="White"
+                            WidthRequest="270" />
+
+                        <ImageButton
+                            Margin="0,0,-45,0"
+                            BackgroundColor="Transparent"
+                            HeightRequest="28"
+                            HorizontalOptions="End"
+                            Source="ichidepassword"
+                            VerticalOptions="Center">
+
+                            <ImageButton.Triggers>
+                                <EventTrigger Event="Clicked">
+                                    <triggers:ShowPasswordTriggerAction
+                                        x:Name="ShowPasswordActualTrigger"
+                                        HideIcon="ichidepassword"
+                                        ShowIcon="icshowpassword" />
+                                </EventTrigger>
+                            </ImageButton.Triggers>
+                        </ImageButton>
+                    </StackLayout>
+                    <Label
+                        Margin="0,-21,0,0"
+                        FontSize="12"
+                        Text="_______________________________________________________"
+                        TextColor="White" />
+                </StackLayout>
+
+                <StackLayout
+                    Margin="0,0,0,45"
+                    HorizontalOptions="Center"
+                    VerticalOptions="EndAndExpand">
+                    <Button
+                        x:Name="ConnectButton"
+                        Margin="0,0,0,20"
+                        BackgroundColor="#8EBBFF"
+                        Clicked="ConnectButton_Clicked"
+                        CornerRadius="10"
+                        FontAttributes="Bold"
+                        FontFamily="Inter"
+                        FontSize="20"
+                        HeightRequest="50"
+                        Text="Connect"
+                        TextColor="#2F3855"
+                        TextTransform="None"
+                        WidthRequest="300">
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup>
+                                <VisualState x:Name="Normal">
+                                    <VisualState.Setters>
+                                        <Setter Property="Scale" Value="1" />
+                                    </VisualState.Setters>
+                                </VisualState>
+                                <VisualState x:Name="Pressed">
+                                    <VisualState.Setters>
+                                        <Setter Property="Scale" Value="0.95" />
+                                    </VisualState.Setters>
+                                </VisualState>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                    </Button>
+                </StackLayout>
+            </StackLayout>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
