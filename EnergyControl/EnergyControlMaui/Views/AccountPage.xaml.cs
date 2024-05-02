@@ -1,4 +1,6 @@
-﻿using EnergyControlMaui.Models;
+﻿#pragma warning disable CS1998 // Async method lacks 'await' operators and will run synchronously
+
+using EnergyControlMaui.Models;
 using EnergyControlMaui.Services;
 using EnergyControlMaui.Utilities;
 using EnergyControlMaui.Views;
@@ -55,3 +57,4 @@ namespace EnergyControlMaui.Views
         }
     }
 }
+#pragma warning restore CS1998 // Async method lacks 'await' operators and will run synchronously

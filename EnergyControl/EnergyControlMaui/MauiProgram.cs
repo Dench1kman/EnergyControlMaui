@@ -1,4 +1,7 @@
-﻿using Microsoft.Extensions.Logging;
+﻿#if ANDROID
+using Android.Net.Wifi;
+#endif
+using Microsoft.Extensions.Logging;
 using EnergyControlMaui.Views;
 using EnergyControlMaui.Services;
 
@@ -20,9 +23,15 @@ namespace EnergyControlMaui
                 });
 
             builder.Services.AddDbContext<SqliteDbContext>();
+
             builder.Services.AddTransient<SignupPage>();
             builder.Services.AddTransient<LoginPage>();
+
             builder.Services.AddSingleton<UserManager>();
+#if ANDROID
+            builder.Services.AddTransient<WifiManager>();
+#endif
+
 
             var dbContext = new SqliteDbContext();
             dbContext.Database.EnsureCreated();

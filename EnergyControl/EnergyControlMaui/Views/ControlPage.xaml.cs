@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace EnergyControlMaui.Views
 {
-    public partial class AutomationPage : ContentPage
+    public partial class ControlPage : ContentPage
     {
-        public AutomationPage()
+        public ControlPage()
         {
             InitializeComponent();
         }

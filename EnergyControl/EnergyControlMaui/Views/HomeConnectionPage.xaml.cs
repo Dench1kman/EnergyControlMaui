@@ -1,4 +1,7 @@
-﻿using System;
+﻿#if ANDROID
+using Android.Net.Wifi;
+#endif
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,21 +14,23 @@ namespace EnergyControlMaui.Views
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class HomeConnectionPage : ContentPage
 	{
-		public HomeConnectionPage()
+#if ANDROID
+        private readonly WifiService _wifiService;
+        public HomeConnectionPage()
 		{
-			InitializeComponent();
-		}
+            _wifiService = new WifiService(Android.App.Application.Context);
+            InitializeComponent();
+        }
 
         private async void LampButton_Clicked(object sender, EventArgs e)
         {
-            if (ConnectivityService.IsConnected())
+            var isWifiActive = await _wifiService.CheckAndSwitchToWifiAsync();
+            if (isWifiActive)
             {
                 await Navigation.PushModalAsync(new WifiConnectionPage());
             }
-            else
-                await ConnectivityService.ShowNoInternetConnectionError();
         }
-
+        
         private void ThermostatButton_Clicked(object sender, EventArgs e)
         {
 
@@ -40,5 +45,6 @@ namespace EnergyControlMaui.Views
         {
 
         }
+#endif
     }
 }

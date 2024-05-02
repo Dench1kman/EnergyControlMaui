@@ -23,11 +23,11 @@
         <Tab Title="Home" Icon="home_ic.svg">
             <ShellContent ContentTemplate="{DataTemplate views:HomePage}" Route="HomePage" />
         </Tab>
+        <Tab Title="Control" Icon="automation_ic.svg">
+            <ShellContent ContentTemplate="{DataTemplate views:ControlPage}" Route="ControlPage" />
+        </Tab>
         <Tab Title="Statistics" Icon="statistic_ic.svg">
             <ShellContent ContentTemplate="{DataTemplate views:StatisticsPage}" Route="StatisticsPage" />
-        </Tab>
-        <Tab Title="Automation" Icon="automation_ic.svg">
-            <ShellContent ContentTemplate="{DataTemplate views:AutomationPage}" Route="AutomationPage" />
         </Tab>
         <Tab Title="Account" Icon="account_ic.svg">
             <ShellContent ContentTemplate="{DataTemplate views:AccountPage}" Route="AccountPage" />

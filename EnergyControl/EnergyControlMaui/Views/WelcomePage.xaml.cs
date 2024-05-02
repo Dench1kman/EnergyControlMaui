@@ -1,6 +1,4 @@
 ﻿using EnergyControlMaui.Services;
-using EnergyControlMaui.Validation;
-using Microsoft.Maui.Networking;
 
 namespace EnergyControlMaui.Views
 {
@@ -8,6 +6,7 @@ namespace EnergyControlMaui.Views
 	public partial class WelcomePage : ContentPage
 	{
         private readonly UserManager userManager;
+
         public WelcomePage (UserManager userManager)
 		{
             InitializeComponent ();

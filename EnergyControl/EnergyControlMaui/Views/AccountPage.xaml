@@ -73,17 +73,17 @@
 
             <StackLayout Orientation="Horizontal">
 
-                <Image Margin="0,-75,0,0" Source="user_image.svg" />
+                <Image Scale="0.8" Source="user_image.svg" />
 
                 <StackLayout
-                    Margin="-25,-75,0,0"
+                    Margin="-45,0,45,0"
                     Orientation="Vertical"
                     VerticalOptions="Center">
                     <StackLayout
                         Grid.Column="1"
                         HorizontalOptions="Start"
                         Orientation="Horizontal"
-                        Spacing="15">
+                        Spacing="10">
 
                         <Label
                             x:Name="FirstNameLabel"

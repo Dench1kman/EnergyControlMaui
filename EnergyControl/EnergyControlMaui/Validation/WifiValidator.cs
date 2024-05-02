@@ -8,52 +8,24 @@ namespace EnergyControlMaui.Validation
 {
     public class WifiValidator
     {
-        public async Task<bool> ValidateWifiNameAsync(string wifiName, string wifiPassword, Label wifiNameErrorLabel)
+        public async Task<bool> ValidateWifiSsidAsync(string wifiSsid, Label wifiSsidErrorLabel)
         {
-            if (string.IsNullOrWhiteSpace(wifiName))
+            if (string.IsNullOrWhiteSpace(wifiSsid))
             {
-                await ErrorMessage.ShowErrorMessage(wifiNameErrorLabel, "Wi-Fi name cannot be empty!");
-                return false;
-            }
-
-            bool wifiAvailable = await IsWifiAvailableAsync(wifiName);
-            if (!wifiAvailable)
-            {
-                await ErrorMessage.ShowErrorMessage(wifiNameErrorLabel, "Wi-Fi network with this name not found!");
+                await ErrorMessage.ShowErrorMessage(wifiSsidErrorLabel, "Wi-Fi name cannot be empty!");
                 return false;
             }
             return true;
         }
 
-        public async Task<bool> ValidateWifiPasswordAsync(string wifiName, string wifiPassword, Label wifiPasswordErrorLabel)
+        public async Task<bool> ValidateWifiPasswordAsync(string wifiPassword, Label wifiPasswordErrorLabel)
         {
             if (string.IsNullOrWhiteSpace(wifiPassword))
             {
                 await ErrorMessage.ShowErrorMessage(wifiPasswordErrorLabel, "Wi-Fi password cannot be empty!");
                 return false;
             }
-            
-            bool passwordCorrect = await IsPasswordCorrectAsync(wifiName, wifiPassword);
-            if (!passwordCorrect)
-            {
-                await ErrorMessage.ShowErrorMessage(wifiPasswordErrorLabel, "Incorrect Wi-Fi password!");
-                return false;
-            }
             return true;
-        }
-
-        private async Task<bool> IsWifiAvailableAsync(string wifiName)
-        {
-            // Here
-
-            return true; 
-        }
-
-        private async Task<bool> IsPasswordCorrectAsync(string wifiName, string wifiPassword)
-        {
-            // Here
-
-            return true; 
         }
     }
 }

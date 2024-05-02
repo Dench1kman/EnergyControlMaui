@@ -1,0 +1,166 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="EnergyControlMaui.Views.InstructionsPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Background="#24293E">
+
+
+    <ContentPage.Content>
+        <Grid>
+
+            <Image
+                Aspect="AspectFill"
+                HorizontalOptions="FillAndExpand"
+                Source="top_bar_home.png"
+                VerticalOptions="Start" />
+
+
+            <StackLayout Orientation="Horizontal">
+                <StackLayout
+                    Margin="45,8,0,0"
+                    Orientation="Horizontal"
+                    Spacing="0">
+                    <Label
+                        FontAttributes="Bold,Italic"
+                        FontFamily="Inter"
+                        FontSize="32"
+                        Text="E"
+                        TextColor="#F4F4FC" />
+                    <Label
+                        FontAttributes="Bold,Italic"
+                        FontFamily="Inter"
+                        FontSize="32"
+                        Text="C"
+                        TextColor="#8EBBFF" />
+                </StackLayout>
+            </StackLayout>
+            <StackLayout Margin="0,15,0,0" HorizontalOptions="Center">
+                <Label
+                    FontAttributes="Bold"
+                    FontFamily="Inter"
+                    FontSize="24"
+                    Text="Connection"
+                    TextColor="#F4F4FC" />
+            </StackLayout>
+
+            <StackLayout Margin="45,90,45,0">
+                <Label
+                    FontAttributes="Bold"
+                    FontFamily="Inter"
+                    FontSize="18"
+                    Text="Reset your smart bulb"
+                    TextColor="#F4F4FC" />
+
+                <StackLayout
+                    Margin="0,45,0,20"
+                    HorizontalOptions="StartAndExpand"
+                    Orientation="Horizontal">
+                    <Label
+                        FontSize="16"
+                        Text="●   "
+                        TextColor="Yellow" />
+                    <StackLayout Margin="0,0,45,0" Orientation="Vertical">
+                        <Label
+                            FontFamily="interregular"
+                            FontSize="16"
+                            Text="Power ON the device and confirm"
+                            TextColor="#F4F4FC" />
+                        <Label
+                            FontFamily="interregular"
+                            FontSize="16"
+                            Text="that the light blinks rapidly."
+                            TextColor="#F4F4FC" />
+                    </StackLayout>
+                </StackLayout>
+                <StackLayout
+                    Margin="0,0,0,20"
+                    HorizontalOptions="StartAndExpand"
+                    Orientation="Horizontal">
+                    <Label
+                        FontSize="16"
+                        Text="●   "
+                        TextColor="Yellow" />
+                    <StackLayout Orientation="Vertical">
+                        <Label
+                            FontFamily="interregular"
+                            FontSize="16"
+                            Text="Turn the light: ON-OFF-ON-OFF-ON"
+                            TextColor="#F4F4FC" />
+                        <Label
+                            FontFamily="interregular"
+                            FontSize="16"
+                            Text="to make the light blink."
+                            TextColor="#F4F4FC" />
+                    </StackLayout>
+                </StackLayout>
+                <StackLayout
+                    Margin="0,0,0,20"
+                    HorizontalOptions="StartAndExpand"
+                    Orientation="Horizontal">
+                    <Label
+                        FontSize="16"
+                        Text="●   "
+                        TextColor="Yellow" />
+                    <StackLayout Orientation="Vertical">
+                        <Label
+                            FontFamily="interregular"
+                            FontSize="16"
+                            Text="Make sure that you are using a"
+                            TextColor="#F4F4FC" />
+                        <Label
+                            FontFamily="interregular"
+                            FontSize="16"
+                            Text="2.4 GHz Wi-Fi network."
+                            TextColor="#F4F4FC" />
+                    </StackLayout>
+                </StackLayout>
+            </StackLayout>
+
+            <Image
+                x:Name="BulbImage"
+                Margin="0,120,0,0"
+                HorizontalOptions="Center"
+                Scale="1.25"
+                Source="bulb_off.svg" />
+
+
+            <StackLayout>
+                <StackLayout
+                    Margin="0,0,0,45"
+                    HorizontalOptions="Center"
+                    VerticalOptions="EndAndExpand">
+                    <Button
+                        x:Name="ConnectButton"
+                        Margin="0,0,0,20"
+                        BackgroundColor="#8EBBFF"
+                        Clicked="ConfirmButton_Clicked"
+                        CornerRadius="10"
+                        FontAttributes="Bold"
+                        FontFamily="Inter"
+                        FontSize="20"
+                        HeightRequest="50"
+                        Text="Confirm &amp; Next"
+                        TextColor="#2F3855"
+                        TextTransform="None"
+                        WidthRequest="300">
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup>
+                                <VisualState x:Name="Normal">
+                                    <VisualState.Setters>
+                                        <Setter Property="Scale" Value="1" />
+                                    </VisualState.Setters>
+                                </VisualState>
+                                <VisualState x:Name="Pressed">
+                                    <VisualState.Setters>
+                                        <Setter Property="Scale" Value="0.95" />
+                                    </VisualState.Setters>
+                                </VisualState>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                    </Button>
+                </StackLayout>
+            </StackLayout>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

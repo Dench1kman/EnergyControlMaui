@@ -51,7 +51,7 @@
 		<!-- App Icon -->
 		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" />
 		<MauiIcon Include="Resources\AppIcon\appiconfg.svg" />
-		<MauiSplashScreen Include="Resources\AppIcon\logo_splash.svg" BaseSize="128,128"/>
+		<MauiSplashScreen Include="Resources\AppIcon\logo_splash.svg" BaseSize="128,128" />
 		<MauiImage Include="Resources\Icons\account_ic.svg" />
 		<MauiImage Include="Resources\Icons\automation_ic.svg" />
 		<MauiImage Include="Resources\Icons\home_ic.svg" />
@@ -71,10 +71,23 @@
 		<MauiAsset Include="Resources\Raw\**" LogicalName="%(RecursiveDir)%(Filename)%(Extension)" />
 	</ItemGroup>
 
+	<!--<ItemGroup>
+	  <AndroidResource Remove="ViewModels\**" />
+	  <Compile Remove="ViewModels\**" />
+	  <EmbeddedResource Remove="ViewModels\**" />
+	  <MauiCss Remove="ViewModels\**" />
+	  <MauiXaml Remove="ViewModels\**" />
+	  <None Remove="ViewModels\**" />
+	</ItemGroup>-->
+
 	<ItemGroup>
 	  <AndroidResource Remove="Platforms\Android\Resources\drawable\ichidepassword.png" />
 	  <AndroidResource Remove="Resources\Images\bubble.png" />
 	</ItemGroup>
+
+	<!--<ItemGroup>
+	  <MauiXaml Remove="Views\SetupPage.xaml" />
+	</ItemGroup>-->
 
 	<!--<ItemGroup>
 	  <MauiImage Remove="Resources\Images\security_btn.svg" />
@@ -89,6 +102,8 @@
 	  <None Remove="Platforms\Android\Resources\drawable\ichidepassword.png" />
 	  <None Remove="Platforms\Android\Resources\drawable\icshowpassword.png" />
 	  <None Remove="Resources\AppIcon\logo_splash.svg" />
+	  <None Remove="Resources\Images\bulb_off.svg" />
+	  <None Remove="Resources\Images\bulb_on.svg" />
 	  <None Remove="Resources\Images\security_btn.svg" />
 	  <None Remove="Resources\AppIcon\appicon.svg" />
 	  <None Remove="Resources\AppIcon\appiconfg.svg" />
@@ -127,6 +142,13 @@
 	  <None Remove="Resources\Raw\thermostat_btn.svg" />
 	  <None Remove="Resources\Splash\mysplash.svg" />
 	</ItemGroup>
+
+
+	<!--<ItemGroup>
+	  <EmbeddedResource Include="Views\SetupPage.xaml">
+	    <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+	  </EmbeddedResource>
+	</ItemGroup>-->
 
 
 	<ItemGroup>
@@ -182,6 +204,10 @@
 	    <SubType>Code</SubType>
 	    <DependentUpon>%(Filename)</DependentUpon>
 	  </Compile>
+		<Compile Update="Views\InstructionsPage.xaml.cs">
+			<SubType>Code</SubType>
+			<DependentUpon>InstructionsPage.xaml</DependentUpon>
+		</Compile>
 	  <Compile Update="Views\WelcomePage.xaml.cs">
 	    <SubType>Code</SubType>
 	    <DependentUpon>%(Filename)</DependentUpon>
@@ -190,9 +216,9 @@
 			<SubType>Code</SubType>
 			<DependentUpon>%(Filename)</DependentUpon>
 		</Compile>
-		<Compile Update="Views\AutomationPage.xaml.cs">
+		<Compile Update="Views\ControlPage.xaml.cs">
 			<SubType>Code</SubType>
-			<DependentUpon>%(Filename)</DependentUpon>
+			<DependentUpon>ControlPage.xaml</DependentUpon>
 		</Compile>
 		<Compile Update="Views\StatisticsPage.xaml.cs">
 			<SubType>Code</SubType>
@@ -227,6 +253,9 @@
 	  <None Update="Views\SignupPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </None>
+		<None Update="Views\InstructionsPage.xaml">
+			<Generator>MSBuild:Compile</Generator>
+		</None>
 	  <None Update="Views\WelcomePage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </None>
@@ -243,15 +272,17 @@
 	  <MauiImage Include="Resources\Images\Buttons\security_btn.svg" />
 	</ItemGroup>
 
-	<ItemGroup>
-	  <Folder Include="ViewModels\" />
-	</ItemGroup>
+	<!--<ItemGroup>
+	  <MauiXaml Update="Views\InstructionsPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	</ItemGroup>-->
 
-	<ItemGroup>
+	<!--<ItemGroup>
 	  <MauiXaml Update="Views\WifiConnectionPage.xaml">
 	    <Generator></Generator>
 	  </MauiXaml>
-	</ItemGroup>
+	</ItemGroup>-->
 
 	<!--<ItemGroup>
 	  <MauiXaml Update="Views\WifiCredentialsPage.xaml">

@@ -67,23 +67,34 @@
                         TextColor="#F4F4FC" />
 
                     <StackLayout Margin="-4,0,45,0">
+
                         <Entry
-                            x:Name="WifiNameEntry"
+                            x:Name="WifiSsidEntry"
                             FontSize="16"
                             Opacity="0.5"
                             Placeholder="Enter your wifi name"
                             PlaceholderColor="LightGray"
                             TextColor="White" />
+                        <!--<picker
+                            x:name="wifinetworkpicker"
+                            title="select wi-fi network"
+                            margin="0,0,0,0"
+                            fontsize="16"
+                            horizontaloptions="startandexpand"
+                            opacity="0.5"
+                            textcolor="black"
+                            titlecolor="white"
+                            widthrequest="300" />-->
 
                         <Label
-                            Margin="4,-23,0,0"
-                            FontSize="12"
-                            Text="_______________________________________________________"
+                            Margin="4,-26,0,0"
+                            FontSize="16"
+                            Text="_________________________________________"
                             TextColor="White" />
 
                         <Label
-                            x:Name="WifiNameErrorLabel"
-                            Margin="0,0,0,-17"
+                            x:Name="WifiSsidErrorLabel"
+                            Margin="5,0,0,-17"
                             FontFamily="interregular"
                             FontSize="12"
                             IsVisible="False"
@@ -97,14 +108,6 @@
                         Text="Wi-Fi Password"
                         TextColor="#F4F4FC" />
 
-                    <Label
-                        x:Name="WifiPasswordErrorLabel"
-                        Margin="0,0,0,-17"
-                        FontFamily="interregular"
-                        FontSize="12"
-                        IsVisible="False"
-                        TextColor="Red" />
-
                     <StackLayout Margin="-4,0,45,0" Orientation="Horizontal">
                         <Entry
                             x:Name="WifiPasswordEntry"
@@ -113,8 +116,8 @@
                             IsPassword="{Binding Source={x:Reference ShowPasswordActualTrigger}, Path=HidePassword}"
                             Opacity="0.5"
                             Placeholder="Enter your wifi password"
-                            PlaceholderColor="LightGray"
-                            TextColor="White"
+                            PlaceholderColor="#F4F4FC"
+                            TextColor="#F4F4FC"
                             WidthRequest="270" />
 
                         <ImageButton
@@ -136,10 +139,18 @@
                         </ImageButton>
                     </StackLayout>
                     <Label
-                        Margin="0,-21,0,0"
-                        FontSize="12"
-                        Text="_______________________________________________________"
+                        Margin="0,-26,0,0"
+                        FontSize="16"
+                        Text="_________________________________________"
                         TextColor="White" />
+
+                    <Label
+                        x:Name="WifiPasswordErrorLabel"
+                        Margin="0,0,0,-17"
+                        FontFamily="interregular"
+                        FontSize="12"
+                        IsVisible="False"
+                        TextColor="Red" />
                 </StackLayout>
 
                 <StackLayout
@@ -156,7 +167,7 @@
                         FontFamily="Inter"
                         FontSize="20"
                         HeightRequest="50"
-                        Text="Connect"
+                        Text="Confirm"
                         TextColor="#2F3855"
                         TextTransform="None"
                         WidthRequest="300">

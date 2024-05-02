@@ -42,6 +42,12 @@
                     Text="Statistics"
                     TextColor="#F4F4FC" />
             </StackLayout>
+            <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
+                <Label
+                    FontSize="18"
+                    Text="Page in development"
+                    TextColor="#F4F4FC" />
+            </StackLayout>
         </Grid>
     </ContentPage.Content>
 </ContentPage>
