@@ -28,6 +28,7 @@ namespace EnergyControlMaui.Views
             _wifiConnection = new WifiConnection();
 
             InitializeComponent();
+            Shell.SetBackButtonBehavior(this, new BackButtonBehavior { IsVisible = false });
             GetAvailableNetworks();
             
         }
@@ -55,17 +56,25 @@ namespace EnergyControlMaui.Views
                 return;
             }
 #if ANDROID
-            var isValid = await _wifiConnection.ConnectToWifiAsync(WifiSsidEntry.Text, WifiPasswordEntry.Text);
-
-            if (isValid)
+            if (string.IsNullOrEmpty(WifiPasswordEntry.Text))
             {
-                await DisplayAlert("Success", $"Successfully connected to Wi-Fi network: {WifiSsidEntry.Text}", "OK");
-                await Navigation.PushModalAsync(new InstructionsPage());
+                await ErrorMessage.ShowErrorMessage(WifiPasswordErrorLabel, "Password field cannot be empty!");
             }
-            else 
+            else
             {
-                await DisplayAlert("Error", $"Failed to connect to Wi-Fi network: {WifiSsidEntry.Text}. " +
-                                    $"Please check your credentials and try again.", "OK");
+                var isValid = await _wifiConnection.ConnectToWifiAsync(WifiSsidEntry.Text, WifiPasswordEntry.Text);
+
+                if (isValid)
+                {
+                    await DisplayAlert("Success", $"Successfully connected to Wi-Fi network: {WifiSsidEntry.Text}", "OK");
+                    //await Navigation.PushModalAsync(new InstructionsPage());
+                    await Navigation.PushAsync(new InstructionsPage());
+                }
+                else
+                {
+                    await DisplayAlert("Error", $"Failed to connect to Wi-Fi network: {WifiSsidEntry.Text}. " +
+                                        $"Please check your credentials and try again.", "OK");
+                }
             }
 #endif
         }

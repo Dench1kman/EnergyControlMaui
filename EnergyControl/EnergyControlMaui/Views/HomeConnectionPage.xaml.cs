@@ -19,7 +19,9 @@ namespace EnergyControlMaui.Views
         public HomeConnectionPage()
 		{
             _wifiService = new WifiService(Android.App.Application.Context);
+
             InitializeComponent();
+            Shell.SetBackButtonBehavior(this, new BackButtonBehavior { IsVisible = false });
         }
 
         private async void LampButton_Clicked(object sender, EventArgs e)
@@ -27,7 +29,9 @@ namespace EnergyControlMaui.Views
             var isWifiActive = await _wifiService.CheckAndSwitchToWifiAsync();
             if (isWifiActive)
             {
-                await Navigation.PushModalAsync(new WifiConnectionPage());
+                //await Navigation.PushModalAsync(new WifiConnectionPage());
+                
+                await Navigation.PushAsync(new WifiConnectionPage());
             }
         }
         

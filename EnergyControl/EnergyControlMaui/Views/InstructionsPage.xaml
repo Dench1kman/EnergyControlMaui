@@ -3,7 +3,8 @@
     x:Class="EnergyControlMaui.Views.InstructionsPage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    Background="#24293E">
+    Background="#24293E"
+    Shell.TabBarIsVisible="False">
 
 
     <ContentPage.Content>
@@ -111,7 +112,17 @@
                         <Label
                             FontFamily="interregular"
                             FontSize="16"
-                            Text="2.4 GHz Wi-Fi network."
+                            Text="2.4 GHz Wi-Fi network and"
+                            TextColor="#F4F4FC" />
+                        <Label
+                            FontFamily="interregular"
+                            FontSize="16"
+                            Text="WPA/WPA-PSK/WPA2/WPA2-PSK"
+                            TextColor="#F4F4FC" />
+                        <Label
+                            FontFamily="interregular"
+                            FontSize="16"
+                            Text="encryption."
                             TextColor="#F4F4FC" />
                     </StackLayout>
                 </StackLayout>
@@ -119,7 +130,7 @@
 
             <Image
                 x:Name="BulbImage"
-                Margin="0,120,0,0"
+                Margin="0,200,0,0"
                 HorizontalOptions="Center"
                 Scale="1.25"
                 Source="bulb_off.svg" />

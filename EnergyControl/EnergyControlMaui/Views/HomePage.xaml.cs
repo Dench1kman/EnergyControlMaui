@@ -20,7 +20,8 @@ namespace EnergyControlMaui.Views
         {
             if (ConnectivityService.IsConnected())
             {
-                await Navigation.PushModalAsync(new HomeConnectionPage());
+                //await Navigation.PushModalAsync(new HomeConnectionPage());
+                await Navigation.PushAsync(new HomeConnectionPage());
             }
             else 
                 await ConnectivityService.ShowNoInternetConnectionError();

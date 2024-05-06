@@ -71,7 +71,7 @@
 
             <!--<StackLayout HorizontalOptions="Center" VerticalOptions="Center">-->
 
-            <StackLayout Orientation="Horizontal">
+            <StackLayout Margin="0,-45,0,0" Orientation="Horizontal">
 
                 <Image Scale="0.8" Source="user_image.svg" />
 
@@ -90,6 +90,7 @@
                             FontAttributes="Bold"
                             FontFamily="Inter"
                             FontSize="20"
+                            Text="Name"
                             TextColor="#F4F4FC" />
 
                         <Label
@@ -97,6 +98,7 @@
                             FontAttributes="Bold"
                             FontFamily="Inter"
                             FontSize="20"
+                            Text="Surname"
                             TextColor="#F4F4FC" />
 
                     </StackLayout>
@@ -104,14 +106,15 @@
                         x:Name="EmailLabel"
                         FontFamily="interlight"
                         FontSize="15"
+                        Text="example@gmail.com"
                         TextColor="#F4F4FC" />
                 </StackLayout>
             </StackLayout>
 
             <StackLayout
-                Margin="0,0,0,150"
+                Margin="0,250,0,0"
                 HorizontalOptions="Center"
-                VerticalOptions="End">
+                VerticalOptions="CenterAndExpand">
                 <ImageButton
                     Margin="0,0,0,20"
                     Clicked="SecurityButton_Clicked"

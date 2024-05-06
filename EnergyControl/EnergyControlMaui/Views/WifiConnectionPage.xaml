@@ -4,7 +4,8 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:triggers="clr-namespace:EnergyControlMaui.Triggers"
-    Background="#24293E">
+    Background="#24293E"
+    Shell.TabBarIsVisible="False">
 
 
     <ContentPage.Content>

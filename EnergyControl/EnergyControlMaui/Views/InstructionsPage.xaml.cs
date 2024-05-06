@@ -19,8 +19,8 @@ namespace EnergyControlMaui.Views
         public InstructionsPage()
         {
             InitializeComponent();
-
-            Device.StartTimer(TimeSpan.FromSeconds(1.5), () =>
+            Shell.SetBackButtonBehavior(this, new BackButtonBehavior { IsVisible = false });
+            Device.StartTimer(TimeSpan.FromSeconds(1), () =>
             {
                 BulbImage.Source = imageSources[imageIndex % imageSources.Length];
                 imageIndex++;
@@ -29,9 +29,10 @@ namespace EnergyControlMaui.Views
             });
         }
 
-        private void ConfirmButton_Clicked(object sender, EventArgs e)
+        private async void ConfirmButton_Clicked(object sender, EventArgs e)
         {
-
+            //await Navigation.PushModalAsync(new AddDevicePage());
+            await Navigation.PushAsync(new AddDevicePage());
         }
 
     }

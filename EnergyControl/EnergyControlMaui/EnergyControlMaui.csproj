@@ -71,31 +71,11 @@
 		<MauiAsset Include="Resources\Raw\**" LogicalName="%(RecursiveDir)%(Filename)%(Extension)" />
 	</ItemGroup>
 
-	<!--<ItemGroup>
-	  <AndroidResource Remove="ViewModels\**" />
-	  <Compile Remove="ViewModels\**" />
-	  <EmbeddedResource Remove="ViewModels\**" />
-	  <MauiCss Remove="ViewModels\**" />
-	  <MauiXaml Remove="ViewModels\**" />
-	  <None Remove="ViewModels\**" />
-	</ItemGroup>-->
 
 	<ItemGroup>
 	  <AndroidResource Remove="Platforms\Android\Resources\drawable\ichidepassword.png" />
 	  <AndroidResource Remove="Resources\Images\bubble.png" />
 	</ItemGroup>
-
-	<!--<ItemGroup>
-	  <MauiXaml Remove="Views\SetupPage.xaml" />
-	</ItemGroup>-->
-
-	<!--<ItemGroup>
-	  <MauiImage Remove="Resources\Images\security_btn.svg" />
-	</ItemGroup>-->
-
-	<!--<ItemGroup>
-	  <MauiXaml Remove="Views\WifiCredentialsPage.xaml" />
-	</ItemGroup>-->
 
 
 	<ItemGroup>
@@ -129,6 +109,7 @@
 	  <None Remove="Resources\Images\sircle_dots.png" />
 	  <None Remove="Resources\Images\statistics_ic.png" />
 	  <None Remove="Resources\Images\statistic_ic_active.png" />
+	  <None Remove="Resources\Images\tap.svg" />
 	  <None Remove="Resources\Images\top_bar_home.png" />
 	  <None Remove="Resources\Images\user_image.svg" />
 	  <None Remove="Resources\Images\wavy_dots_down.png" />
@@ -142,13 +123,6 @@
 	  <None Remove="Resources\Raw\thermostat_btn.svg" />
 	  <None Remove="Resources\Splash\mysplash.svg" />
 	</ItemGroup>
-
-
-	<!--<ItemGroup>
-	  <EmbeddedResource Include="Views\SetupPage.xaml">
-	    <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-	  </EmbeddedResource>
-	</ItemGroup>-->
 
 
 	<ItemGroup>
@@ -165,6 +139,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.2" />
 		<PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.2" />
 		<PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="8.0.2" />
 		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.2">
@@ -220,6 +195,10 @@
 			<SubType>Code</SubType>
 			<DependentUpon>ControlPage.xaml</DependentUpon>
 		</Compile>
+		<Compile Update="Views\AddDevicePage.xaml.cs">
+			<SubType>Code</SubType>
+			<DependentUpon>AddDevicePage.xaml</DependentUpon>
+		</Compile>
 		<Compile Update="Views\StatisticsPage.xaml.cs">
 			<SubType>Code</SubType>
 			<DependentUpon>%(Filename)</DependentUpon>
@@ -259,6 +238,9 @@
 	  <None Update="Views\WelcomePage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </None>
+		<None Update="Views\AddDevicePage.xaml">
+			<Generator>MSBuild:Compile</Generator>
+		</None>
 	</ItemGroup>
 
 	<ItemGroup>
@@ -271,26 +253,4 @@
 	  <MauiAsset Include="Resources\Images\Buttons\thermostat_btn.svg" />
 	  <MauiImage Include="Resources\Images\Buttons\security_btn.svg" />
 	</ItemGroup>
-
-	<!--<ItemGroup>
-	  <MauiXaml Update="Views\InstructionsPage.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	</ItemGroup>-->
-
-	<!--<ItemGroup>
-	  <MauiXaml Update="Views\WifiConnectionPage.xaml">
-	    <Generator></Generator>
-	  </MauiXaml>
-	</ItemGroup>-->
-
-	<!--<ItemGroup>
-	  <MauiXaml Update="Views\WifiCredentialsPage.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	</ItemGroup>-->
-
-	<!--<ItemGroup>
-	  <MauiSplashScreen Include="Resources\Splash\logo_splash.svg" />
-	</ItemGroup>-->
 </Project>

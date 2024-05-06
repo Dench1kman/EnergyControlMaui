@@ -7,6 +7,7 @@
     NavigationPage.HasBackButton="False"
     NavigationPage.HasNavigationBar="False">
 
+
     <ContentPage.Content>
         <Grid>
             <Image
@@ -42,12 +43,68 @@
                     Text="Control"
                     TextColor="#F4F4FC" />
             </StackLayout>
-            <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
+
+            <StackLayout
+                x:Name="NoDevicesText"
+                HorizontalOptions="Center"
+                IsVisible="True"
+                VerticalOptions="Center">
                 <Label
                     FontSize="18"
                     Text="No connected devices"
                     TextColor="#F4F4FC" />
             </StackLayout>
+
+            <StackLayout x:Name="LampControl" IsVisible="False">
+                <Label
+                    x:Name="LampNameLabel"
+                    Margin="0,100,0,50"
+                    FontAttributes="Bold"
+                    FontFamily="Inter"
+                    FontSize="20"
+                    HorizontalOptions="CenterAndExpand"
+                    TextColor="#F4F4FC" />
+
+                <ImageButton
+                    x:Name="LampButton"
+                    Clicked="LampButton_Clicked"
+                    HorizontalOptions="Center"
+                    Scale="2"
+                    Source="bulb_off.svg"
+                    VerticalOptions="CenterAndExpand" />
+
+                <Image
+                    x:Name="TapImage"
+                    Margin="180,-50,0,0"
+                    HeightRequest="70"
+                    Source="tap.svg"
+                    WidthRequest="70" />
+
+                <StackLayout
+                    Margin="0,0,0,45"
+                    HorizontalOptions="Center"
+                    VerticalOptions="EndAndExpand">
+                    <Label
+                        x:Name="displayLabel"
+                        Margin="10,0,0,0"
+                        FontFamily="Inter"
+                        FontSize="18"
+                        HorizontalOptions="StartAndExpand"
+                        Routing.Route="Control"
+                        Text="{Binding Source={x:Reference slider}, Path=Value, StringFormat='Brightness: {0:F0}%'}"
+                        TextColor="#F4F4FC"
+                        VerticalOptions="Center" />
+                    <Slider
+                        x:Name="slider"
+                        HeightRequest="50"
+                        Maximum="100"
+                        MaximumTrackColor="#BEBEBE"
+                        MinimumTrackColor="#F4F4FC"
+                        ThumbColor="#8EBBFF"
+                        WidthRequest="250" />
+                </StackLayout>
+            </StackLayout>
+
         </Grid>
     </ContentPage.Content>
 </ContentPage>
