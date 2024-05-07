@@ -4,6 +4,7 @@ using Android.Net.Wifi;
 using Microsoft.Extensions.Logging;
 using EnergyControlMaui.Views;
 using EnergyControlMaui.Services;
+using CommunityToolkit.Maui;
 
 
 namespace EnergyControlMaui
@@ -16,6 +17,7 @@ namespace EnergyControlMaui
 
             builder
                 .UseMauiApp<App>()
+                .UseMauiCommunityToolkit()
                 .ConfigureFonts(fonts =>
                 {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");

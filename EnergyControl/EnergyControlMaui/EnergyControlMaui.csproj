@@ -78,6 +78,11 @@
 	</ItemGroup>
 
 
+	<!--<ItemGroup>
+	  <MauiXaml Remove="Views\PopupView.xaml" />
+	</ItemGroup>-->
+
+
 	<ItemGroup>
 	  <None Remove="Platforms\Android\Resources\drawable\ichidepassword.png" />
 	  <None Remove="Platforms\Android\Resources\drawable\icshowpassword.png" />
@@ -125,6 +130,13 @@
 	</ItemGroup>
 
 
+	<!--<ItemGroup>
+	  <EmbeddedResource Include="Views\PopupView.xaml">
+	    <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+	  </EmbeddedResource>
+	</ItemGroup>-->
+
+
 	<ItemGroup>
 	  <MauiImage Include="Platforms\Android\Resources\drawable\ichidepassword.png" />
 	  <MauiImage Include="Resources\Icons\account_ic_active.png" />
@@ -139,6 +151,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<PackageReference Include="CommunityToolkit.Maui" Version="7.0.1" />
 		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.2" />
 		<PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.2" />
 		<PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="8.0.2" />
@@ -163,10 +176,14 @@
 			<SubType>Code</SubType>
 			<DependentUpon>WifiConnectionPage.xaml</DependentUpon>
 		</Compile>
-	  <Compile Update="Views\LoginPage.xaml.cs">
-	    <SubType>Code</SubType>
-	    <DependentUpon>%(Filename)</DependentUpon>
-	  </Compile>
+		<Compile Update="Views\LoginPage.xaml.cs">
+			<SubType>Code</SubType>
+			<DependentUpon>%(Filename)</DependentUpon>
+		</Compile>
+		<Compile Update="Views\PopupView.xaml.cs">
+			<SubType>Code</SubType>
+			<DependentUpon>%(Filename)</DependentUpon>
+		</Compile>
 	  <Compile Update="Views\HomePage.xaml.cs">
 	    <SubType>Code</SubType>
 	    <DependentUpon>HomePage.xaml</DependentUpon>
@@ -235,6 +252,9 @@
 		<None Update="Views\InstructionsPage.xaml">
 			<Generator>MSBuild:Compile</Generator>
 		</None>
+		<None Update="Views\PopupView.xaml">
+			<Generator>MSBuild:Compile</Generator>
+		</None>
 	  <None Update="Views\WelcomePage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </None>
@@ -252,5 +272,15 @@
 	  <MauiAsset Include="Resources\Images\robot.svg" />
 	  <MauiAsset Include="Resources\Images\Buttons\thermostat_btn.svg" />
 	  <MauiImage Include="Resources\Images\Buttons\security_btn.svg" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiXaml Update="Views\PopupView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="Interfaces\" />
 	</ItemGroup>
 </Project>

@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<toolkit:Popup
+    x:Class="EnergyControlMaui.Views.PopupView"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    CanBeDismissedByTappingOutsideOfPopup="False"
+    Color="Transparent">
+
+    <StackLayout>
+        <StackLayout>
+            <Frame
+                BackgroundColor="#24293E"
+                BorderColor="#8EBBFF"
+                CornerRadius="10"
+                HeightRequest="200"
+                WidthRequest="300" />
+        </StackLayout>
+
+        <StackLayout
+            Margin="0,-200,0,0"
+            HorizontalOptions="StartAndExpand"
+            VerticalOptions="StartAndExpand"
+            WidthRequest="300">
+
+            <Label
+                x:Name="Title"
+                Margin="20,20,0,20"
+                FontFamily="Inter"
+                FontSize="20"
+                HorizontalOptions="StartAndExpand"
+                Text="Please Wait"
+                TextColor="#F4F4FC" />
+
+            <Label
+                x:Name="Message"
+                Margin="20,0,0,25"
+                FontFamily="interregular"
+                FontSize="16"
+                HorizontalOptions="StartAndExpand"
+                Text="Trying to connect to your wi-fi..."
+                TextColor="#F4F4FC" />
+
+            <ActivityIndicator
+                HorizontalOptions="Center"
+                IsRunning="True"
+                Color="#F4F4FC" />
+        </StackLayout>
+    </StackLayout>
+</toolkit:Popup>

@@ -29,7 +29,7 @@ namespace EnergyControlMaui.Views
 
             if (emailValidationTask.Result && passwordValidationTask.Result)
             {
-                AppConstants.Email = EmailEntry.Text; 
+                AppConstants.Email = EmailEntry.Text;
                 await Navigation.PushAsync(new AppShell());
             }
         }
