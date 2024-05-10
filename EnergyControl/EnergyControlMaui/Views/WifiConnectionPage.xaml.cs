@@ -6,12 +6,12 @@ using Android.Media.Midi;
 using Android.Net;
 using Android.Net.Wifi;
 using System.Collections;
+using static Android.Media.Midi.MidiDevice;
 #endif
 using EnergyControlMaui.Services;
 using EnergyControlMaui.Validation;
 using EnergyControlMaui.Models;
 using CommunityToolkit.Maui.Views;
-
 
 
 namespace EnergyControlMaui.Views
@@ -22,15 +22,11 @@ namespace EnergyControlMaui.Views
 #if ANDROID
         private readonly WifiService _wifiService;
         private readonly WifiConnection _wifiConnection;
-        //private PopupView _popupView;
-
-        public WifiConnectionPage() //WifiConnection wifiConnection, PopupView popupView 
+        public WifiConnectionPage() 
         {
             _wifiService = new WifiService(Android.App.Application.Context);
-            //_wifiConnection = wifiConnection;
-            //_popupView = popupView;
-            _wifiConnection = new WifiConnection(); 
-            //_popupView = new PopupView(); 
+            _wifiConnection = WifiConnectionService.GetInstance().GetWifiConnection();
+
             InitializeComponent();
             Shell.SetBackButtonBehavior(this, new BackButtonBehavior { IsVisible = false });
             GetAvailableNetworks();
@@ -68,7 +64,7 @@ namespace EnergyControlMaui.Views
             {
                 var isValid = await _wifiConnection.ConnectToWifiAsync(WifiSsidEntry.Text, WifiPasswordEntry.Text);
 
-                await this.ShowPopupAsync(new PopupView());
+                await this.ShowPopupAsync(new PopupView("Please Wait", "Trying to connect to your wi-fi...", 1000)); //10000
 
                 if (isValid)
                 {

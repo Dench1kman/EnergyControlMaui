@@ -1,0 +1,128 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="EnergyControlMaui.Views.LampConnectionPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Background="#24293E"
+    Shell.TabBarIsVisible="False">
+
+
+    <ContentPage.Content>
+        <Grid>
+            <Image
+                Aspect="AspectFill"
+                HorizontalOptions="FillAndExpand"
+                Source="top_bar_home.png"
+                VerticalOptions="Start" />
+
+            <StackLayout Orientation="Horizontal">
+                <StackLayout
+                    Margin="45,8,0,0"
+                    Orientation="Horizontal"
+                    Spacing="0">
+                    <Label
+                        FontAttributes="Bold,Italic"
+                        FontFamily="Inter"
+                        FontSize="32"
+                        Text="E"
+                        TextColor="#F4F4FC" />
+                    <Label
+                        FontAttributes="Bold,Italic"
+                        FontFamily="Inter"
+                        FontSize="32"
+                        Text="C"
+                        TextColor="#8EBBFF" />
+                </StackLayout>
+            </StackLayout>
+            <StackLayout Margin="0,15,0,0" HorizontalOptions="Center">
+                <Label
+                    FontAttributes="Bold"
+                    FontFamily="Inter"
+                    FontSize="24"
+                    Text="Connection"
+                    TextColor="#F4F4FC" />
+            </StackLayout>
+
+            <StackLayout Margin="45,90,45,0">
+                <Label
+                    FontAttributes="Bold"
+                    FontFamily="Inter"
+                    FontSize="18"
+                    Text="Connecting..."
+                    TextColor="#F4F4FC" />
+
+                <StackLayout
+                    Margin="0,45,0,20"
+                    HorizontalOptions="StartAndExpand"
+                    Orientation="Horizontal">
+                    <StackLayout Margin="0,0,45,0" Orientation="Vertical">
+                        <Label
+                            FontFamily="interregular"
+                            FontSize="16"
+                            Text="Please wait, connection may take about"
+                            TextColor="#F4F4FC" />
+                        <Label
+                            FontFamily="interregular"
+                            FontSize="16"
+                            Text="a minute ..."
+                            TextColor="#F4F4FC" />
+                    </StackLayout>
+                </StackLayout>
+            </StackLayout>
+
+            <ActivityIndicator
+                HorizontalOptions="Center"
+                IsRunning="True"
+                Scale="2"
+                Color="#8EBBFF" />
+
+            <StackLayout
+                Margin="45,0,0,90"
+                HorizontalOptions="Center"
+                Spacing="15"
+                VerticalOptions="EndAndExpand">
+                <StackLayout HorizontalOptions="StartAndExpand" Orientation="Horizontal">
+                    <Label
+                        FontSize="16"
+                        Text="●   "
+                        TextColor="Yellow" />
+                    <StackLayout Margin="0,0,45,0" Orientation="Vertical">
+                        <Label
+                            FontFamily="interregular"
+                            FontSize="16"
+                            Text="Looking for a device ..."
+                            TextColor="#F4F4FC" />
+                    </StackLayout>
+                </StackLayout>
+
+                <StackLayout HorizontalOptions="StartAndExpand" Orientation="Horizontal">
+                    <Label
+                        FontSize="16"
+                        Text="●   "
+                        TextColor="Yellow" />
+                    <StackLayout Margin="0,0,45,0" Orientation="Vertical">
+                        <Label
+                            FontFamily="interregular"
+                            FontSize="16"
+                            Text="Sending a message to the device ..."
+                            TextColor="#F4F4FC" />
+                    </StackLayout>
+                </StackLayout>
+
+                <StackLayout HorizontalOptions="StartAndExpand" Orientation="Horizontal">
+                    <Label
+                        FontSize="16"
+                        Text="●   "
+                        TextColor="Yellow" />
+                    <StackLayout Margin="0,0,45,0" Orientation="Vertical">
+                        <Label
+                            FontFamily="interregular"
+                            FontSize="16"
+                            Text="Reconnecting to wi-fi ..."
+                            TextColor="#F4F4FC" />
+                    </StackLayout>
+                </StackLayout>
+            </StackLayout>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

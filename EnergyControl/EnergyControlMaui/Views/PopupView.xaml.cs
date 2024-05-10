@@ -7,15 +7,19 @@ namespace EnergyControlMaui.Views
     public partial class PopupView : Popup
     { 
 #if ANDROID
-        public PopupView()
+        public PopupView(string title, string message, int timer)
         {
             InitializeComponent();
-            ClosePopupAsync();
+
+            Title.Text = title;
+            Message.Text = message;
+
+            ClosePopupAsync(timer);
         }
 
-        public async Task ClosePopupAsync()
+        public async Task ClosePopupAsync(int timer)
         {
-            await Task.Delay(10000);
+            await Task.Delay(timer);
             await CloseAsync();
         }
 #endif

@@ -1,0 +1,150 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="EnergyControlMaui.Views.WifiLampConnectionPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Background="#24293E"
+    NavigationPage.HasNavigationBar="False"
+    Shell.TabBarIsVisible="False">
+
+    <ContentPage.Content>
+        <Grid>
+
+            <Image
+                Aspect="AspectFill"
+                HorizontalOptions="FillAndExpand"
+                Source="top_bar_home.png"
+                VerticalOptions="Start" />
+
+
+            <StackLayout Orientation="Horizontal">
+                <StackLayout
+                    Margin="45,8,0,0"
+                    Orientation="Horizontal"
+                    Spacing="0">
+                    <Label
+                        FontAttributes="Bold,Italic"
+                        FontFamily="Inter"
+                        FontSize="32"
+                        Text="E"
+                        TextColor="#F4F4FC" />
+                    <Label
+                        FontAttributes="Bold,Italic"
+                        FontFamily="Inter"
+                        FontSize="32"
+                        Text="C"
+                        TextColor="#8EBBFF" />
+                </StackLayout>
+            </StackLayout>
+            <StackLayout Margin="0,15,0,0" HorizontalOptions="Center">
+                <Label
+                    FontAttributes="Bold"
+                    FontFamily="Inter"
+                    FontSize="24"
+                    Text="Connection"
+                    TextColor="#F4F4FC" />
+            </StackLayout>
+
+            <StackLayout Margin="45,90,45,0">
+                <Label
+                    FontAttributes="Bold"
+                    FontFamily="Inter"
+                    FontSize="18"
+                    Text="Connect to Lamp's Wi-Fi"
+                    TextColor="#F4F4FC" />
+
+                <StackLayout
+                    Margin="0,45,0,20"
+                    HorizontalOptions="StartAndExpand"
+                    Orientation="Horizontal">
+                    <Label
+                        FontSize="16"
+                        Text="●   "
+                        TextColor="Yellow" />
+                    <StackLayout Margin="0,0,45,0" Orientation="Vertical">
+                        <Label
+                            FontFamily="interregular"
+                            FontSize="16"
+                            Text="Please connect to the smart lamp's"
+                            TextColor="#F4F4FC" />
+                        <Label
+                            FontFamily="interregular"
+                            FontSize="16"
+                            Text="wi-fi and come back."
+                            TextColor="#F4F4FC" />
+                    </StackLayout>
+                </StackLayout>
+            </StackLayout>
+
+            <Image
+                x:Name="WifiLampImage"
+                HorizontalOptions="Center"
+                Scale="1.25"
+                Source="wifi_lamp.svg" />
+
+            <StackLayout
+                Margin="0,0,0,25"
+                HorizontalOptions="Center"
+                VerticalOptions="EndAndExpand">
+
+                <StackLayout
+                    Margin="0,0,0,15"
+                    HorizontalOptions="Start"
+                    Orientation="Horizontal"
+                    VerticalOptions="Center">
+                    <CheckBox
+                        x:Name="ChkBox"
+                        IsChecked="False"
+                        Color="#F4F4FC" />
+                    <StackLayout Margin="8,0,0,0" VerticalOptions="Center">
+                        <Label
+                            FontFamily="interlight"
+                            FontSize="13"
+                            Text="I connected to the lamp's wifi"
+                            TextColor="#F4F4FC" />
+                    </StackLayout>
+                </StackLayout>
+
+                <Label
+                    x:Name="ChkBoxErrorLabel"
+                    Margin="40,-20,0,0"
+                    FontFamily="interregular"
+                    FontSize="12"
+                    IsVisible="False"
+                    Text="Confirm you are connected"
+                    TextColor="Red" />
+
+                <Button
+                    x:Name="ConfirmConnectionButton"
+                    Margin="0,0,0,45"
+                    BackgroundColor="#8EBBFF"
+                    Clicked="ConfirmConnectionButton_Clicked"
+                    CornerRadius="10"
+                    FontAttributes="Bold"
+                    FontFamily="Inter"
+                    FontSize="20"
+                    HeightRequest="50"
+                    Text="Confirm"
+                    TextColor="#2F3855"
+                    TextTransform="None"
+                    VerticalOptions="EndAndExpand"
+                    WidthRequest="300">
+                    <VisualStateManager.VisualStateGroups>
+                        <VisualStateGroup>
+                            <VisualState x:Name="Normal">
+                                <VisualState.Setters>
+                                    <Setter Property="Scale" Value="1" />
+                                </VisualState.Setters>
+                            </VisualState>
+                            <VisualState x:Name="Pressed">
+                                <VisualState.Setters>
+                                    <Setter Property="Scale" Value="0.95" />
+                                </VisualState.Setters>
+                            </VisualState>
+                        </VisualStateGroup>
+                    </VisualStateManager.VisualStateGroups>
+                </Button>
+            </StackLayout>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

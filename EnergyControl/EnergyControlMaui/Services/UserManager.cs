@@ -33,7 +33,7 @@ namespace EnergyControlMaui.Services
 
         public async Task<bool> UserExistsAsync(string email)
         {
-            return await _db.Users.AnyAsync(u => u.Email == email);
+            return await _db.Users.Where(u => u.Email == email).AnyAsync();
         }
 
         public async Task<bool> CheckPasswordAsync(string email, string hashedPassword)
@@ -48,7 +48,7 @@ namespace EnergyControlMaui.Services
 
         public async Task<User> GetUserDataAsync(string email)
         {
-            return await _db.Users.FirstOrDefaultAsync(u => u.Email == email);
+            return await _db.Users.Where(u => u.Email == email).FirstOrDefaultAsync();
         }
 
         public async Task<List<User>> GetAllUsersAsync()

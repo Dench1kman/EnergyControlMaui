@@ -25,6 +25,8 @@ namespace EnergyControlMaui.Views
 				_lamp.LampName = LampNameEntry.Text;
                 LampDetailsService.SetLampDetails(_lamp);
 
+                await DisplayAlert("Success", $"You have Successfully connected to your device! Go to \"Control\" for the interaction. ", "OK");
+
                 await Navigation.PopToRootAsync();
                 await Navigation.PushAsync(new ControlPage());
 

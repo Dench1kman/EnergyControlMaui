@@ -29,8 +29,8 @@ namespace EnergyControlMaui.Services
 
                 var wifiManager = (WifiManager)Android.App.Application.Context.GetSystemService(Context.WifiService);
 
-                int netId = wifiManager.AddNetwork(wifiConfig);
-                wifiManager.Disconnect();
+                int netId = wifiManager.UpdateNetwork(wifiConfig);
+
                 bool enableNetwork = wifiManager.EnableNetwork(netId, true);
 
                 if (enableNetwork)
@@ -39,7 +39,7 @@ namespace EnergyControlMaui.Services
                 }
                 else
                 {
-                    return true;//return false;
+                    return true;//false;
                 }
             }
             catch (Exception ex)

@@ -1,4 +1,10 @@
-﻿namespace EnergyControlMaui.Validation
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace EnergyControlMaui.Validation
 {
     public class CheckBoxValidator
     {
@@ -6,7 +12,7 @@
         {
             if (!checkBox.IsChecked)
             {
-                await ErrorMessage.ShowErrorMessage(errorLabel, "Please accept the terms and conditions!");
+                await ErrorMessage.ShowErrorMessage(errorLabel, "Please confirm the chekbox");
                 return false;
             }
             return true;

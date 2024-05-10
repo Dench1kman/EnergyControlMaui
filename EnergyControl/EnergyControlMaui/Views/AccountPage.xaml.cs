@@ -1,20 +1,23 @@
 ﻿#pragma warning disable CS1998 // Async method lacks 'await' operators and will run synchronously
 
+#if ANDROID
+using Android.Widget;
+#endif
 using EnergyControlMaui.Models;
 using EnergyControlMaui.Services;
 using EnergyControlMaui.Utilities;
-using EnergyControlMaui.Views;
+
 
 namespace EnergyControlMaui.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class AccountPage : ContentPage
     {
+#if ANDROID
         private UserManager _userManager;
         public AccountPage()
         {
             InitializeComponent();
-
             _userManager = UserManager.GetInstance();
         }
         protected override async void OnAppearing()
@@ -44,10 +47,12 @@ namespace EnergyControlMaui.Views
 
         private async void SecurityButton_Clicked(object sender, EventArgs e)
         {
+            Toast.MakeText(Android.App.Application.Context, "This function is in development", ToastLength.Long).Show();
         }
 
         private async void AboutButton_Clicked(object sender, EventArgs e)
         {
+            Toast.MakeText(Android.App.Application.Context, "This function is in development", ToastLength.Long).Show();
         }
 
         private async void LogOutButton_Clicked(object sender, EventArgs e)
@@ -55,6 +60,7 @@ namespace EnergyControlMaui.Views
             await Navigation.PopAsync();
             await Navigation.PushAsync(new LoginPage());
         }
+#endif
     }
 }
 #pragma warning restore CS1998 // Async method lacks 'await' operators and will run synchronously

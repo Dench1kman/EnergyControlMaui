@@ -5,6 +5,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:triggers="clr-namespace:EnergyControlMaui.Triggers"
     Background="#24293E"
+    NavigationPage.HasNavigationBar="False"
     Shell.TabBarIsVisible="False">
 
 
