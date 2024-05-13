@@ -1,14 +1,9 @@
-﻿#pragma warning disable CS8602 // Dereference of a possibly null reference.
+﻿#pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
+#pragma warning disable CS8602 // Dereference of a possibly null reference.
 
 #if ANDROID
-using Android.Net.Wifi;
 using Android.Widget;
 #endif
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using EnergyControlMaui.Services;
 
 
@@ -19,11 +14,9 @@ namespace EnergyControlMaui.Views
 	{
 #if ANDROID
         private readonly WifiService _wifiService;
-        private readonly WifiConnection _wifiConnection;
-        private PopupView _popupView;
 
         public HomeConnectionPage()
-		{
+        {
             _wifiService = new WifiService(Android.App.Application.Context);
 
             InitializeComponent();
@@ -56,4 +49,5 @@ namespace EnergyControlMaui.Views
 #endif
     }
 }
+#pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
 #pragma warning restore CS8602 // Dereference of a possibly null reference.

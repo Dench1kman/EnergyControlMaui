@@ -1,4 +1,6 @@
-﻿#pragma warning disable CS1998 // Async method lacks 'await' operators and will run synchronously
+﻿#pragma warning disable CS8604 // Possible null reference argument.
+#pragma warning disable CS8602 // Dereference of a possibly null reference.
+#pragma warning disable CS1998 // Async method lacks 'await' operators and will run synchronously
 
 #if ANDROID
 using Android.Widget;
@@ -63,4 +65,6 @@ namespace EnergyControlMaui.Views
 #endif
     }
 }
+#pragma warning restore CS8604 // Possible null reference argument.
+#pragma warning restore CS8602 // Dereference of a possibly null reference.
 #pragma warning restore CS1998 // Async method lacks 'await' operators and will run synchronously

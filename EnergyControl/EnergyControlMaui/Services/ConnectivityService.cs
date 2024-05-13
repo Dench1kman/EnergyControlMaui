@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿#pragma warning disable CS8602 // Dereference of a possibly null reference.
+
 
 namespace EnergyControlMaui.Services
 {
@@ -24,3 +21,5 @@ namespace EnergyControlMaui.Services
         }
     }
 }
+
+#pragma warning restore CS8602 // Dereference of a possibly null reference.

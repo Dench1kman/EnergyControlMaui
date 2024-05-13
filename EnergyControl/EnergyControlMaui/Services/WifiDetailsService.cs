@@ -2,20 +2,21 @@
 
 using EnergyControlMaui.Models;
 
+
 namespace EnergyControlMaui.Services
 {
-    public static class LampDetailsService
+    public static class WifiDetailsService
     {
-        private static Lamp _lamp;
+        private static WifiNetwork _wifiNetwork;
 
-        public static Lamp GetLampDetails()
+        public static WifiNetwork GetWifiDetails()
         {
-            return _lamp;
+            return _wifiNetwork;
         }
 
-        public static void SetLampDetails(Lamp lamp)
+        public static void SetWifiDetails(WifiNetwork wifiNetwork)
         {
-            _lamp = lamp;
+            _wifiNetwork = wifiNetwork;
         }
     }
 }

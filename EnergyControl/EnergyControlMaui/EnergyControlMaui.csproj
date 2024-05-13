@@ -275,8 +275,4 @@
 	  <MauiAsset Include="Resources\Images\Buttons\thermostat_btn.svg" />
 	  <MauiImage Include="Resources\Images\Buttons\security_btn.svg" />
 	</ItemGroup>
-
-	<ItemGroup>
-	  <Folder Include="Interfaces\" />
-	</ItemGroup>
 </Project>

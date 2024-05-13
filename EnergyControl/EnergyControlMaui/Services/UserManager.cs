@@ -1,4 +1,6 @@
-﻿using EnergyControlMaui.Models;
+﻿#pragma warning disable CS8603 // Possible null reference return.
+
+using EnergyControlMaui.Models;
 using Microsoft.EntityFrameworkCore;
 
 
@@ -6,7 +8,7 @@ namespace EnergyControlMaui.Services
 {
     public class UserManager
     {
-        private static UserManager _instance;
+        private static UserManager? _instance;
         private readonly SqliteDbContext _db;
 
         private UserManager()
@@ -58,3 +60,4 @@ namespace EnergyControlMaui.Services
     }
 }
 
+#pragma warning restore CS8603 // Possible null reference return.

@@ -22,10 +22,12 @@ namespace EnergyControlMaui.Views
 #if ANDROID
         private readonly WifiService _wifiService;
         private readonly WifiConnection _wifiConnection;
+        private readonly WifiNetwork _wifiNetwork;
         public WifiConnectionPage() 
         {
             _wifiService = new WifiService(Android.App.Application.Context);
             _wifiConnection = WifiConnectionService.GetInstance().GetWifiConnection();
+            _wifiNetwork = new WifiNetwork();
 
             InitializeComponent();
             Shell.SetBackButtonBehavior(this, new BackButtonBehavior { IsVisible = false });
@@ -64,10 +66,14 @@ namespace EnergyControlMaui.Views
             {
                 var isValid = await _wifiConnection.ConnectToWifiAsync(WifiSsidEntry.Text, WifiPasswordEntry.Text);
 
-                await this.ShowPopupAsync(new PopupView("Please Wait", "Trying to connect to your wi-fi...", 1000)); //10000
+                await this.ShowPopupAsync(new PopupView("Please Wait", "Trying to connect to your wi-fi...", 5000));
 
                 if (isValid)
                 {
+                    _wifiNetwork.SSID = WifiSsidEntry.Text;
+                    _wifiNetwork.Password = WifiPasswordEntry.Text;
+                    WifiDetailsService.SetWifiDetails(_wifiNetwork);
+
                     await DisplayAlert("Success", $"Successfully connected to Wi-Fi network: {WifiSsidEntry.Text}", "OK");
                     await Navigation.PushAsync(new InstructionsPage());
                 }

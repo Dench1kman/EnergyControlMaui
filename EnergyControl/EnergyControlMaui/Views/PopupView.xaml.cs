@@ -14,7 +14,7 @@ namespace EnergyControlMaui.Views
             Title.Text = title;
             Message.Text = message;
 
-            ClosePopupAsync(timer);
+            _ = ClosePopupAsync(timer);
         }
 
         public async Task ClosePopupAsync(int timer)

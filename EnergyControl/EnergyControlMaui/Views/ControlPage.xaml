@@ -70,7 +70,7 @@
                     Clicked="LampButton_Clicked"
                     HorizontalOptions="Center"
                     Scale="2"
-                    Source="bulb_off.svg"
+                    Source="bulb_on.svg"
                     VerticalOptions="CenterAndExpand" />
 
                 <Image

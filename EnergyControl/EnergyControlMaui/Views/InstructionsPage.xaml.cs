@@ -1,13 +1,6 @@
 ﻿#pragma warning disable CS0612 // Type or member is obsolete
 #pragma warning disable CS0618 // Type or member is obsolete
 
-using CommunityToolkit.Maui.Views;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 
 namespace EnergyControlMaui.Views
 {
@@ -33,9 +26,6 @@ namespace EnergyControlMaui.Views
 
         private async void ConfirmButton_Clicked(object sender, EventArgs e)
         {
-            //await this.ShowPopupAsync(new PopupView("Adding Device", "Adding a device may take 30-60s,\nplease wait ...", 30000));
-
-            //await Navigation.PushAsync(new AddDevicePage());
             await Navigation.PushAsync(new WifiLampConnectionPage());
         }
 #endif

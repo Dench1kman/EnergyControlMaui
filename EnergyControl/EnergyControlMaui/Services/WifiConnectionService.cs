@@ -8,7 +8,7 @@ namespace EnergyControlMaui.Services
 {
     public class WifiConnectionService
     {
-        private static WifiConnectionService _instance;
+        private static WifiConnectionService? _instance;
         private readonly WifiConnection _wifiConnection;
 
         private WifiConnectionService()

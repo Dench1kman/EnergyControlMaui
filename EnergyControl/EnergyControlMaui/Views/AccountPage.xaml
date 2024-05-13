@@ -31,14 +31,6 @@
                 Source="account_image.svg"
                 VerticalOptions="StartAndExpand" />
 
-
-            <!--
-                ImageButton
-                Margin="0,0,0,20"
-                Clicked="SecurityButton_Clicked"
-                Source="security_btn.svg" />
-            -->
-
             <StackLayout
                 Margin="45,8,0,0"
                 Orientation="Horizontal"
@@ -58,18 +50,6 @@
                     Text="C"
                     TextColor="#8EBBFF" />
             </StackLayout>
-
-            <!--<StackLayout Margin="0,15,0,0" HorizontalOptions="Center">
-
-                <Label
-                    FontAttributes="Bold"
-                    FontFamily="Inter"
-                    FontSize="24"
-                    Text="Account"
-                    TextColor="#F4F4FC" />
-            </StackLayout>-->
-
-            <!--<StackLayout HorizontalOptions="Center" VerticalOptions="Center">-->
 
             <StackLayout Margin="0,-45,0,0" Orientation="Horizontal">
 
