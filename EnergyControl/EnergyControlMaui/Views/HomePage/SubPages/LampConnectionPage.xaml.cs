@@ -10,6 +10,7 @@ using Android.Widget;
 using EnergyControlMaui.Controllers;
 using EnergyControlMaui.Services;
 
+
 namespace EnergyControlMaui.Views
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
@@ -29,8 +30,8 @@ namespace EnergyControlMaui.Views
 			LampController lampController = new LampController();
 			await lampController.ConnectToLampAsync();
 
-
-            var wifiInfo = WifiDetailsService.GetWifiDetails();
+            var wifiService = WifiService.GetInstance();
+            var wifiInfo = wifiService.GetDetails();
 
             WifiConfiguration wifiConfig = new WifiConfiguration
             {

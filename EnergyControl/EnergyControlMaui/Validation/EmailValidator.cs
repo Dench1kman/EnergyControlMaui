@@ -1,8 +1,4 @@
-﻿using System;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
-using Microsoft.Maui.Controls;
-using Microsoft.Maui;
+﻿using System.Text.RegularExpressions;
 using EnergyControlMaui.Services;
 
 namespace EnergyControlMaui.Validation

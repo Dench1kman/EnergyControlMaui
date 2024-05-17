@@ -1,48 +1,47 @@
-﻿#pragma warning disable CS8604 // Possible null reference argument.
+﻿#pragma warning disable CS8602 // Dereference of a possibly null reference.
 
 using EnergyControlMaui.Models;
 using EnergyControlMaui.Services;
 using EnergyControlMaui.Validation;
-using EnergyControlMaui.Utilities;
 
 
 namespace EnergyControlMaui.Views
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class AddDevicePage : ContentPage
-	{
-        private readonly UserManager _userManager;
+    {
+        private Lamp _lamp;
+
         public AddDevicePage ()
         {
-			InitializeComponent ();
+            InitializeComponent ();
             Shell.SetBackButtonBehavior(this, new BackButtonBehavior { IsVisible = false });
-            _userManager = UserManager.GetInstance();
+
+            var lampManager = LampManager.GetInstance();
+            _lamp = lampManager.GetDetails();
+
         }
 
         private async void AddButton_Clicked(object sender, EventArgs e)
         {
 			if (!string.IsNullOrEmpty(LampNameEntry.Text))
 			{
-                User currentUser = await _userManager.GetUserDataAsync(AppConstants.Email);
+                var currentUser = UserManager.GetInstance().GetUser();
+                var lamp = LampManager.GetInstance();
 
-                var lamp = LampDetailsService.GetLampDetails();
+                _lamp.LampName = LampNameEntry.Text;
+                _lamp.LampId = currentUser.UserId;
 
-				lamp.LampName = LampNameEntry.Text;
-                lamp.LampId = currentUser.UserId;
-
-                LampDetailsService.SetLampDetails(lamp);
-
-                var lampManager = LampManager.GetInstance();
-                lampManager.AddLamp(lamp);
+                lamp.SetDetails(_lamp);
+                lamp.AddLamp(_lamp);
 
                 await DisplayAlert("Success", $"You have Successfully connected to your device! Go to \"Control\" for the interaction. ", "OK");
 
                 await Navigation.PopToRootAsync();
                 await Navigation.PushAsync(new ControlPage());
-
             }
             else await ErrorMessage.ShowErrorMessage(LampNameErrorLabel, "Lamp Name cannot be empty!"); 
         }
     }
 }
-#pragma warning restore CS8604 // Possible null reference argument.
+#pragma warning restore CS8602 // Dereference of a possibly null reference.

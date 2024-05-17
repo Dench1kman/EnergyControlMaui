@@ -46,11 +46,14 @@ namespace EnergyControlMaui.Views
                 else
                     Toast.MakeText(Android.App.Application.Context, "lamp is detected", ToastLength.Short).Show();
 
+                var lamp = LampManager.GetInstance();
+
                 _lamp.IPAddress = lampIp;
                 _lamp.Port = 443;
                 _lamp.IsConnected = true;
-                _lamp.IsOn = true; 
-                LampDetailsService.SetLampDetails(_lamp);
+                _lamp.IsOn = true;
+
+                lamp.SetDetails(_lamp);
 
                 await Navigation.PushAsync(new LampConnectionPage());
             }
@@ -74,6 +77,7 @@ namespace EnergyControlMaui.Views
                 return null;
             }
         }
+
 #endif
     }
 }

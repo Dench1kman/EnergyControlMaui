@@ -1,9 +1,4 @@
-﻿using System;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.Maui.Controls;
-using Microsoft.Maui;
-using EnergyControlMaui.Services;
+﻿using EnergyControlMaui.Services;
 
 namespace EnergyControlMaui.Validation
 {

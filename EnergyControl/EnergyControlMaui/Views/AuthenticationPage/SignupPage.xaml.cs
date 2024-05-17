@@ -2,6 +2,7 @@
 using EnergyControlMaui.Services;
 using EnergyControlMaui.Models;
 
+
 namespace EnergyControlMaui.Views
 {
     public partial class SignupPage : ContentPage
@@ -44,6 +45,8 @@ namespace EnergyControlMaui.Views
 
                 if (registrationResult)
                 {
+                    UserManager.GetInstance().SetUser(user);
+
                     await DisplayAlert("Success", "Registration successful!", "OK");
                     await Navigation.PushAsync(new AppShell());
                 }

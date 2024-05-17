@@ -1,10 +1,8 @@
-﻿
-
-namespace EnergyControlMaui.Utilities
+﻿namespace EnergyControlMaui.DB
 {
     public static class PathDB
     {
-        public static string GetPath(string nameDb) 
+        public static string GetPath(string nameDb)
         {
             string pathDbSqlite = string.Empty;
 

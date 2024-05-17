@@ -1,7 +1,5 @@
 ﻿using EnergyControlMaui.Validation;
 using EnergyControlMaui.Services;
-using EnergyControlMaui.Utilities;
-using static System.Net.Mime.MediaTypeNames;
 
 
 namespace EnergyControlMaui.Views
@@ -29,7 +27,6 @@ namespace EnergyControlMaui.Views
 
             if (emailValidationTask.Result && passwordValidationTask.Result)
             {
-                AppConstants.Email = EmailEntry.Text;
                 await Navigation.PushAsync(new AppShell());
             }
         }

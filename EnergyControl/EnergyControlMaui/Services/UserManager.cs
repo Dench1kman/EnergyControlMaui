@@ -1,5 +1,6 @@
 ﻿#pragma warning disable CS8603 // Possible null reference return.
 
+using EnergyControlMaui.DB;
 using EnergyControlMaui.Models;
 using Microsoft.EntityFrameworkCore;
 
@@ -8,6 +9,7 @@ namespace EnergyControlMaui.Services
 {
     public class UserManager
     {
+        public User? User { get; private set; }
         private static UserManager? _instance;
         private readonly SqliteDbContext _db;
 
@@ -23,6 +25,16 @@ namespace EnergyControlMaui.Services
                 _instance = new UserManager();
             }
             return _instance;
+        }
+
+        public void SetUser(User user)
+        {
+            User = user;
+        }
+
+        public User? GetUser()
+        {
+            return User;
         }
 
         public bool RegisterUser(User user)
@@ -43,7 +55,7 @@ namespace EnergyControlMaui.Services
             var user = await _db.Users.FirstOrDefaultAsync(u => u.Email == email);
             if (user != null)
             {
-                return user.Password == hashedPassword;
+                return user.Password == hashedPassword; 
             }
             return false;
         }

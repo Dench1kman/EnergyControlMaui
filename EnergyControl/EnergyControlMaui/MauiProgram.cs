@@ -5,6 +5,7 @@ using Microsoft.Extensions.Logging;
 using EnergyControlMaui.Views;
 using EnergyControlMaui.Services;
 using CommunityToolkit.Maui;
+using EnergyControlMaui.DB;
 
 
 namespace EnergyControlMaui

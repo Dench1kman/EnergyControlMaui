@@ -21,12 +21,13 @@ namespace EnergyControlMaui.Views
     {
 #if ANDROID
         private readonly WifiService _wifiService;
-        private readonly WifiConnection _wifiConnection;
         private readonly WifiNetwork _wifiNetwork;
+
         public WifiConnectionPage() 
         {
-            _wifiService = new WifiService(Android.App.Application.Context);
-            _wifiConnection = WifiConnectionService.GetInstance().GetWifiConnection();
+            var wifiService = WifiService.GetInstance();
+
+            _wifiService = wifiService;
             _wifiNetwork = new WifiNetwork();
 
             InitializeComponent();
@@ -49,7 +50,7 @@ namespace EnergyControlMaui.Views
                 return false;
             }
         }
-#endif
+
         private async void ConnectButton_Clicked(object sender, EventArgs e)
         {
             if (!ConnectivityService.IsConnected())
@@ -57,22 +58,25 @@ namespace EnergyControlMaui.Views
                 await ConnectivityService.ShowNoInternetConnectionError();
                 return;
             }
-#if ANDROID
+
             if (string.IsNullOrEmpty(WifiPasswordEntry.Text))
             {
                 await ErrorMessage.ShowErrorMessage(WifiPasswordErrorLabel, "Password field cannot be empty!");
             }
             else
             {
-                var isValid = await _wifiConnection.ConnectToWifiAsync(WifiSsidEntry.Text, WifiPasswordEntry.Text);
+                var isValid = _wifiService.ConnectToWifi(WifiSsidEntry.Text, WifiPasswordEntry.Text);
 
                 await this.ShowPopupAsync(new PopupView("Please Wait", "Trying to connect to your wi-fi...", 5000));
 
                 if (isValid)
                 {
+                    var wifiService = WifiService.GetInstance();
+
                     _wifiNetwork.SSID = WifiSsidEntry.Text;
                     _wifiNetwork.Password = WifiPasswordEntry.Text;
-                    WifiDetailsService.SetWifiDetails(_wifiNetwork);
+
+                    wifiService.SetDetails(_wifiNetwork);
 
                     await DisplayAlert("Success", $"Successfully connected to Wi-Fi network: {WifiSsidEntry.Text}", "OK");
                     await Navigation.PushAsync(new InstructionsPage());
@@ -83,8 +87,8 @@ namespace EnergyControlMaui.Views
                                         $"Please check your credentials and try again.", "OK");
                 }
             }
-#endif
         }
+#endif
     }
 }
 

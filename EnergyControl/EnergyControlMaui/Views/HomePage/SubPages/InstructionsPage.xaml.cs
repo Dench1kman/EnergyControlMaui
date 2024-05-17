@@ -24,6 +24,11 @@ namespace EnergyControlMaui.Views
             });
         }
 
+        private void ConnectButton_Clicked(object? sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
         private async void ConfirmButton_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new WifiLampConnectionPage());

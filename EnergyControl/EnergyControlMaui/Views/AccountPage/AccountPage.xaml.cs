@@ -1,5 +1,4 @@
-﻿#pragma warning disable CS8604 // Possible null reference argument.
-#pragma warning disable CS8602 // Dereference of a possibly null reference.
+﻿#pragma warning disable CS8602 // Dereference of a possibly null reference.
 #pragma warning disable CS1998 // Async method lacks 'await' operators and will run synchronously
 
 #if ANDROID
@@ -7,7 +6,6 @@ using Android.Widget;
 #endif
 using EnergyControlMaui.Models;
 using EnergyControlMaui.Services;
-using EnergyControlMaui.Utilities;
 
 
 namespace EnergyControlMaui.Views
@@ -17,25 +15,26 @@ namespace EnergyControlMaui.Views
     {
 #if ANDROID
         private UserManager _userManager;
+
         public AccountPage()
         {
             InitializeComponent();
             _userManager = UserManager.GetInstance();
         }
+
         protected override async void OnAppearing()
         {
             base.OnAppearing();
 
-            User _user = await _userManager.GetUserDataAsync(AppConstants.Email);
+            var currentUser = UserManager.GetInstance().GetUser();
 
-            if (_user != null)
+            if (currentUser != null)
             {
-                SetUserData(_user);
+                SetUserData(currentUser);
             }
             else
             {
                 await DisplayAlert("Error", "User data not found", "OK");
-
                 await Navigation.PushAsync(new LoginPage());
             }
         }
@@ -65,6 +64,5 @@ namespace EnergyControlMaui.Views
 #endif
     }
 }
-#pragma warning restore CS8604 // Possible null reference argument.
 #pragma warning restore CS8602 // Dereference of a possibly null reference.
 #pragma warning restore CS1998 // Async method lacks 'await' operators and will run synchronously

@@ -1,17 +1,14 @@
-﻿#pragma warning disable CS8602 // Dereference of a possibly null reference.
+﻿#pragma warning disable CA1422 // Validate platform compatibility
 #pragma warning disable CS8600 // Converting null literal or possible null value to non-nullable type.
-#pragma warning disable CA1422 // Validate platform compatibility
+#pragma warning disable CS8602 // Dereference of a possibly null reference.
+#pragma warning disable CS8603 // Possible null reference return.
 
 #if ANDROID
 using Android.Content;
-using Android.Net;
 using Android.Net.Wifi;
-using Android.Widget;
 #endif
-using System.Threading.Tasks;
-using EnergyControlMaui.Services;
-using EnergyControlMaui.Views;
 using Microsoft.EntityFrameworkCore;
+using EnergyControlMaui.Models;
 
 
 namespace EnergyControlMaui.Services
@@ -19,11 +16,52 @@ namespace EnergyControlMaui.Services
     public class WifiService
     {
 #if ANDROID
-        private readonly Context _context;
+        public WifiNetwork? WifiNetwork { get; private set; }
+        private static WifiService? _instance;
 
-        public WifiService(Context context)
+        public WifiService() { }
+
+        public static WifiService GetInstance()
         {
-            _context = context;
+            if (_instance == null)
+            {
+                _instance = new WifiService();
+            }
+            return _instance;
+        }
+
+        public void SetDetails(WifiNetwork wifiNetwork)
+        {
+            WifiNetwork = wifiNetwork;
+        }
+
+        public WifiNetwork GetDetails()
+        {
+            return WifiNetwork;
+        }
+
+        public async Task<string> GetActiveWifiSsidAsync()
+        {
+            try
+            {
+                var wifiManager = (WifiManager)Android.App.Application.Context.GetSystemService(Context.WifiService);
+
+                var wifiInfo = wifiManager.ConnectionInfo;
+
+                if (wifiInfo != null && !string.IsNullOrEmpty(wifiInfo.SSID))
+                {
+                    return wifiInfo.SSID.Replace("\"", "");
+                }
+                else
+                {
+                    return string.Empty;
+                }
+            }
+            catch (Exception)
+            {
+                await Application.Current.MainPage.DisplayAlert("Error", "Error when getting active Wi-Fi SSID", "OK");
+                return string.Empty;
+            }
         }
 
         public async Task<bool> CheckAndSwitchToWifiAsync()
@@ -62,29 +100,37 @@ namespace EnergyControlMaui.Services
                 return false;
             }
         }
-    
 
-        public async Task<string> GetActiveWifiSsidAsync()
+
+        public bool ConnectToWifi(string ssid, string password)
         {
             try
             {
-                var wifiManager = (WifiManager)_context.GetSystemService(Context.WifiService);
+                WifiConfiguration wifiConfig = new WifiConfiguration();
 
-                var wifiInfo = wifiManager.ConnectionInfo;
+                wifiConfig.Ssid = $"\"{ssid}\"";
+                wifiConfig.PreSharedKey = $"\"{password}\"";
 
-                if (wifiInfo != null && !string.IsNullOrEmpty(wifiInfo.SSID))
+                WifiManager wifiManager = (WifiManager)Android.App.Application.Context.GetSystemService(Context.WifiService);
+
+                int netId = wifiManager.AddNetwork(wifiConfig);
+                wifiManager.Disconnect();
+                bool isConnected = wifiManager.EnableNetwork(netId, true);
+                wifiManager.Reconnect();
+
+                if (isConnected)
                 {
-                    return wifiInfo.SSID.Replace("\"", "");
+                    return true;
                 }
                 else
                 {
-                    return string.Empty;
+                    return true;//false;
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                await Application.Current.MainPage.DisplayAlert("Error", "Error when getting active Wi-Fi SSID", "OK");
-                return string.Empty;
+                Console.WriteLine($"Error when connecting to Wi-Fi: {ex.Message}");
+                return false;
             }
         }
 #endif
@@ -93,3 +139,4 @@ namespace EnergyControlMaui.Services
 #pragma warning restore CA1422 // Validate platform compatibility
 #pragma warning restore CS8600 // Converting null literal or possible null value to non-nullable type.
 #pragma warning restore CS8602 // Dereference of a possibly null reference.
+#pragma warning restore CS8603 // Possible null reference return.

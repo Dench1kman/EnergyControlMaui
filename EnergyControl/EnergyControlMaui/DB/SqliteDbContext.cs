@@ -1,9 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using EnergyControlMaui.Models;
-using EnergyControlMaui.Utilities;
 
 
-namespace EnergyControlMaui.Services
+namespace EnergyControlMaui.DB
 {
     public class SqliteDbContext : DbContext
     {
@@ -13,7 +12,7 @@ namespace EnergyControlMaui.Services
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            string connectionDb = $"Filename={PathDB.GetPath("User.db")}";
+            string connectionDb = $"Filename={PathDB.GetPath("EnergyInfoDb.db")}";
             optionsBuilder.UseSqlite(connectionDb);
         }
     }

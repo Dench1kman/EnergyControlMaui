@@ -2,16 +2,18 @@
 
 using Microsoft.EntityFrameworkCore;
 using EnergyControlMaui.Models;
+using EnergyControlMaui.DB;
 
 
 namespace EnergyControlMaui.Services
 {
     public class LampManager
     {
+        public Lamp? Lamp { get; private set; }
         private static LampManager? _instance;
         private readonly SqliteDbContext _db;
 
-        public LampManager()
+        private LampManager()
         {
             _db = new SqliteDbContext();
         }
@@ -23,6 +25,16 @@ namespace EnergyControlMaui.Services
                 _instance = new LampManager();
             }
             return _instance;
+        }
+
+        public void SetDetails(Lamp lamp)
+        {
+            Lamp = lamp;
+        }
+
+        public Lamp GetDetails()
+        {
+            return Lamp;
         }
 
         public bool AddLamp(Lamp lamp)

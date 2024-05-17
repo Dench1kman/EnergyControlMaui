@@ -22,7 +22,7 @@ namespace EnergyControlMaui.Controllers
 #if ANDROID
         public async Task ConnectToLampAsync()
         {
-            var lamp = LampDetailsService.GetLampDetails();
+            var lamp = LampManager.GetInstance().GetDetails();
 
             Ping ping = new Ping();
             PingReply reply = ping.Send(lamp.IPAddress);
@@ -32,7 +32,7 @@ namespace EnergyControlMaui.Controllers
                 Toast.MakeText(Android.App.Application.Context, $"Lamp is at {lamp.IPAddress} responsive", ToastLength.Long).Show();
                 await Task.Delay(1000);
 
-                //await SendWifiDetailsToLampAsync(lamp.IPAddress); // Error 
+                await SendWifiDetailsToLampAsync(lamp.IPAddress);
             }
             else
             {
@@ -44,7 +44,7 @@ namespace EnergyControlMaui.Controllers
         {
             using (HttpClient client = new HttpClient())
             {
-                var wifiDetails = WifiDetailsService.GetWifiDetails();
+                var wifiDetails = WifiService.GetInstance().GetDetails();
                 var jsonContent = new StringContent(JsonConvert.SerializeObject(wifiDetails), Encoding.UTF8, "application/json");
                 var apiUrl = $"https://{lampIpAddress}/configure";
                 var response = await client.PostAsync(apiUrl, jsonContent);

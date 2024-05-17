@@ -1,9 +1,4 @@
-﻿using System;
-using System.Threading.Tasks;
-using Microsoft.Maui.Controls;
-using Microsoft.Maui;
-
-namespace EnergyControlMaui.Validation
+﻿namespace EnergyControlMaui.Validation
 {
     public class ErrorMessage
     {

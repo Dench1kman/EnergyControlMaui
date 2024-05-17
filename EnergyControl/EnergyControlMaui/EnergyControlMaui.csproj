@@ -161,14 +161,14 @@
 		<Compile Update="App.xaml.cs">
 			<DependentUpon>%(Filename)</DependentUpon>
 		</Compile>
-		<Compile Update="Views\LampConnectionPage.xaml.cs">
+		<Compile Update="Views\HomePage\SubPages\LampConnectionPage.xaml.cs">
 		  <DependentUpon>LampConnectionPage.xaml</DependentUpon>
 		</Compile>
-		<Compile Update="Views\WifiConnectionPage.xaml.cs">
+		<Compile Update="Views\HomePage\SubPages\WifiConnectionPage.xaml.cs">
 			<SubType>Code</SubType>
 			<DependentUpon>WifiConnectionPage.xaml</DependentUpon>
 		</Compile>
-		<Compile Update="Views\LoginPage.xaml.cs">
+		<Compile Update="Views\AuthenticationPage\LoginPage.xaml.cs">
 			<SubType>Code</SubType>
 			<DependentUpon>%(Filename)</DependentUpon>
 		</Compile>
@@ -176,23 +176,23 @@
 			<SubType>Code</SubType>
 			<DependentUpon>%(Filename)</DependentUpon>
 		</Compile>
-	  <Compile Update="Views\HomePage.xaml.cs">
+	  <Compile Update="Views\HomePage\HomePage.xaml.cs">
 	    <SubType>Code</SubType>
 	    <DependentUpon>HomePage.xaml</DependentUpon>
 	  </Compile>
-		<Compile Update="Views\HomeConnectionPage.xaml.cs">
+		<Compile Update="Views\HomePage\SubPages\HomeConnectionPage.xaml.cs">
 			<SubType>Code</SubType>
 			<DependentUpon>%(Filename)</DependentUpon>
 		</Compile>
-		<Compile Update="Views\WifiLampConnectionPage.xaml.cs">
+		<Compile Update="Views\HomePage\SubPages\WifiLampConnectionPage.xaml.cs">
 			<SubType>Code</SubType>
 			<DependentUpon>%(Filename)</DependentUpon>
 		</Compile>
-	  <Compile Update="Views\SignupPage.xaml.cs">
+	  <Compile Update="Views\AuthenticationPage\SignupPage.xaml.cs">
 	    <SubType>Code</SubType>
 	    <DependentUpon>%(Filename)</DependentUpon>
 	  </Compile>
-		<Compile Update="Views\InstructionsPage.xaml.cs">
+		<Compile Update="Views\HomePage\SubPages\InstructionsPage.xaml.cs">
 			<SubType>Code</SubType>
 			<DependentUpon>InstructionsPage.xaml</DependentUpon>
 		</Compile>
@@ -200,19 +200,19 @@
 	    <SubType>Code</SubType>
 	    <DependentUpon>%(Filename)</DependentUpon>
 	  </Compile>
-		<Compile Update="Views\AccountPage.xaml.cs">
+		<Compile Update="Views\AccountPage\AccountPage.xaml.cs">
 			<SubType>Code</SubType>
 			<DependentUpon>%(Filename)</DependentUpon>
 		</Compile>
-		<Compile Update="Views\ControlPage.xaml.cs">
+		<Compile Update="Views\ControlPage\ControlPage.xaml.cs">
 			<SubType>Code</SubType>
 			<DependentUpon>ControlPage.xaml</DependentUpon>
 		</Compile>
-		<Compile Update="Views\AddDevicePage.xaml.cs">
+		<Compile Update="Views\HomePage\SubPages\AddDevicePage.xaml.cs">
 			<SubType>Code</SubType>
 			<DependentUpon>AddDevicePage.xaml</DependentUpon>
 		</Compile>
-		<Compile Update="Views\StatisticsPage.xaml.cs">
+		<Compile Update="Views\StatisticsPage\StatisticsPage.xaml.cs">
 			<SubType>Code</SubType>
 			<DependentUpon>%(Filename)</DependentUpon>
 		</Compile>
