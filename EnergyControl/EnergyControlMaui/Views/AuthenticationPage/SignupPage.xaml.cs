@@ -20,16 +20,16 @@ namespace EnergyControlMaui.Views
                 return;
             }
 
-            Task<bool> nameValidationTask = NameValidator.ValidateNameAsync(FirstNameEntry.Text, LastNameEntry.Text, FirstNameErrorLabel, LastNameErrorLabel);
-            Task<bool> emailValidationTask = EmailValidator.ValidateSignUpEmailAsync(EmailEntrySignUp.Text, EmailEntryErrorLabelSignUp);
-            Task<bool> passwordValidationTask = PasswordValidator.ValidatePasswordsAsync(PasswordEntry.Text, ConfirmPasswordEntry.Text, PasswordEntryErrorLabelSignUp, ConfirmPasswordEntryErrorLabelSignUp);
-            Task<bool> checkBoxValidationTask = CheckBoxValidator.ValidateCheckBoxAsync(CheckBox, CheckBoxErrorLabel);
+            Task<bool> isNameValid = NameValidator.ValidateNameAsync(FirstNameEntry.Text, LastNameEntry.Text, FirstNameErrorLabel, LastNameErrorLabel);
+            Task<bool> isEmailValid = EmailValidator.ValidateSignUpEmailAsync(EmailEntrySignUp.Text, EmailEntryErrorLabelSignUp);
+            Task<bool> isPasswordValid = PasswordValidator.ValidatePasswordsAsync(PasswordEntry.Text, ConfirmPasswordEntry.Text, PasswordEntryErrorLabelSignUp, ConfirmPasswordEntryErrorLabelSignUp);
+            Task<bool> isCheckBoxValid = CheckBoxValidator.ValidateCheckBoxAsync(CheckBox, CheckBoxErrorLabel);
 
-            await Task.WhenAll(nameValidationTask, emailValidationTask, passwordValidationTask,
-                checkBoxValidationTask);
+            await Task.WhenAll(isNameValid, isEmailValid, isPasswordValid,
+                isCheckBoxValid);
 
-            if (nameValidationTask.Result && emailValidationTask.Result &&
-                passwordValidationTask.Result && checkBoxValidationTask.Result )
+            if (isNameValid.Result && isEmailValid.Result &&
+                isPasswordValid.Result && isCheckBoxValid.Result )
             {
                 string hashedPassword = PasswordHasher.HashPassword(PasswordEntry.Text);
 

@@ -32,7 +32,7 @@ namespace EnergyControlMaui.Services
             User = user;
         }
 
-        public User? GetUser()
+        public User GetUser()
         {
             return User;
         }
@@ -43,6 +43,23 @@ namespace EnergyControlMaui.Services
             _db.SaveChanges();
             Console.WriteLine("\nUser successfully added!\n");
             return true;
+        }
+
+        public async Task<bool> UpdateUserAsync(User updatedUser)
+        {
+            var existingUser = await _db.Users.FirstOrDefaultAsync(u => u.UserId == updatedUser.UserId);
+            if (existingUser != null)
+            {
+                existingUser.FirstName = updatedUser.FirstName;
+                existingUser.LastName = updatedUser.LastName;
+                existingUser.Email = updatedUser.Email;
+                existingUser.Password = updatedUser.Password;
+                existingUser.Lamps = updatedUser.Lamps;
+
+                await _db.SaveChangesAsync();
+                return true;
+            }
+            return false;
         }
 
         public async Task<bool> UserExistsAsync(string email)

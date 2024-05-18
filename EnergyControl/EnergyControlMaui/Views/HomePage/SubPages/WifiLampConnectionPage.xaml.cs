@@ -33,10 +33,10 @@ namespace EnergyControlMaui.Views
 
         private async void ConfirmConnectionButton_Clicked(object sender, EventArgs e)
         {
-            Task<bool> checkBoxValidationTask = CheckBoxValidator.ValidateCheckBoxAsync(ChkBox, ChkBoxErrorLabel);
-            await checkBoxValidationTask;
+            Task<bool> isCheckBoxValid = CheckBoxValidator.ValidateCheckBoxAsync(ChkBox, ChkBoxErrorLabel);
+            await isCheckBoxValid;
 
-            if (checkBoxValidationTask.Result)
+            if (isCheckBoxValid.Result)
             {
                 var lampIp = GetWifiHotspotIpAddress().ToString();
                 if (lampIp == null)

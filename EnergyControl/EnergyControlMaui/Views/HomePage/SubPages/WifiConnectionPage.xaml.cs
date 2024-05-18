@@ -32,10 +32,10 @@ namespace EnergyControlMaui.Views
 
             InitializeComponent();
             Shell.SetBackButtonBehavior(this, new BackButtonBehavior { IsVisible = false });
-            GetAvailableNetworks();
+            GetNetwork();
             
         }
-        private bool GetAvailableNetworks()
+        private bool GetNetwork()
         {
             var getSsid = _wifiService.GetActiveWifiSsidAsync().Result;
 

@@ -59,18 +59,19 @@
                         <Label
                             FontFamily="interregular"
                             FontSize="16"
-                            Text="Please wait, connection may take about"
+                            Text="Please wait, connection may take some"
                             TextColor="#F4F4FC" />
                         <Label
                             FontFamily="interregular"
                             FontSize="16"
-                            Text="a minute ..."
+                            Text="time ..."
                             TextColor="#F4F4FC" />
                     </StackLayout>
                 </StackLayout>
             </StackLayout>
 
             <ActivityIndicator
+                x:Name="Slider"
                 HorizontalOptions="Center"
                 IsRunning="True"
                 Scale="2"

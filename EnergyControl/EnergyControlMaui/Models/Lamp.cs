@@ -14,8 +14,6 @@ namespace EnergyControlMaui.Models
         public bool IsOn { get; set; }
         public int Brightness { get; set; }
         public string? Color { get; set; }
-
-        public int UserId { get; set; } 
-        public User? User { get; set; }
+        public int UserId { get; set; }
     }
 }

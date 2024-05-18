@@ -12,6 +12,6 @@ namespace EnergyControlMaui.Models
         public required string Email { get; set; }
         public required string Password { get; set; }
 
-        public ICollection<Lamp>? Lamps { get; set; }
+        public Lamp? Lamps { get; set; }
     }
 }

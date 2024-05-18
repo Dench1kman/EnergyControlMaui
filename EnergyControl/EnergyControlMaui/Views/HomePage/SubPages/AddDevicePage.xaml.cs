@@ -1,6 +1,4 @@
-﻿#pragma warning disable CS8602 // Dereference of a possibly null reference.
-
-using EnergyControlMaui.Models;
+﻿using EnergyControlMaui.Models;
 using EnergyControlMaui.Services;
 using EnergyControlMaui.Validation;
 
@@ -17,25 +15,31 @@ namespace EnergyControlMaui.Views
             InitializeComponent ();
             Shell.SetBackButtonBehavior(this, new BackButtonBehavior { IsVisible = false });
 
-            var lampManager = LampManager.GetInstance();
-            _lamp = lampManager.GetDetails();
-
+            _lamp = LampManager.GetInstance().GetDetails();
         }
 
         private async void AddButton_Clicked(object sender, EventArgs e)
         {
 			if (!string.IsNullOrEmpty(LampNameEntry.Text))
 			{
-                var currentUser = UserManager.GetInstance().GetUser();
-                var lamp = LampManager.GetInstance();
+                var userManager = UserManager.GetInstance();
+                var lampManager = LampManager.GetInstance();
+                var user = userManager.GetUser();
 
                 _lamp.LampName = LampNameEntry.Text;
-                _lamp.LampId = currentUser.UserId;
+                _lamp.Brightness = 50;
+                _lamp.Color = "White";
+                _lamp.UserId = user.UserId;
+                user.Lamps = _lamp;
 
-                lamp.SetDetails(_lamp);
-                lamp.AddLamp(_lamp);
+                lampManager.SetDetails(_lamp);
+                lampManager.AddLamp(_lamp);
 
-                await DisplayAlert("Success", $"You have Successfully connected to your device! Go to \"Control\" for the interaction. ", "OK");
+                await userManager.UpdateUserAsync(user);
+                userManager.SetUser(user);
+
+                await DisplayAlert("Success", $"You have Successfully connected to your device! " +
+                    $"Go to \"Control\" for the interaction. ", "OK");
 
                 await Navigation.PopToRootAsync();
                 await Navigation.PushAsync(new ControlPage());
@@ -44,4 +48,3 @@ namespace EnergyControlMaui.Views
         }
     }
 }
-#pragma warning restore CS8602 // Dereference of a possibly null reference.

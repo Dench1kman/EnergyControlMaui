@@ -15,32 +15,25 @@ namespace EnergyControlMaui.Views
     {
 #if ANDROID
         private Lamp _lamp;
-
         bool isImage1Displayed = true;
 
         public ControlPage()
         {
             InitializeComponent();
-
-            var lampManager = LampManager.GetInstance();
-            _lamp = lampManager.GetDetails();
-
-            if (_lamp != null)
-            {
-                Shell.SetBackButtonBehavior(this, new BackButtonBehavior { IsVisible = false });
-                GetLampControl();
-            }
+            GetLampControl();
         }
 
         private async void GetLampControl()
         {
-            var currentUser = Services.UserManager.GetInstance().GetUser();
-            var lampManager = LampManager.GetInstance();
+            var userManager = Services.UserManager.GetInstance();
+            var currentUser = userManager.GetUser();
 
-            var isExists = await lampManager.GetLampByUserIdAsync(currentUser.UserId);
-            
-            if (isExists.LampId != 0)
+            var lampManager = LampManager.GetInstance();
+            var lamp = await lampManager.GetLampByUserIdAsync(currentUser.UserId);
+
+            if (lamp != null && lamp.LampId != 0)
             {
+                _lamp = lamp;
                 NoDevicesText.IsVisible = false;
 
                 LampNameLabel.Text = _lamp.LampName;
@@ -70,33 +63,38 @@ namespace EnergyControlMaui.Views
 
         private async Task SendRequestToLampAsync(string action)
         {
-            var lamp = LampManager.GetInstance();
-            string lampIpAddress = lamp.GetDetails().IPAddress;
-
-            string apiUrl = $"https://{lampIpAddress}/{action}";
-
-            using (HttpClient client = new HttpClient())
+            try
             {
-                HttpResponseMessage response = await client.GetAsync(apiUrl);
+                var lamp = LampManager.GetInstance();
+                string lampIpAddress = lamp.GetDetails().IPAddress;
+                string apiUrl = $"https://{lampIpAddress}/{action}";
 
-                if (response.IsSuccessStatusCode)
+                using (HttpClient client = new HttpClient())
                 {
-                    if (action == "turnOff")
+                    HttpResponseMessage response = await client.GetAsync(apiUrl);
+
+                    if (response.IsSuccessStatusCode)
                     {
-                        _lamp.IsOn = false;
+                        if (action == "turnOff")
+                        {
+                            _lamp.IsOn = false;
+                        }
+                        else
+                            _lamp.IsOn = true;
+
+                        lamp.SetDetails(_lamp);
+                        await lamp.UpdateLampAsync(_lamp);
                     }
                     else
-                        _lamp.IsOn = true;
-
-                    lamp.SetDetails(_lamp);
-                    await lamp.UpdateLampAsync(_lamp);
-                }
-                else
-                {
-                    Toast.MakeText(Android.App.Application.Context, "Error when sending request", ToastLength.Long).Show();
+                    {
+                        Toast.MakeText(Android.App.Application.Context, "Error when sending request", ToastLength.Long).Show();
+                    }
                 }
             }
-
+            catch (Exception)
+            {
+                await DisplayAlert("Connection failure", $"Please try to reconnect to the lamp again.", "OK");
+            }
         }
 #endif
     }

@@ -20,14 +20,18 @@ namespace EnergyControlMaui.Views
                 return;
             }
 
-            Task<bool> emailValidationTask = EmailValidator.ValidateLogInEmailAsync(EmailEntry.Text, EmailErrorLabel);
-            Task<bool> passwordValidationTask = PasswordValidator.VerifyPasswordAsync(EmailEntry.Text, PasswordEntry.Text, InvalidPasswordErrorLabel, UserManager.GetInstance()); // userManager
+            Task<bool> isEmailValid = EmailValidator.ValidateLogInEmailAsync(EmailEntry.Text, EmailErrorLabel);
+            Task<bool> isPasswordValid = PasswordValidator.VerifyPasswordAsync(EmailEntry.Text, PasswordEntry.Text, InvalidPasswordErrorLabel, UserManager.GetInstance()); // userManager
 
-            await Task.WhenAll(emailValidationTask, passwordValidationTask);
+            await Task.WhenAll(isEmailValid, isPasswordValid);
 
-            if (emailValidationTask.Result && passwordValidationTask.Result)
+            if (isEmailValid.Result && isPasswordValid.Result)
             {
-                await Navigation.PushAsync(new AppShell());
+                var userManager = UserManager.GetInstance();
+                var user = await userManager.GetUserDataAsync(EmailEntry.Text);
+                userManager.SetUser(user);
+
+                    await Navigation.PushAsync(new AppShell());
             }
         }
 

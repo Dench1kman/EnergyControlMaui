@@ -3,17 +3,12 @@
 
 #if ANDROID
 using Android.Widget;
-using EnergyControlMaui.Models;
-using Android.Content;
 using EnergyControlMaui.Services;
 using Newtonsoft.Json;
 #endif
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net.NetworkInformation;
 using System.Text;
-using System.Threading.Tasks;
+
 
 namespace EnergyControlMaui.Controllers
 {
@@ -32,7 +27,14 @@ namespace EnergyControlMaui.Controllers
                 Toast.MakeText(Android.App.Application.Context, $"Lamp is at {lamp.IPAddress} responsive", ToastLength.Long).Show();
                 await Task.Delay(1000);
 
-                await SendWifiDetailsToLampAsync(lamp.IPAddress);
+                try
+                {
+                    await SendWifiDetailsToLampAsync(lamp.IPAddress);
+                }
+                catch (Exception ex)
+                {
+                    Toast.MakeText(Android.App.Application.Context, $"Error: {ex.Message}", ToastLength.Long).Show();
+                }
             }
             else
             {
@@ -42,23 +44,30 @@ namespace EnergyControlMaui.Controllers
 
         private async Task SendWifiDetailsToLampAsync(string lampIpAddress)
         {
-            using (HttpClient client = new HttpClient())
+            try
             {
-                var wifiDetails = WifiService.GetInstance().GetDetails();
-                var jsonContent = new StringContent(JsonConvert.SerializeObject(wifiDetails), Encoding.UTF8, "application/json");
-                var apiUrl = $"https://{lampIpAddress}/configure";
-                var response = await client.PostAsync(apiUrl, jsonContent);
+                using (HttpClient client = new HttpClient())
+                {
+                    var wifiDetails = WifiService.GetInstance().GetDetails();
+                    var jsonContent = new StringContent(JsonConvert.SerializeObject(wifiDetails), Encoding.UTF8, "application/json");
+                    var apiUrl = $"https://{lampIpAddress}/configure";
+                    var response = await client.PostAsync(apiUrl, jsonContent);
 
-                if (response.IsSuccessStatusCode)
-                {
-                    Toast.MakeText(Android.App.Application.Context, $"Lamp received Wi-Fi data", ToastLength.Long).Show();
-                    await Task.Delay(1000);
+                    if (response.IsSuccessStatusCode)
+                    {
+                        Toast.MakeText(Android.App.Application.Context, $"Lamp received Wi-Fi data", ToastLength.Long).Show();
+                        await Task.Delay(1000);
+                    }
+                    else
+                    {
+                        Toast.MakeText(Android.App.Application.Context, $"Oops! Lamp didn't receive Wi-Fi data", ToastLength.Long).Show();
+                        await Task.Delay(1000);
+                    }
                 }
-                else
-                {
-                    Toast.MakeText(Android.App.Application.Context, $"Oops! Lamp didn't receive Wi-Fi data", ToastLength.Long).Show();
-                    await Task.Delay(1000);
-                }
+            }
+            catch (Exception ex)
+            {
+                Toast.MakeText(Android.App.Application.Context, $"Exception: {ex.Message}", ToastLength.Long).Show();
             }
         }
 #endif

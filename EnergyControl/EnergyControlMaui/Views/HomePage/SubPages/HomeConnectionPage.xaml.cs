@@ -24,10 +24,20 @@ namespace EnergyControlMaui.Views
 
         private async void LampButton_Clicked(object sender, EventArgs e)
         {
-            var isWifiActive = await _wifiService.CheckAndSwitchToWifiAsync();
-            if (isWifiActive)
-            {   
-                await Navigation.PushAsync(new WifiConnectionPage());
+            var userManager = UserManager.GetInstance();
+            var user = userManager.GetUser();
+
+            if (user != null && user.Lamps != null)
+            {
+                Toast.MakeText(Android.App.Application.Context, "You have already registered a lamp.", ToastLength.Long).Show();
+            }
+            else
+            {
+                var isWifiActive = await _wifiService.CheckAndSwitchToWifiAsync();
+                if (isWifiActive)
+                {
+                    await Navigation.PushAsync(new WifiConnectionPage());
+                }
             }
         }
         
