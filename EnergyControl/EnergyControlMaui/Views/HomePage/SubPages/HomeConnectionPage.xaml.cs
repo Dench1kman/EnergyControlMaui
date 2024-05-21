@@ -24,10 +24,12 @@ namespace EnergyControlMaui.Views
 
         private async void LampButton_Clicked(object sender, EventArgs e)
         {
+            var lampManager = LampManager.GetInstance();
             var userManager = UserManager.GetInstance();
             var user = userManager.GetUser();
+            var lamp = lampManager.GetDetails();
 
-            if (user != null && user.Lamps != null)
+            if (lamp != null && user.Lamps != null)
             {
                 Toast.MakeText(Android.App.Application.Context, "You have already registered a lamp.", ToastLength.Long).Show();
             }

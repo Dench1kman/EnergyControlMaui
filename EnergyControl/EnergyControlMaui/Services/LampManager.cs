@@ -3,6 +3,7 @@
 using Microsoft.EntityFrameworkCore;
 using EnergyControlMaui.Models;
 using EnergyControlMaui.DB;
+using static Microsoft.Maui.ApplicationModel.Permissions;
 
 
 namespace EnergyControlMaui.Services
@@ -35,6 +36,11 @@ namespace EnergyControlMaui.Services
         public Lamp GetDetails()
         {
             return Lamp;
+        }
+
+        public void ClearDetails()
+        {
+            Lamp = null;
         }
 
         public bool AddLamp(Lamp lamp)
@@ -76,8 +82,17 @@ namespace EnergyControlMaui.Services
                 existingLamp.Brightness = updatedLamp.Brightness;
                 existingLamp.Color = updatedLamp.Color;
 
-                _db.SaveChanges();
-                return true;
+                try
+                {
+                    await _db.SaveChangesAsync();
+                    return true;
+                }
+                catch (DbUpdateConcurrencyException ex)
+                {
+                    Console.WriteLine($"Error while saving changes: {ex.Message}");
+                    Console.WriteLine($"Inner exception: {ex.InnerException}");
+                    return false;
+                }
             }
             return false;
         }
@@ -85,6 +100,7 @@ namespace EnergyControlMaui.Services
         public async Task<bool> RemoveLampAsync(int lampId)
         {
             var lampToRemove = await _db.Lamps.FirstOrDefaultAsync(l => l.LampId == lampId);
+
             if (lampToRemove != null)
             {
                 _db.Lamps.Remove(lampToRemove);

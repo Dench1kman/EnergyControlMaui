@@ -61,6 +61,10 @@ namespace EnergyControlMaui.Services
             }
             return false;
         }
+        public async Task<User> GetUserWithLampAsync(int userId)
+        {
+            return await _db.Users.Include(u => u.Lamps).FirstOrDefaultAsync(u => u.UserId == userId);
+        }
 
         public async Task<bool> UserExistsAsync(string email)
         {
@@ -80,6 +84,19 @@ namespace EnergyControlMaui.Services
         public async Task<User> GetUserDataAsync(string email)
         {
             return await _db.Users.Where(u => u.Email == email).FirstOrDefaultAsync();
+        }
+
+        public async Task<bool> RemoveLampAsync(int userId)
+        {
+            var user = await _db.Users.Include(u => u.Lamps).FirstOrDefaultAsync(u => u.UserId == userId);
+
+            if (user != null && user.Lamps != null)
+            {
+                user.Lamps = null;
+                await _db.SaveChangesAsync();
+                return true;
+            }
+            return false;
         }
 
         public async Task<List<User>> GetAllUsersAsync()

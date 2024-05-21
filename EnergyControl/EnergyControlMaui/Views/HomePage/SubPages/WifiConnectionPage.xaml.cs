@@ -67,7 +67,7 @@ namespace EnergyControlMaui.Views
             {
                 var isValid = _wifiService.ConnectToWifi(WifiSsidEntry.Text, WifiPasswordEntry.Text);
 
-                await this.ShowPopupAsync(new PopupView("Please Wait", "Trying to connect to your wi-fi...", 5000));
+                await this.ShowPopupAsync(new PopupView("Please Wait", "Trying to connect to your wi-fi...", 7000));
 
                 if (isValid)
                 {

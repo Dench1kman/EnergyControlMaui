@@ -3,11 +3,12 @@
 
 #if ANDROID
 using Android.Widget;
-using EnergyControlMaui.Services;
 using Newtonsoft.Json;
 #endif
 using System.Net.NetworkInformation;
 using System.Text;
+using EnergyControlMaui.Services;
+using EnergyControlMaui.Models;
 
 
 namespace EnergyControlMaui.Controllers
@@ -15,6 +16,8 @@ namespace EnergyControlMaui.Controllers
     public class LampController
     {
 #if ANDROID
+        private Lamp _lamp;
+
         public async Task ConnectToLampAsync()
         {
             var lamp = LampManager.GetInstance().GetDetails();
@@ -39,6 +42,42 @@ namespace EnergyControlMaui.Controllers
             else
             {
                 Toast.MakeText(Android.App.Application.Context, $"Lamp at {lamp.IPAddress} is not responsive.", ToastLength.Long).Show();
+            }
+        }
+
+        public async Task SendRequestToLampAsync(string action)
+        {
+            try
+            {
+                var lamp = LampManager.GetInstance();
+                string lampIpAddress = lamp.GetDetails().IPAddress;
+                string apiUrl = $"https://{lampIpAddress}/{action}";
+
+                using (HttpClient client = new HttpClient())
+                {
+                    HttpResponseMessage response = await client.GetAsync(apiUrl);
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        if (action == "turnOff")
+                        {
+                            _lamp.IsOn = false;
+                        }
+                        else
+                            _lamp.IsOn = true;
+
+                        lamp.SetDetails(_lamp);
+                        await lamp.UpdateLampAsync(_lamp);
+                    }
+                    else
+                    {
+                        Toast.MakeText(Android.App.Application.Context, "Error when sending request", ToastLength.Long).Show();
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                Toast.MakeText(Android.App.Application.Context, "Connection failure", ToastLength.Long).Show();
             }
         }
 
@@ -68,6 +107,31 @@ namespace EnergyControlMaui.Controllers
             catch (Exception ex)
             {
                 Toast.MakeText(Android.App.Application.Context, $"Exception: {ex.Message}", ToastLength.Long).Show();
+
+            }
+        }
+
+        public async Task SendBrightnessToLampAsync(int brightness)
+        {
+            var lamp = LampManager.GetInstance().GetDetails();
+            string lampIpAddress = lamp.IPAddress;
+
+            string apiUrl = $"https://{lampIpAddress}/setBrightness?value={brightness}";
+
+            using (HttpClient client = new HttpClient())
+            {
+                try
+                {
+                    HttpResponseMessage response = await client.GetAsync(apiUrl);
+                    if (!response.IsSuccessStatusCode)
+                    {
+                        Toast.MakeText(Android.App.Application.Context, "Error when sending brightness value to the lamp", ToastLength.Long).Show();
+                    }
+                }
+                catch (HttpRequestException)
+                {
+                    Toast.MakeText(Android.App.Application.Context, "Connection failure", ToastLength.Long).Show();
+                }
             }
         }
 #endif

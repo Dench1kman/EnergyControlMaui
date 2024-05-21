@@ -27,7 +27,7 @@ namespace EnergyControlMaui.Views
 
 		private async void LampConnection() 
 		{
-			LampController lampController = new LampController();
+            LampController lampController = new LampController();
 			await lampController.ConnectToLampAsync();
 
             var wifiService = WifiService.GetInstance();

@@ -3,9 +3,12 @@
 
 #if ANDROID
 using Android.Widget;
+using AndroidX.Navigation;
+
 #endif
 using EnergyControlMaui.Models;
 using EnergyControlMaui.Services;
+using EnergyControlMaui.Views;
 
 
 namespace EnergyControlMaui.Views
@@ -53,7 +56,7 @@ namespace EnergyControlMaui.Views
 
         private async void AboutButton_Clicked(object sender, EventArgs e)
         {
-            Toast.MakeText(Android.App.Application.Context, "This function is in development", ToastLength.Long).Show();
+            await Navigation.PushModalAsync(new AboutPage());
         }
 
         private async void LogOutButton_Clicked(object sender, EventArgs e)

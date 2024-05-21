@@ -1,0 +1,147 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="EnergyControlMaui.Views.AboutPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    BackgroundColor="#24293D">
+
+
+    <ContentPage.Content>
+        <Grid>
+            <StackLayout Margin="45,45,45,0" VerticalOptions="StartAndExpand">
+                <Label
+                    FontAttributes="Bold"
+                    FontSize="18"
+                    HorizontalOptions="Center"
+                    Text="About The Project"
+                    TextColor="#F4F4FC"
+                    VerticalOptions="Start" />
+                <Label
+                    Margin="0,-10,0,45"
+                    HorizontalOptions="Center"
+                    Text="__________________________"
+                    TextColor="#F4F4FC"
+                    VerticalOptions="StartAndExpand" />
+
+                <StackLayout Margin="0,0,45,0" Orientation="Horizontal">
+                    <Label
+                        FontFamily="interregular"
+                        FontSize="16"
+                        Text="The project "
+                        TextColor="#F4F4FC" />
+                    <Label
+                        FontFamily="interregular"
+                        FontSize="16"
+                        Text="EnergyControl "
+                        TextColor="#8EBBFF" />
+                    <Label
+                        FontFamily="interregular"
+                        FontSize="16"
+                        Text="was created "
+                        TextColor="#F4F4FC" />
+                </StackLayout>
+                <Label
+                    FontFamily="interregular"
+                    FontSize="16"
+                    Text="as a graduation project. The main purpose of the application is to provide users with convenient tools for controlling a smart home, including lighting. "
+                    TextColor="#F4F4FC" />
+
+                <Label
+                    Margin="0,15,0,10"
+                    FontFamily="interregular"
+                    FontSize="16"
+                    Text="The app allows users to connect and control lamps via a mobile device. You can turn the lamp on or off, adjust its brightness."
+                    TextColor="#F4F4FC" />
+
+                <Label
+                    Margin="0,15,0,10"
+                    FontFamily="interregular"
+                    FontSize="16"
+                    Text="The following technologies were used to create this application:"
+                    TextColor="#F4F4FC" />
+                <StackLayout HorizontalOptions="StartAndExpand" Orientation="Horizontal">
+                    <Label
+                        FontSize="16"
+                        Text="●   "
+                        TextColor="Yellow" />
+                    <Label
+                        FontFamily="interregular"
+                        FontSize="16"
+                        Text="Programming language - "
+                        TextColor="#F4F4FC" />
+                    <Label
+                        FontFamily="interregular"
+                        FontSize="16"
+                        Text="MAUI"
+                        TextColor="#8EBBFF" />
+                </StackLayout>
+
+                <StackLayout HorizontalOptions="StartAndExpand" Orientation="Horizontal">
+                    <Label
+                        FontSize="16"
+                        Text="●   "
+                        TextColor="Yellow" />
+                    <Label
+                        FontFamily="interregular"
+                        FontSize="16"
+                        Text="Workspace - "
+                        TextColor="#F4F4FC" />
+                    <Label
+                        FontFamily="interregular"
+                        FontSize="16"
+                        Text="Visual Studio 2022"
+                        TextColor="#8EBBFF" />
+                </StackLayout>
+
+                <StackLayout HorizontalOptions="StartAndExpand" Orientation="Horizontal">
+                    <Label
+                        FontSize="16"
+                        Text="●   "
+                        TextColor="Yellow" />
+                    <Label
+                        FontFamily="interregular"
+                        FontSize="16"
+                        Text="Database - "
+                        TextColor="#F4F4FC" />
+                    <Label
+                        FontFamily="interregular"
+                        FontSize="16"
+                        Text="SQLite"
+                        TextColor="#8EBBFF" />
+                </StackLayout>
+
+                <StackLayout
+                    Margin="0,0,0,45"
+                    HorizontalOptions="StartAndExpand"
+                    Orientation="Horizontal">
+                    <Label
+                        FontSize="16"
+                        Text="●   "
+                        TextColor="Yellow" />
+                    <Label
+                        FontFamily="interregular"
+                        FontSize="16"
+                        Text="Design - "
+                        TextColor="#F4F4FC" />
+                    <Label
+                        FontFamily="interregular"
+                        FontSize="16"
+                        Text="Figma"
+                        TextColor="#8EBBFF" />
+                </StackLayout>
+
+                <Button
+                    BackgroundColor="#8EBBFF"
+                    Clicked="CloseButton_Clicked"
+                    FontAttributes="Bold"
+                    FontFamily="Inter"
+                    FontSize="18"
+                    HorizontalOptions="Center"
+                    Text="Close"
+                    TextColor="#24293D"
+                    VerticalOptions="EndAndExpand" />
+
+            </StackLayout>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

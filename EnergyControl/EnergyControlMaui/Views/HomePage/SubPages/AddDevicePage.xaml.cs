@@ -29,12 +29,13 @@ namespace EnergyControlMaui.Views
                 _lamp.LampName = LampNameEntry.Text;
                 _lamp.Brightness = 50;
                 _lamp.Color = "White";
+                _lamp.LampId = user.UserId;
                 _lamp.UserId = user.UserId;
-                user.Lamps = _lamp;
 
                 lampManager.SetDetails(_lamp);
                 lampManager.AddLamp(_lamp);
 
+                user.Lamps = _lamp;
                 await userManager.UpdateUserAsync(user);
                 userManager.SetUser(user);
 
@@ -42,7 +43,6 @@ namespace EnergyControlMaui.Views
                     $"Go to \"Control\" for the interaction. ", "OK");
 
                 await Navigation.PopToRootAsync();
-                await Navigation.PushAsync(new ControlPage());
             }
             else await ErrorMessage.ShowErrorMessage(LampNameErrorLabel, "Lamp Name cannot be empty!"); 
         }

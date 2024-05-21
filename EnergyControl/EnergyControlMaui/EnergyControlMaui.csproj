@@ -84,6 +84,7 @@
 	  <None Remove="Resources\AppIcon\logo_splash.svg" />
 	  <None Remove="Resources\Images\bulb_off.svg" />
 	  <None Remove="Resources\Images\bulb_on.svg" />
+	  <None Remove="Resources\Images\Buttons\disconnect_btn.svg" />
 	  <None Remove="Resources\Images\security_btn.svg" />
 	  <None Remove="Resources\AppIcon\appicon.svg" />
 	  <None Remove="Resources\AppIcon\appiconfg.svg" />
@@ -204,6 +205,10 @@
 			<SubType>Code</SubType>
 			<DependentUpon>%(Filename)</DependentUpon>
 		</Compile>
+		<Compile Update="Views\AccountPage\AboutPage.xaml.cs">
+			<SubType>Code</SubType>
+			<DependentUpon>%(Filename)</DependentUpon>
+		</Compile>
 		<Compile Update="Views\ControlPage\ControlPage.xaml.cs">
 			<SubType>Code</SubType>
 			<DependentUpon>ControlPage.xaml</DependentUpon>
@@ -258,8 +263,11 @@
 			<Generator>MSBuild:Compile</Generator>
 		</None>
 	  <None Update="Views\WelcomePage.xaml">
-	    <Generator>MSBuild:Compile</Generator>
+			<Generator>MSBuild:Compile</Generator>
 	  </None>
+		<None Update="Views\AboutPage.xaml">
+			<Generator>MSBuild:Compile</Generator>
+		</None>
 		<None Update="Views\AddDevicePage.xaml">
 			<Generator>MSBuild:Compile</Generator>
 		</None>
@@ -268,6 +276,7 @@
 	<ItemGroup>
 	  <MauiAsset Include="Resources\Images\Buttons\about_btn.svg" />
 	  <MauiAsset Include="Resources\Images\Buttons\add_device_btn.svg" />
+	  <MauiImage Include="Resources\Images\Buttons\disconnect_btn.svg" />
 	  <MauiAsset Include="Resources\Images\Buttons\lamp_btn.svg" />
 	  <MauiAsset Include="Resources\Images\Buttons\other_device_btn.svg" />
 	  <MauiAsset Include="Resources\Images\Buttons\printer_btn.svg" />
