@@ -8,6 +8,7 @@ using Android.Widget;
 using EnergyControlMaui.Models;
 using EnergyControlMaui.Services;
 using EnergyControlMaui.Controllers;
+using Microsoft.EntityFrameworkCore;
 
 
 namespace EnergyControlMaui.Views
@@ -22,6 +23,7 @@ namespace EnergyControlMaui.Views
         public ControlPage()
         {
             InitializeComponent();
+            _lampController = new LampController();
             GetLampControl();
         }
 
@@ -33,6 +35,8 @@ namespace EnergyControlMaui.Views
             var lampManager = LampManager.GetInstance();
             var lamp = await lampManager.GetLampByIdAsync(currentUser.UserId);
 
+            currentUser.Lamps = lamp;
+
             if (currentUser?.Lamps != null)
             {
                 _lamp = currentUser.Lamps;
@@ -41,7 +45,8 @@ namespace EnergyControlMaui.Views
                 LampNameLabel.Text = _lamp.LampName;
                 LampControl.IsVisible = true;
 
-                BrightnessSlider.Value = _lamp.Brightness;
+                BrightnessSlider.Value = 50;
+                //BrightnessSlider.Value = _lamp.Brightness;
             }
             else
             {
@@ -55,15 +60,16 @@ namespace EnergyControlMaui.Views
             {
                 LampButton.Source = "bulb_off.svg";
                 isImage1Displayed = false;
-                await _lampController.SendRequestToLampAsync("turnOn");
+                //await _lampController.SendRequestToLampAsync("turnOn");
             }
             else
             {
                 LampButton.Source = "bulb_on.svg";
                 isImage1Displayed = true;
-                await _lampController.SendRequestToLampAsync("turnOff");
+                //await _lampController.SendRequestToLampAsync("turnOff");
             }
         }
+
         private async void BrightnessSlider_ValueChanged(object sender, ValueChangedEventArgs e)
         {
             if (_lamp != null)
@@ -73,9 +79,19 @@ namespace EnergyControlMaui.Views
 
                 var lampManager = LampManager.GetInstance();
                 lampManager.SetDetails(_lamp);
-                await lampManager.UpdateLampAsync(_lamp);
+                try
+                {
+                    await lampManager.UpdateLampAsync(_lamp);
 
-                await _lampController.SendBrightnessToLampAsync(newBrightness);
+                    if (_lampController != null)
+                    {
+                        await _lampController.SendBrightnessToLampAsync(newBrightness);
+                    }
+                }
+                catch (DbUpdateException ex)
+                {
+                    await DisplayAlert("Database Update Error", $"An error occurred while updating the database: {ex.InnerException?.Message ?? ex.Message}", "OK");
+                }
             }
         }     
 
@@ -118,7 +134,6 @@ namespace EnergyControlMaui.Views
                 }
             }
         }
-
 #endif
     }
 }

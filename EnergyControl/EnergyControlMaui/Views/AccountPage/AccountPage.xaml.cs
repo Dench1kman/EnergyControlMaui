@@ -61,8 +61,13 @@ namespace EnergyControlMaui.Views
 
         private async void LogOutButton_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PopAsync();
-            await Navigation.PushAsync(new LoginPage());
+            bool isConfirmed = await DisplayAlert("Log Out", "Are you sure you want to log out?", "Yes", "Cancel");
+
+            if (isConfirmed)
+            {
+                await Navigation.PopAsync();
+                await Navigation.PushAsync(new LoginPage());
+            }
         }
 #endif
     }

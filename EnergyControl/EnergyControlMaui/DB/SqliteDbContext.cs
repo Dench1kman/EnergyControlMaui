@@ -12,7 +12,7 @@ namespace EnergyControlMaui.DB
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            string connectionDb = $"Filename={PathDB.GetPath("EnergyInfoDb.db")}";
+            string connectionDb = $"Filename={PathDB.GetPath("EnergyControl.db")}";
             optionsBuilder.UseSqlite(connectionDb);
         }
     }

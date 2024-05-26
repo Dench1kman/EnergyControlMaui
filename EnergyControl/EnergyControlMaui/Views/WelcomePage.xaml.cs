@@ -5,12 +5,12 @@ namespace EnergyControlMaui.Views
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class WelcomePage : ContentPage
 	{
-        private readonly UserManager userManager;
+        private readonly UserManager _userManager;
 
         public WelcomePage (UserManager userManager)
 		{
             InitializeComponent ();
-            this.userManager = userManager;
+            _userManager = userManager;
         }
 
         private async void SignUpButton_Clicked(object sender, EventArgs e)

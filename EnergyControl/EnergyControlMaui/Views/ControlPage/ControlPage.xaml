@@ -98,7 +98,7 @@
                         FontSize="18"
                         HorizontalOptions="StartAndExpand"
                         Routing.Route="Control"
-                        Text="{Binding Source={x:Reference slider}, Path=Value, StringFormat='Brightness: {0:F0}%'}"
+                        Text="{Binding Source={x:Reference BrightnessSlider}, Path=Value, StringFormat='Brightness: {0:F0}%'}"
                         TextColor="#F4F4FC"
                         VerticalOptions="Center" />
                     <Slider
@@ -109,8 +109,10 @@
                         Minimum="0"
                         MinimumTrackColor="#F4F4FC"
                         ThumbColor="#8EBBFF"
-                        ValueChanged="BrightnessSlider_ValueChanged"
                         WidthRequest="250" />
+                    <!--
+                        ValueChanged="BrightnessSlider_ValueChanged"
+                    -->
                 </StackLayout>
             </StackLayout>
 
